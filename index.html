@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>光里日语 作业系统</title>
+<style>
+:root{--primary:#4A90D9;--primary-dark:#357ABD;--primary-light:#E8F0FE;--success:#28A745;--success-bg:#D4EDDA;--danger:#DC3545;--danger-bg:#F8D7DA;--warning:#FFC107;--gray-50:#F8F9FA;--gray-100:#F0F2F5;--gray-200:#E1E4E8;--gray-300:#CBD5E0;--gray-600:#6C757D;--gray-800:#343A40;--gray-900:#1A1D21;--radius:12px;--shadow:0 2px 8px rgba(0,0,0,0.08);--shadow-lg:0 8px 24px rgba(0,0,0,0.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Noto Sans JP",sans-serif;background:var(--gray-100);color:var(--gray-900);line-height:1.6;min-height:100vh}
+
+/* Login */
+.login-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.login-overlay.hidden{display:none}
+.login-box{background:#fff;border-radius:20px;padding:40px 36px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:loginIn .4s ease}
+@keyframes loginIn{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.login-box h1{text-align:center;font-size:24px;font-weight:800;margin-bottom:4px}
+.login-box .sub{text-align:center;font-size:13px;color:var(--gray-600);margin-bottom:28px}
+.login-box .field{margin-bottom:16px}
+.login-box .field label{display:block;font-size:13px;font-weight:600;color:var(--gray-800);margin-bottom:4px}
+.login-box .field input{width:100%;padding:12px 14px;border:2px solid var(--gray-200);border-radius:10px;font-size:15px;transition:all .2s}
+.login-box .field input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(74,144,217,0.15)}
+.login-box .login-error{font-size:13px;color:var(--danger);min-height:20px;margin-bottom:12px;text-align:center}
+.login-box .login-actions{display:flex;gap:10px}
+.login-box .login-actions button{flex:1;padding:12px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s}
+.login-box .btn-login{background:var(--primary);color:#fff;border:none}
+.login-box .btn-login:hover{background:var(--primary-dark)}
+.login-box .btn-register{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+.login-box .btn-register:hover{background:var(--primary-light)}
+.login-box .login-hint{text-align:center;font-size:12px;color:var(--gray-600);margin-top:16px}
+
+/* Header */
+.header{background:linear-gradient(135deg,var(--primary),#6C5CE7);color:#fff;padding:16px 0;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100}
+.header-inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.header-left{display:flex;align-items:center;gap:14px}
+.header h1{font-size:18px;font-weight:700}
+.header .subtitle{font-size:12px;opacity:.85}
+.header-right{display:flex;align-items:center;gap:10px}
+.header-user{font-size:13px;opacity:.9}
+.btn-logout{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .2s}
+.btn-logout:hover{background:rgba(255,255,255,.25)}
+.btn-record{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-record:hover{background:rgba(255,255,255,.3)}
+.btn-record .badge{display:inline-block;background:#FF6B6B;color:#fff;font-size:10px;padding:1px 6px;border-radius:10px;margin-left:4px;font-weight:700}
+
+/* Container & Selectors */
+.container{max-width:920px;margin:0 auto;padding:20px}
+.selector-bar{background:#fff;border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.selector-bar label{font-weight:600;font-size:13px;color:var(--gray-600);white-space:nowrap}
+.selector-bar select{padding:6px 12px;border:1px solid var(--gray-200);border-radius:8px;font-size:13px;background:#fff;cursor:pointer}
+.selector-bar select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(74,144,217,0.15)}
+.selector-bar .btn-switch{background:var(--primary);color:#fff;border:none;padding:6px 16px;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer}
+.selector-bar .btn-switch:hover{background:var(--primary-dark)}
+
+/* Section tabs */
+.section-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.section-tab{padding:10px 18px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;background:#fff;border:1px solid var(--gray-200);color:var(--gray-600);transition:all .2s;user-select:none}
+.section-tab:hover{background:var(--gray-50)}
+.section-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.section-tab .count{display:inline-block;background:rgba(0,0,0,.08);border-radius:10px;padding:0 8px;font-size:11px;margin-left:4px}
+.section-tab.active .count{background:rgba(255,255,255,.2)}
+.section-tab .score-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:6px;vertical-align:middle}
+.section-tab .score-dot.done{background:var(--success)}
+.section-tab .score-dot.partial{background:var(--warning)}
+
+/* Section */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.section-header h2{font-size:18px;font-weight:700}
+.section-header .section-stats{font-size:13px;color:var(--gray-600)}
+
+/* Question card */
+.question-card{background:#fff;border-radius:var(--radius);padding:20px 24px;margin-bottom:14px;box-shadow:var(--shadow);transition:all .3s;border-left:4px solid var(--gray-200)}
+.question-card.status-correct{border-left-color:var(--success);background:#F6FFF9}
+.question-card.status-wrong{border-left-color:var(--danger);background:#FFF8F8}
+.question-card.status-revealed{border-left-color:#FFC107;background:#FFFEF5}
+.q-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.q-number{flex-shrink:0;width:28px;height:28px;line-height:28px;text-align:center;background:var(--primary-light);color:var(--primary);border-radius:50%;font-size:13px;font-weight:700}
+.q-text{font-size:15px;font-weight:500;flex:1}
+.q-type-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;margin-left:8px;vertical-align:middle}
+.q-type-tag.choice{background:#E3F2FD;color:#1565C0}
+.q-type-tag.fill{background:#FFF3E0;color:#E65100}
+.q-type-tag.translate{background:#F3E5F5;color:#7B1FA2}
+.options{display:flex;flex-direction:column;gap:7px}
+.option-label{display:flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid var(--gray-200);border-radius:8px;cursor:pointer;transition:all .15s;font-size:14px}
+.option-label:hover{background:var(--gray-50);border-color:var(--primary)}
+.option-label input[type="radio"]{accent-color:var(--primary);width:16px;height:16px}
+.option-label.selected{border-color:var(--primary);background:var(--primary-light)}
+.option-label.correct-mark{border-color:var(--success);background:var(--success-bg)}
+.option-label.wrong-mark{border-color:var(--danger);background:var(--danger-bg)}
+.fill-input,.translate-input{width:100%;max-width:500px;padding:10px 14px;border:2px solid var(--gray-200);border-radius:8px;font-size:14px;font-family:"Noto Sans JP","Hiragino Sans","MS Gothic",sans-serif;transition:all .2s}
+.fill-input:focus,.translate-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(74,144,217,0.15)}
+.fill-input:disabled,.translate-input:disabled{background:var(--gray-50);cursor:not-allowed}
+.fill-input.correct-border{border-color:var(--success);background:#F0FFF4}
+.fill-input.wrong-border{border-color:var(--danger);background:#FFF5F5}
+.feedback{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13px;display:none;line-height:1.5}
+.feedback.show{display:block}
+.feedback.correct{background:var(--success-bg);color:#155724;border:1px solid #C3E6CB}
+.feedback.wrong{background:var(--danger-bg);color:#721C24;border:1px solid #F5C6CB}
+.feedback.info{background:#FFFEF5;color:#856404;border:1px solid #FFEAA7}
+.feedback .correct-answer-text{font-weight:600;margin-top:4px;color:var(--success)}
+.feedback .explanation{margin-top:4px;color:var(--gray-600);font-size:12px}
+.reveal-btn{margin-top:8px;padding:5px 12px;font-size:12px;color:var(--gray-600);background:var(--gray-50);border:1px dashed var(--gray-300);border-radius:6px;cursor:pointer;transition:all .2s}
+.reveal-btn:hover{background:var(--gray-100);color:var(--gray-800)}
+.self-eval{margin-top:10px;display:none;gap:8px;align-items:center;flex-wrap:wrap}
+.self-eval.show{display:flex}
+.self-eval span{font-size:13px;color:var(--gray-600)}
+.self-eval button{padding:6px 16px;border-radius:6px;border:1px solid var(--gray-200);font-size:13px;cursor:pointer;transition:all .15s}
+.self-eval .btn-correct{background:#D4EDDA;color:#155724;border-color:#C3E6CB}
+.self-eval .btn-correct:hover{background:#C3E6CB}
+.self-eval .btn-wrong{background:#F8D7DA;color:#721C24;border-color:#F5C6CB}
+.self-eval .btn-wrong:hover{background:#F5C6CB}
+.section-submit-area{background:#fff;border-radius:var(--radius);padding:18px 24px;margin:20px 0 30px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.section-submit-area .info{font-size:13px;color:var(--gray-600)}
+.section-submit-btn{background:linear-gradient(135deg,var(--primary),#6C5CE7);color:#fff;border:none;padding:10px 28px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:0 3px 8px rgba(74,144,217,0.25)}
+.section-submit-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(74,144,217,0.35)}
+.section-submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.section-submit-btn.submitted{background:linear-gradient(135deg,var(--success),#20C997)}
+.progress-bar{background:var(--gray-200);border-radius:10px;height:5px;margin-bottom:14px;overflow:hidden}
+.progress-bar .fill{height:100%;background:linear-gradient(90deg,var(--primary),#6C5CE7);border-radius:10px;transition:width .4s ease;width:0%}
+.progress-text{text-align:center;font-size:12px;color:var(--gray-600);margin-bottom:4px}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1000;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:700px;width:100%;box-shadow:var(--shadow-lg);animation:modalIn .25s ease;overflow:hidden}
+@keyframes modalIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{padding:20px 24px;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1}
+.modal-header h2{font-size:18px;font-weight:700}
+.modal-close{width:32px;height:32px;border-radius:50%;border:none;background:var(--gray-100);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600)}
+.modal-close:hover{background:var(--gray-200)}
+.modal-body{padding:20px 24px;max-height:70vh;overflow-y:auto}
+.record-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.record-summary .stat-card{background:var(--gray-50);border-radius:10px;padding:14px;text-align:center}
+.record-summary .stat-card .num{font-size:24px;font-weight:800;color:var(--primary)}
+.record-summary .stat-card .label{font-size:12px;color:var(--gray-600);margin-top:2px}
+.record-list{display:flex;flex-direction:column;gap:10px}
+.record-item{border:1px solid var(--gray-200);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all .15s}
+.record-item:hover{border-color:var(--primary);background:var(--gray-50)}
+.record-item .ri-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.record-item .ri-time{font-size:12px;color:var(--gray-600)}
+.record-item .ri-title{font-size:14px;font-weight:600}
+.record-item .ri-section{font-size:12px;color:var(--gray-600);background:var(--gray-100);padding:2px 8px;border-radius:4px}
+.record-item .ri-score{font-size:16px;font-weight:700}
+.record-item .ri-score.good{color:var(--success)}
+.record-item .ri-score.ok{color:var(--warning)}
+.record-item .ri-score.bad{color:var(--danger)}
+.record-item .ri-bar{margin-top:8px;height:4px;background:var(--gray-200);border-radius:2px;overflow:hidden}
+.record-item .ri-bar .fill{height:100%;border-radius:2px;transition:width .3s}
+.record-item .ri-bar .fill.good{background:var(--success)}
+.record-item .ri-bar .fill.ok{background:var(--warning)}
+.record-item .ri-bar .fill.bad{background:var(--danger)}
+.record-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-200)}
+.record-detail.show{display:block}
+.record-detail .rd-item{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px}
+.record-detail .rd-item .rd-icon.correct{color:var(--success)}
+.record-detail .rd-item .rd-icon.wrong{color:var(--danger)}
+.record-empty{text-align:center;padding:40px 20px;color:var(--gray-600)}
+.record-empty .icon{font-size:48px;margin-bottom:12px}
+.record-empty p{font-size:14px}
+.btn-clear{padding:6px 14px;font-size:12px;color:var(--danger);background:transparent;border:1px solid var(--danger);border-radius:6px;cursor:pointer;opacity:.6;transition:all .2s}
+.btn-clear:hover{opacity:1;background:#FFF5F5}
+.btn-export-import{padding:6px 12px;font-size:12px;color:var(--gray-600);background:transparent;border:1px solid var(--gray-300);border-radius:6px;cursor:pointer;opacity:.6;transition:all .2s}
+.btn-export-import:hover{opacity:1;background:var(--gray-50)}
+
+@media(max-width:600px){
+  .header{padding:12px 0}.header h1{font-size:16px}.header .subtitle{font-size:11px}.header-left{gap:8px}
+  .btn-record{padding:6px 10px;font-size:12px;min-height:36px}.container{padding:12px}
+  .question-card{padding:14px 16px}.q-text{font-size:14px}.q-number{width:32px;height:32px;line-height:32px;font-size:14px}
+  .section-tab{padding:10px 14px;font-size:13px;min-height:40px}
+  .option-label{padding:12px 14px;font-size:14px;min-height:44px}.option-label input[type="radio"]{width:20px;height:20px}
+  .fill-input,.translate-input{padding:12px 14px;font-size:16px;min-height:44px}
+  .section-submit-btn{width:100%;padding:14px 28px;font-size:16px}
+  .section-submit-area{flex-direction:column;align-items:stretch;text-align:center}.section-submit-area .info{font-size:12px}
+  .reveal-btn{padding:8px 14px;font-size:13px;min-height:36px}.self-eval button{padding:8px 16px;font-size:14px;min-height:40px}
+  .modal{margin:0;border-radius:12px}.modal-header{padding:16px 18px}.modal-body{padding:16px}.modal-header h2{font-size:16px}
+  .record-summary{grid-template-columns:repeat(2,1fr)}.record-summary .stat-card{padding:12px 8px}.record-summary .stat-card .num{font-size:20px}
+  .record-item{padding:12px 14px}.btn-clear{padding:6px 10px;font-size:11px;min-height:32px}
+  .selector-bar select{padding:8px 10px;font-size:14px;min-height:38px}.selector-bar .btn-switch{padding:8px 14px;font-size:14px;min-height:38px}
+  .feedback{font-size:13px;padding:8px 12px}.login-box{padding:28px 24px}.login-box h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <h1>光里日语</h1>
+    <div class="sub">课后作业系统 · 登录后同步学习进度</div>
+    <div class="field"><label>账号</label><input type="text" id="loginUser" placeholder="输入你的账号" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="field"><label>密码</label><input type="password" id="loginPass" placeholder="输入密码" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="login-error" id="loginError"></div>
+    <div class="login-actions">
+      <button class="btn-login" id="loginBtn" onclick="doLogin()">登录</button>
+      <button class="btn-register" id="registerBtn" onclick="doRegister()">注册</button>
+    </div>
+    <div class="login-hint">新用户直接注册，账号密码自定即可</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div><h1 id="mainTitle">光里日语</h1><div class="subtitle" id="mainSubtitle">课后作业系统</div></div>
+    </div>
+    <div class="header-right">
+      <span class="header-user" id="userDisplay"></span>
+      <button class="btn-record" onclick="showRecords()">&#128203; 记录 <span class="badge" id="recordBadge" style="display:none">0</span></button>
+      <button class="btn-logout" onclick="doLogout()">退出</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Selector Bar: 册数 + 单元 + 课 -->
+  <div class="selector-bar">
+    <label for="bookSelect">册：</label>
+    <select id="bookSelect" onchange="onBookChange()"></select>
+    <label for="unitSelect">单元：</label>
+    <select id="unitSelect" onchange="onUnitChange()"></select>
+    <label for="lessonSelect">课：</label>
+    <select id="lessonSelect"></select>
+    <button class="btn-switch" onclick="switchLesson()">切换</button>
+  </div>
+
+  <div class="progress-text" id="progressText">总进度：0 / 0 题正确完成</div>
+  <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+  <div class="section-tabs" id="sectionTabs"></div>
+  <div id="sectionContent"></div>
+</div>
+
+<!-- Record Modal -->
+<div class="modal-overlay" id="recordModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>&#128203; 学习记录</h2>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <button class="btn-export-import" onclick="exportRecords()">导出</button>
+        <button class="btn-export-import" onclick="document.getElementById('importFileInput').click()">导入</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="importRecords(event)">
+        <button class="btn-clear" onclick="clearAllRecords()">清空</button>
+        <button class="modal-close" onclick="closeRecordModal()">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body" id="recordBody"></div>
+  </div>
+</div>
+
+<script>
+// ===== API =====
+const API_BASE = window.location.origin;
+function getToken(){return localStorage.getItem('gl_token')}
+function setToken(t){localStorage.setItem('gl_token',t)}
+function clearToken(){localStorage.removeItem('gl_token');localStorage.removeItem('gl_user')}
+async function apiCall(method,path,body){
+  const headers={'Content-Type':'application/json'};
+  const token=getToken();if(token)headers['Authorization']='Bearer '+token;
+  const opts={method,headers};if(body)opts.body=JSON.stringify(body);
+  const res=await fetch(API_BASE+path,opts);
+  if(res.status===401){clearToken();showLogin();throw new Error('登录已过期')}
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.detail||'请求失败');
+  return data;
+}
+
+// ===== 登录 =====
+function showLogin(){document.getElementById('loginOverlay').classList.remove('hidden');document.getElementById('loginError').textContent=''}
+function hideLogin(){document.getElementById('loginOverlay').classList.add('hidden')}
+async function doLogin(){
+  const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value.trim(),e=document.getElementById('loginError'),b=document.getElementById('loginBtn');
+  if(!u||!p){e.textContent='请输入账号和密码';return}
+  b.disabled=true;b.textContent='登录中...';
+  try{const d=await apiCall('POST','/api/login',{username:u,password:p});setToken(d.token);localStorage.setItem('gl_user',d.username);hideLogin();document.getElementById('userDisplay').textContent=d.username;afterLogin()}
+  catch(err){e.textContent=err.message}
+  b.disabled=false;b.textContent='登录';
+}
+async function doRegister(){
+  const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value.trim(),e=document.getElementById('loginError'),b=document.getElementById('registerBtn');
+  if(!u||!p){e.textContent='请输入账号和密码';return}
+  if(p.length<4){e.textContent='密码至少4位';return}
+  b.disabled=true;b.textContent='注册中...';
+  try{const d=await apiCall('POST','/api/register',{username:u,password:p});setToken(d.token);localStorage.setItem('gl_user',d.username);hideLogin();document.getElementById('userDisplay').textContent=d.username;afterLogin()}
+  catch(err){e.textContent=err.message}
+  b.disabled=false;b.textContent='注册';
+}
+function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();showLogin();document.getElementById('loginUser').value='';document.getElementById('loginPass').value=''}}
+
+// ===== 题目数据（多册支持） =====
+const bookData = {
+  book2: {
+    name: "第二册 初级基础篇N5",
+    units: {
+      unit1: {
+        name: "第一单元",
+        lessons: {
+          lesson1: {
+            name: "第1课『私は王小明です』",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「会話」的正确读音是？',options:['かいわ⓪','かいわ②','かいは①','こいわ⓪'],answer:0,explanation:'读音为「かいわ⓪」。'},
+                {id:"v2",type:"choice",question:'「私」的意思是？',options:['你','他','我','我们'],answer:2,explanation:'意为"我"。'},
+                {id:"v3",type:"choice",question:'「ルームメート」的意思是？',options:['房间','室友','同学','朋友'],answer:1,explanation:'意为"室友"。'},
+                {id:"v4",type:"choice",question:'「会社員」的读音是？',options:['かいしゃいん③','かいしゃいん①','がいしゃいん⓪','かいしゃえん⓪'],answer:0,explanation:'读音为「かいしゃいん③」。'},
+                {id:"v5",type:"choice",question:'「りんご」的意思是？',options:['梨子','橙子','苹果','草莓'],answer:2,explanation:'意为"苹果"。'},
+                {id:"v6",type:"choice",question:'「出身」的意思是？',options:['出身；来自','出身高','出去','身体'],answer:0,explanation:'意为"来自……"。'},
+                {id:"v7",type:"choice",question:'「神立」的读音是？',options:['かんだち⓪','かみたち①','じんりつ⓪','しんたつ①'],answer:0,explanation:'读音为「かんだち⓪」。'},
+                {id:"v8",type:"choice",question:'「友達」的读音是？',options:['ともだち⓪','とまだち⓪','ゆうだち①','ともたち①'],answer:0,explanation:'读音为「ともだち⓪」。'},
+                {id:"v9",type:"choice",question:'「料理」的意思是？',options:['材料','料理、饭菜','理解','聊天'],answer:1,explanation:'意为"料理、饭菜"。'},
+                {id:"v10",type:"choice",question:'「先生」的读音是？',options:['せんせい③','せんせ⓪','せんしょう①','ぜんせい⓪'],answer:0,explanation:'读音为「せんせい③」。'},
+                {id:"v11",type:"choice",question:'「韓国人」的读音是？',options:['かんこくじん④','かんこくじん⓪','かんこくにん④','かんごくじん⓪'],answer:0,explanation:'读音为「かんこくじん④」。'},
+                {id:"v12",type:"choice",question:'「サラリーマン」的意思是？',options:['销售员','公司职员','运动员','教师'],answer:1,explanation:'意为"公司职员"。'},
+                {id:"v13",type:"choice",question:'「邪魔」的读音是？',options:['じゃま⓪','しゃま①','ざま⓪','じゃま①'],answer:0,explanation:'读音为「じゃま⓪」。'},
+                {id:"v14",type:"choice",question:'「子供」的读音是？',options:['こども⓪','こども②','こども①','こども⓪'],answer:0,explanation:'读音为「こども⓪」。'},
+                {id:"v15",type:"choice",question:'「一年生」的意思是？',options:['一年级学生','一年时间','一学年','一年级教室'],answer:0,explanation:'意为"一年级学生"。'},
+                {id:"v16",type:"fill",question:'「おはよう」中文意思是____。',answer:'早上好',acceptAnswers:['早上好','早安'],explanation:'是"早上好"的日常用语。'},
+                {id:"v17",type:"fill",question:'「財布」的读音是____。',answer:'さいふ',acceptAnswers:['さいふ','さいふ⓪'],explanation:'读音为「さいふ⓪」。'},
+                {id:"v18",type:"fill",question:'「果物」的读音是____。',answer:'くだもの',acceptAnswers:['くだもの','くだもの②'],explanation:'读音为「くだもの②」。'},
+                {id:"v19",type:"fill",question:'「先輩」的意思是____。',answer:'前辈',acceptAnswers:['前辈','学长、学姐'],explanation:'意为"前辈"。'},
+                {id:"v20",type:"fill",question:'「学生」的读音是____。',answer:'がくせい',acceptAnswers:['がくせい','がくせい⓪'],explanation:'读音为「がくせい⓪」。'},
+                {id:"v21",type:"fill",question:'「休み」的意思是____。',answer:'休息',acceptAnswers:['休息','休假'],explanation:'意为"休息；休假"。'},
+                {id:"v22",type:"fill",question:'「日本人」的读音是____。',answer:'にほんじん',acceptAnswers:['にほんじん','にほんじん④'],explanation:'读音为「にほんじん④」。'},
+                {id:"v23",type:"fill",question:'「トマト」中文意思是____。',answer:'番茄',acceptAnswers:['番茄','西红柿'],explanation:'意为"番茄、西红柿"。'},
+                {id:"v24",type:"fill",question:'「時間」的读音是____。',answer:'じかん',acceptAnswers:['じかん','じかん⓪'],explanation:'读音为「じかん⓪」。'},
+                {id:"v25",type:"fill",question:'「こちらこそ」的意思是____。',answer:'我才是',acceptAnswers:['我才是'],explanation:'意为"我才是"。'}
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「は」作助词时的发音是？',options:['ha','wa','ba','pa'],answer:1,explanation:'助词「は」发音为「wa」。'},
+                {id:"g2",type:"choice",question:'「N1はN2です」的否定形式是？',options:['N1はN2です','N1はN2ではありません','N1はN2ですか','N1はN2でした'],answer:1,explanation:'否定形式为「～ではありません」。'},
+                {id:"g3",type:"choice",question:'「王さんは韓国人ですか」否定回答是？',options:['はい、韓国人です','いいえ、韓国人ではありません','はい、そうです','いいえ、韓国人です'],answer:1,explanation:'否定回答用「いいえ」+「ではありません」。'},
+                {id:"g4",type:"choice",question:'「神立大学の新入生」中「の」的用法是？',options:['表示疑问','表示领属','表示地点','表示原因'],answer:1,explanation:'「の」表达领属关系，相当于"的"。'},
+                {id:"g5",type:"choice",question:'「よ」在句末的作用是？',options:['表示疑问','提醒、叮嘱','表示确认','表示否定'],answer:1,explanation:'语气终助词「よ」表示提醒、叮嘱。'},
+                {id:"g6",type:"choice",question:'「私は中国出身で、…」中「で」的作用是？',options:['表示原因','表示中顿','表示工具','表示地点'],answer:1,explanation:'「で」是「です」的中顿形式。'},
+                {id:"g7",type:"choice",question:'关于「はい」的用法，哪项正确？',options:['只能肯定回答','还可口头回应对方','不能单独使用','是敬语'],answer:1,explanation:'「はい」还可用于口头回应，类似"诶"。'},
+                {id:"g8",type:"choice",question:'「ではありません」口语中常简化为？',options:['ではない','じゃありません','でわありません','ないです'],answer:1,explanation:'口语中「では」可换成「じゃ」。'},
+                {id:"g9",type:"choice",question:'「そうですか」中「か」读降调表示？',options:['疑问','确认语气','否定','感叹'],answer:1,explanation:'降调时表达确认语气。'},
+                {id:"g10",type:"choice",question:'中顿形式中两个主语不同时，能否省略第二个主语？',options:['可以省略','不能省略','都可以','看情况'],answer:1,explanation:'主语不一致时不能省略。'},
+                {id:"g11",type:"fill",question:'否定形式「N1はN2____」。',answer:'ではありません',acceptAnswers:['ではありません','じゃありません'],explanation:'否定形式为「ではありません」。'},
+                {id:"g12",type:"fill",question:'中顿形式中「です」变为____。',answer:'で',acceptAnswers:['で'],explanation:'「です」变为「で」。'},
+                {id:"g13",type:"fill",question:'一般疑问句句末用助词____。',answer:'か',acceptAnswers:['か'],explanation:'「か」表示疑问。'},
+                {id:"g14",type:"fill",question:'「はい」对应的否定回答是____。',answer:'いいえ',acceptAnswers:['いいえ','いえ','いや'],explanation:'「いいえ」是否定回答。'},
+                {id:"g15",type:"fill",question:'「の」表达____关系。',answer:'领属',acceptAnswers:['领属','所属','所有'],explanation:'「の」表达领属关系。'},
+                {id:"g16",type:"translate",question:'请翻译："我是中国人。"',reference:'私は中国人です。',hint:'使用「N1はN2です」句型',explanation:'「私」是"我"。'},
+                {id:"g17",type:"translate",question:'请翻译："小王是大学生吗？"',reference:'王さんは大学生ですか。',hint:'使用一般疑问句「～か」',explanation:'句末加「か」表示疑问。'},
+                {id:"g18",type:"translate",question:'请翻译："我是王小明，是神立大学的新生。"',reference:'私は王小明で、神立大学の新入生です。',hint:'使用中顿形式「～で」',explanation:'第一个「です」变为「で」。'},
+                {id:"g19",type:"translate",question:'请翻译："木村不是大学生。"',reference:'木村さんは大学生ではありません。',hint:'使用否定形式',explanation:'「です」的否定为「ではありません」。'},
+                {id:"g20",type:"translate",question:'请翻译："苹果是水果哦。"（提醒语气）',reference:'りんごは果物ですよ。',hint:'句末加「よ」',explanation:'「よ」表示提醒。'}
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明是哪里人？',options:['韩国人','中国人','日本人','美国人'],answer:1,explanation:'王小明说「私は中国出身で」。'},
+                {id:"r2",type:"choice",question:'木村浅一郎的职业是？',options:['大学生','老师','公司职员','医生'],answer:2,explanation:'木村说「僕は会社員です」。'},
+                {id:"r3",type:"choice",question:'王小明是哪个大学的学生？',options:['东京大学','神立大学','京都大学','早稻田大学'],answer:1,explanation:'「神立大学の新入生です」。'},
+                {id:"r4",type:"choice",question:'王小明到达公寓时的心情是？',options:['非常开心','紧张','生气','无所谓'],answer:1,explanation:'背景说"紧张的小明站在门口"。'},
+                {id:"r5",type:"choice",question:'木村最初以为王小明是哪国人？',options:['中国人','日本人','韩国人','泰国人'],answer:2,explanation:'木村问「王くんは韓国人ですか」。'},
+                {id:"r6",type:"choice",question:'王小明进门说的第一句话是？',options:['こんにちは','ごめんください','おはよう','さようなら'],answer:1,explanation:'敲门时说「ごめんください」。'},
+                {id:"r7",type:"choice",question:'王小明进屋时说了什么？',options:['ありがとう','お邪魔します','さようなら','いただきます'],answer:1,explanation:'「お邪魔します」表示"打扰了"。'},
+                {id:"r8",type:"choice",question:'王小明自我介绍时说的话是？',options:['僕は会社員です','私は中国出身で、神立大学の新入生です','王くんは韓国人ですか','そうですか'],answer:1,explanation:'王小明做了完整的自我介绍。'}
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「さん」用于什么场合？',options:['用于自己','对长辈或关系不亲密的人表示尊敬','只用于男性','只用于女性'],answer:1,explanation:'「さん」表示尊敬。'},
+                {id:"c2",type:"choice",question:'「ちゃん」通常用于？',options:['男性长辈','女性','上级','陌生人'],answer:1,explanation:'「ちゃん」只用于女性。'},
+                {id:"c3",type:"choice",question:'「様」的用法是？',options:['最普通','比「さん」更尊敬','只用于小孩','口语常用'],answer:1,explanation:'「様」更尊敬，用于正式场合。'},
+                {id:"c4",type:"choice",question:'「くん」通常用于？',options:['女性','长辈','对男性使用','陌生人'],answer:2,explanation:'「くん」通常对男性使用。'},
+                {id:"c5",type:"choice",question:'以下哪项是错误的？',options:['王さん','木村くん','私は王さんです','王先生'],answer:2,explanation:'尊称不能用于自己。'},
+                {id:"c6",type:"choice",question:'以下哪个敬称正确？',options:['王さん先生','木村教授','私様','小明くんさん'],answer:1,explanation:'可在姓氏后加职业称呼。'},
+                {id:"c7",type:"choice",question:'「ええ」「うん」比「はい」语气？',options:['更正式','更随意','更尊敬','意思不同'],answer:1,explanation:'比「はい」更加随意。'},
+                {id:"c8",type:"choice",question:'正式场合敲门时通常说？',options:['こんにちは','ごめんください','すみません','おはようございます'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'}
+              ]}
+            ]
+          }
+        }
+      }
+    }
+  }
+};
+
+// ===== 状态管理 =====
+const state = {};
+function initState(){
+  for(const bk in bookData){
+    state[bk]={};
+    for(const uk in bookData[bk].units){
+      state[bk][uk]={};
+      for(const lk in bookData[bk].units[uk].lessons){
+        state[bk][uk][lk]={};
+        bookData[bk].units[uk].lessons[lk].sections.forEach(sec=>{
+          state[bk][uk][lk][sec.id]={};
+          sec.questions.forEach(q=>{state[bk][uk][lk][sec.id][q.id]={status:'pending',userAnswer:null,showAnswer:false}});
+        });
+      }
+    }
+  }
+}
+initState();
+
+let currentBook='book2', currentUnit='unit1', currentLesson='lesson1', currentSection='vocab';
+
+function getBookKeys(){return Object.keys(bookData)}
+function getUnitKeys(){const b=bookData[currentBook];return b?Object.keys(b.units):[]}
+function getLessonKeys(){const b=bookData[currentBook];if(!b)return[];const u=b.units[currentUnit];return u?Object.keys(u.lessons):[]}
+function getData(){return bookData[currentBook].units[currentUnit].lessons[currentLesson]}
+function getSectionData(){return getData().sections.find(s=>s.id===currentSection)}
+function getSectionState(){return state[currentBook][currentUnit][currentLesson][currentSection]}
+
+// ===== 选择器渲染 =====
+function renderSelectors(){
+  const bookSel=document.getElementById('bookSelect'), unitSel=document.getElementById('unitSelect'), lessonSel=document.getElementById('lessonSelect');
+  // Books
+  bookSel.innerHTML='';
+  getBookKeys().forEach(k=>{
+    const opt=document.createElement('option');
+    opt.value=k;opt.textContent=bookData[k].name;
+    if(k===currentBook)opt.selected=true;
+    bookSel.appendChild(opt);
+  });
+  // Units
+  unitSel.innerHTML='';
+  getUnitKeys().forEach(k=>{
+    const opt=document.createElement('option');
+    opt.value=k;opt.textContent=bookData[currentBook].units[k].name;
+    if(k===currentUnit)opt.selected=true;
+    unitSel.appendChild(opt);
+  });
+  // Lessons
+  lessonSel.innerHTML='';
+  getLessonKeys().forEach(k=>{
+    const opt=document.createElement('option');
+    opt.value=k;opt.textContent=bookData[currentBook].units[currentUnit].lessons[k].name;
+    if(k===currentLesson)opt.selected=true;
+    lessonSel.appendChild(opt);
+  });
+  // Update header
+  document.getElementById('mainTitle').textContent='光里日语 · '+bookData[currentBook].name;
+  document.getElementById('mainSubtitle').textContent='课后作业系统';
+}
+
+function onBookChange(){
+  currentBook=document.getElementById('bookSelect').value;
+  const ukeys=getUnitKeys();
+  currentUnit=ukeys.length>0?ukeys[0]:'';
+  const lkeys=getLessonKeys();
+  currentLesson=lkeys.length>0?lkeys[0]:'';
+  currentSection=getData()?getData().sections[0].id:'vocab';
+  renderSelectors();renderSectionTabs();renderSection();updateProgress();
+}
+
+function onUnitChange(){
+  currentUnit=document.getElementById('unitSelect').value;
+  const lkeys=getLessonKeys();
+  currentLesson=lkeys.length>0?lkeys[0]:'';
+  currentSection=getData()?getData().sections[0].id:'vocab';
+  renderSelectors();renderSectionTabs();renderSection();updateProgress();
+}
+
+function switchLesson(){
+  currentBook=document.getElementById('bookSelect').value;
+  currentUnit=document.getElementById('unitSelect').value;
+  currentLesson=document.getElementById('lessonSelect').value;
+  currentSection=getData()?getData().sections[0].id:'vocab';
+  renderSelectors();renderSectionTabs();renderSection();updateProgress();
+}
+
+// ===== 渲染 =====
+function renderSectionTabs(){
+  const data=getData();if(!data){document.getElementById('sectionTabs').innerHTML='';return}
+  const container=document.getElementById('sectionTabs');container.innerHTML='';
+  data.sections.forEach(sec=>{
+    const tab=document.createElement('div');
+    tab.className=`section-tab ${sec.id===currentSection?'active':''}`;
+    const ss=getSectionState();const done=Object.values(ss).filter(s=>s.status==='correct').length;const total=sec.questions.length;
+    let dot='';if(done===total&&total>0)dot='<span class="score-dot done"></span>';else if(done>0)dot='<span class="score-dot partial"></span>';
+    tab.innerHTML=`${sec.name} <span class="count">${total}</span>${dot}`;
+    tab.onclick=()=>{currentSection=sec.id;renderSectionTabs();renderSection();updateProgress()};
+    container.appendChild(tab);
+  });
+}
+
+function renderSection(){
+  const sec=getSectionData(),secState=getSectionState(),container=document.getElementById('sectionContent');
+  if(!sec){container.innerHTML='';return}
+  const total=sec.questions.length,done=Object.values(secState).filter(s=>s.status==='correct').length,wrong=Object.values(secState).filter(s=>s.status==='wrong').length;
+  let html=`<div class="section-header"><h2>${sec.name}</h2><div class="section-stats">正确完成 <strong>${done}</strong>/${total} 题${wrong>0?` | 待修改 <strong style="color:var(--danger)">${wrong}</strong> 题`:''}</div></div>`;
+
+  sec.questions.forEach((q,idx)=>{
+    const qs=secState[q.id],st=qs.status,cc=st==='correct'?'status-correct':st==='wrong'?'status-wrong':st==='revealed'?'status-revealed':'';
+    const tt=q.type==='choice'?'<span class="q-type-tag choice">选择题</span>':q.type==='fill'?'<span class="q-type-tag fill">填空题</span>':'<span class="q-type-tag translate">翻译题</span>';
+    html+=`<div class="question-card ${cc}" id="q-${q.id}"><div class="q-head"><span class="q-number">${idx+1}</span><div class="q-text">${q.question} ${tt}</div></div>`;
+    if(q.type==='choice'){
+      html+='<div class="options">';
+      q.options.forEach((opt,oi)=>{
+        let cls='option-label';if(qs.userAnswer===oi)cls+=' selected';
+        if(st==='correct'&&oi===q.answer)cls+=' correct-mark';
+        if(st==='wrong'&&qs.userAnswer===oi&&oi!==q.answer)cls+=' wrong-mark';
+        if(st==='revealed'&&oi===q.answer)cls+=' correct-mark';
+        if(st==='revealed'&&qs.userAnswer===oi&&oi!==q.answer)cls+=' wrong-mark';
+        const dis=(st==='correct')?'disabled':'';
+        html+=`<label class="${cls}"><input type="radio" name="q-${q.id}" value="${oi}" ${qs.userAnswer===oi?'checked':''} ${dis} onchange="onChoiceChange('${q.id}',${oi})">${opt}</label>`;
+      });
+      html+='</div>';
+    }else if(q.type==='fill'){
+      const dis=(st==='correct')?'disabled':'';const bc=st==='correct'?'correct-border':st==='wrong'?'wrong-border':'';
+      html+=`<input type="text" class="fill-input ${bc}" id="fill-${q.id}" value="${qs.userAnswer||''}" ${dis} placeholder="请输入答案..." oninput="onFillChange('${q.id}',this.value)" autocomplete="off">`;
+    }else if(q.type==='translate'){
+      const dis=(st==='correct')?'disabled':'';
+      html+=`<div><input type="text" class="translate-input" id="trans-${q.id}" value="${qs.userAnswer||''}" ${dis} placeholder="请输入日语翻译..." oninput="onFillChange('${q.id}',this.value)" autocomplete="off"></div>`;
+      if(q.hint)html+=`<div style="margin-top:6px;font-size:12px;color:var(--gray-600);">提示：${q.hint}</div>`;
+    }
+    if(st==='correct')html+=`<div class="feedback show correct"><span style="font-weight:600;">&#x2714; 回答正确！</span><div class="explanation">${q.explanation||''}</div></div>`;
+    else if(st==='wrong')html+=`<div class="feedback show wrong"><span style="font-weight:600;">&#x2718; 回答错误，请修改后重新批改。</span></div>`;
+    else if(st==='revealed'){const ca=q.type==='choice'?q.options[q.answer]:q.answer;html+=`<div class="feedback show info"><span class="correct-answer-text">正确答案：${ca}</span><div class="explanation">${q.explanation||''}</div></div>`}
+    if(q.type==='translate'&&st==='revealed'&&qs.userAnswer)html+=`<div class="self-eval show"><span>你的答案：${qs.userAnswer}</span><span>和参考答案一致吗？</span><button class="btn-correct" onclick="selfEval('${q.id}',true)">一致 &#x2714;</button><button class="btn-wrong" onclick="selfEval('${q.id}',false)">不一致 &#x2718;</button></div>`;
+    if(st!=='correct'&&st!=='revealed'&&q.type!=='translate')html+=`<button class="reveal-btn" onclick="revealAnswer('${q.id}')">显示答案</button>`;
+    if(st==='wrong'&&q.type!=='translate')html+=`<button class="reveal-btn" onclick="revealAnswer('${q.id}')" style="margin-left:6px;">直接看答案</button>`;
+    html+='</div>';
+  });
+  const allCorrect=done===total;
+  html+=`<div class="section-submit-area"><div class="info">本板块共 <strong>${total}</strong> 题，已正确 <strong style="color:var(--success)">${done}</strong> 题</div>`;
+  if(allCorrect)html+=`<button class="section-submit-btn submitted" disabled>&#x2714; 全部完成</button>`;
+  else html+=`<button class="section-submit-btn" id="submitBtn-${sec.id}" onclick="submitSection('${sec.id}')">提交批改</button>`;
+  html+='</div>';container.innerHTML=html;
+}
+
+function onChoiceChange(qId,val){const qs=getSectionState()[qId];if(qs.status==='correct')return;qs.userAnswer=val;qs.status='pending';renderSection();updateProgress()}
+function onFillChange(qId,val){const qs=getSectionState()[qId];if(qs.status==='correct')return;qs.userAnswer=val;qs.status='pending';updateProgress()}
+function revealAnswer(qId){getSectionState()[qId].status='revealed';renderSection();updateProgress()}
+function selfEval(qId,isCorrect){const qs=getSectionState()[qId];if(isCorrect)qs.status='correct';else{qs.status='wrong';qs.userAnswer=''}renderSection();updateProgress()}
+
+// ===== 提交批改 =====
+async function submitSection(sectionId){
+  const sec=getData().sections.find(s=>s.id===sectionId),secState=getSectionState();
+  const btn=document.getElementById(`submitBtn-${sectionId}`);if(btn){btn.disabled=true;btn.textContent='批改中...'}
+  let correctCount=0,totalCount=0;const results={};
+  sec.questions.forEach(q=>{
+    const qs=secState[q.id];
+    if(qs.status==='correct'){correctCount++;totalCount++;results[q.id]=true;return}
+    if(qs.userAnswer===null||qs.userAnswer===''){qs.status='wrong';totalCount++;results[q.id]=false;return}
+    totalCount++;let correct=false;
+    if(q.type==='choice')correct=(qs.userAnswer===q.answer);
+    else if(q.type==='fill')correct=(q.acceptAnswers||[q.answer]).some(a=>qs.userAnswer===a);
+    else if(q.type==='translate'){qs.status='revealed';results[q.id]=null;return}
+    qs.status=correct?'correct':'wrong';if(correct)correctCount++;results[q.id]=correct;
+  });
+  if(btn)btn.disabled=false;renderSection();renderSectionTabs();updateProgress();
+  try{
+    const now=new Date();const ts=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    const bookLabel=document.getElementById('bookSelect').selectedOptions[0].text;
+    const unitLabel=document.getElementById('unitSelect').selectedOptions[0].text;
+    const lessonLabel=document.getElementById('lessonSelect').selectedOptions[0].text;
+    await apiCall('POST','/api/records',{time:ts,unit:bookLabel+' '+unitLabel,lesson:lessonLabel,section:sec.name,correct:correctCount,total:totalCount,score:Math.round((correctCount/totalCount)*100),results});
+    updateRecordBadge();
+  }catch(e){console.warn('保存记录失败:',e)}
+}
+
+// ===== 学习记录 =====
+async function updateRecordBadge(){
+  try{const r=await apiCall('GET','/api/records');const b=document.getElementById('recordBadge');if(r.length>0){b.style.display='inline-block';b.textContent=r.length}else b.style.display='none'}
+  catch{document.getElementById('recordBadge').style.display='none'}
+}
+async function showRecords(){
+  const modal=document.getElementById('recordModal'),body=document.getElementById('recordBody');modal.classList.add('show');
+  body.innerHTML='<div style="text-align:center;padding:40px;color:var(--gray-600);">加载中...</div>';
+  try{
+    const records=await apiCall('GET','/api/records');
+    if(records.length===0){body.innerHTML='<div class="record-empty"><div class="icon">&#128203;</div><p>还没有学习记录，去做几道题吧！</p></div>';return}
+    const totalSubmits=records.length,totalCorrect=records.reduce((s,r)=>s+r.correct,0),totalQ=records.reduce((s,r)=>s+r.total,0);
+    const overall=totalQ>0?Math.round((totalCorrect/totalQ)*100):0,fullMarks=records.filter(r=>r.score===100).length;
+    let html=`<div class="record-summary"><div class="stat-card"><div class="num">${totalSubmits}</div><div class="label">提交次数</div></div><div class="stat-card"><div class="num">${totalCorrect}/${totalQ}</div><div class="label">累计正确</div></div><div class="stat-card"><div class="num" style="color:${overall>=80?'var(--success)':overall>=60?'var(--warning)':'var(--danger)'}">${overall}%</div><div class="label">总正确率</div></div><div class="stat-card"><div class="num">${fullMarks}</div><div class="label">满分次数</div></div></div><div class="record-list">`;
+    records.forEach((r,idx)=>{
+      const sc=r.score>=80?'good':r.score>=60?'ok':'bad';
+      html+=`<div class="record-item" onclick="document.getElementById('rd-${idx}').classList.toggle('show')"><div class="ri-top"><div><div class="ri-title">${r.lesson}</div><div style="display:flex;gap:6px;align-items:center;margin-top:4px;"><span class="ri-section">${r.section}</span><span class="ri-time">${r.time}</span></div></div><div class="ri-score ${sc}">${r.score}%</div></div><div class="ri-bar"><div class="fill ${sc}" style="width:${r.score}%"></div></div><div class="record-detail" id="rd-${idx}"><div style="font-size:13px;color:var(--gray-600);margin-bottom:6px;">正确 <strong style="color:var(--success)">${r.correct}</strong> / ${r.total} 题</div>${renderResults(r.results)}</div></div>`;
+    });
+    html+='</div>';body.innerHTML=html;
+  }catch(e){body.innerHTML=`<div class="record-empty"><p>加载失败：${e.message}</p></div>`}
+}
+function renderResults(results){if(!results)return'';let h='';for(const qId in results){const r=results[qId];if(r===true)h+=`<div class="rd-item"><span class="rd-icon correct">&#x2714;</span> ${qId}</div>`;else if(r===false)h+=`<div class="rd-item"><span class="rd-icon wrong">&#x2718;</span> ${qId}</div>`}return h||'<div style="font-size:12px;color:var(--gray-600);">暂无详细数据</div>'}
+function closeRecordModal(){document.getElementById('recordModal').classList.remove('show')}
+async function clearAllRecords(){if(confirm('确定要清空所有学习记录吗？此操作不可恢复。')){await apiCall('DELETE','/api/records');updateRecordBadge();showRecords()}}
+function exportRecords(){alert('数据已存储在服务器端，同一账号登录即可同步，无需手动导出。')}
+function importRecords(e){alert('数据已存储在服务器端，同一账号登录即可同步，无需手动导入。');e.target.value=''}
+function updateProgress(){
+  const data=getData();if(!data)return;
+  let total=0,correct=0;data.sections.forEach(sec=>{const ss=getSectionState();sec.questions.forEach(q=>{total++;if(ss[q.id]&&ss[q.id].status==='correct')correct++})});
+  document.getElementById('progressText').textContent=`总进度：${correct} / ${total} 题正确完成`;
+  document.getElementById('progressFill').style.width=`${(correct/total)*100}%`;
+}
+function afterLogin(){renderSelectors();renderSectionTabs();renderSection();updateProgress();updateRecordBadge()}
+
+// ===== 初始化 =====
+(function(){
+  const token=getToken();
+  if(token){apiCall('GET','/api/records').then(()=>{const user=localStorage.getItem('gl_user')||'';document.getElementById('userDisplay').textContent=user;hideLogin();afterLogin()}).catch(()=>{clearToken();showLogin();renderSelectors()})}
+  else{showLogin();renderSelectors()}
+})();
+document.getElementById('recordModal').addEventListener('click',function(e){if(e.target===this)closeRecordModal()});
+</script>
+</body>
+</html>
