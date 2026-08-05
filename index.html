@@ -288,8 +288,300 @@ async function doRegister(){
 function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();showLogin();document.getElementById('loginUser').value='';document.getElementById('loginPass').value=''}}
 
 // ===== 题目数据（多册支持） =====
-,
-          lesson3: {
+const bookData = {
+  book2: {
+    name: "第二册 初级基础篇N5",
+    units: {
+      unit1: {
+        name: "第一单元",
+        lessons: {
+lesson1: {
+            name: "第1课『私は王小明です』",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「会話」的正确读音是？',options:['かいわ⓪','かいわ②','かいは①','こいわ⓪'],answer:0,explanation:'读音为「かいわ⓪」。'},
+                {id:"v2",type:"choice",question:'「私」的意思是？',options:['你','他','我','我们'],answer:2,explanation:'意为"我"。'},
+                {id:"v3",type:"choice",question:'「ルームメート」的意思是？',options:['房间','室友','同学','朋友'],answer:1,explanation:'意为"室友"。'},
+                {id:"v4",type:"choice",question:'「会社員」的读音是？',options:['かいしゃいん③','かいしゃいん①','がいしゃいん⓪','かいしゃえん⓪'],answer:0,explanation:'读音为「かいしゃいん③」。'},
+                {id:"v5",type:"choice",question:'「りんご」的意思是？',options:['梨子','橙子','苹果','草莓'],answer:2,explanation:'意为"苹果"。'},
+                {id:"v6",type:"choice",question:'「出身」的意思是？',options:['出身；来自','出身高','出去','身体'],answer:0,explanation:'意为"来自……"。'},
+                {id:"v7",type:"choice",question:'「神立」的读音是？',options:['かんだち⓪','かみたち①','じんりつ⓪','しんたつ①'],answer:0,explanation:'读音为「かんだち⓪」。'},
+                {id:"v8",type:"choice",question:'「友達」的读音是？',options:['ともだち⓪','とまだち⓪','ゆうだち①','ともたち①'],answer:0,explanation:'读音为「ともだち⓪」。'},
+                {id:"v9",type:"choice",question:'「料理」的意思是？',options:['材料','料理、饭菜','理解','聊天'],answer:1,explanation:'意为"料理、饭菜"。'},
+                {id:"v10",type:"choice",question:'「先生」的读音是？',options:['せんせい③','せんせ⓪','せんしょう①','ぜんせい⓪'],answer:0,explanation:'读音为「せんせい③」。'},
+                {id:"v11",type:"choice",question:'「韓国人」的读音是？',options:['かんこくじん④','かんこくじん⓪','かんこくにん④','かんごくじん⓪'],answer:0,explanation:'读音为「かんこくじん④」。'},
+                {id:"v12",type:"choice",question:'「サラリーマン」的意思是？',options:['销售员','公司职员','运动员','教师'],answer:1,explanation:'意为"公司职员"。'},
+                {id:"v13",type:"choice",question:'「邪魔」的读音是？',options:['じゃま⓪','しゃま①','ざま⓪','じゃま①'],answer:0,explanation:'读音为「じゃま⓪」。'},
+                {id:"v14",type:"choice",question:'「子供」的读音是？',options:['こども⓪','こども②','こども①','こども⓪'],answer:0,explanation:'读音为「こども⓪」。'},
+                {id:"v15",type:"choice",question:'「一年生」的意思是？',options:['一年级学生','一年时间','一学年','一年级教室'],answer:0,explanation:'意为"一年级学生"。'},
+                {id:"v16",type:"fill",question:'「おはよう」中文意思是____。',answer:'早上好',acceptAnswers:['早上好','早安'],explanation:'是"早上好"的日常用语。'},
+                {id:"v17",type:"fill",question:'「財布」的读音是____。',answer:'さいふ',acceptAnswers:['さいふ','さいふ⓪'],explanation:'读音为「さいふ⓪」。'},
+                {id:"v18",type:"fill",question:'「果物」的读音是____。',answer:'くだもの',acceptAnswers:['くだもの','くだもの②'],explanation:'读音为「くだもの②」。'},
+                {id:"v19",type:"fill",question:'「先輩」的意思是____。',answer:'前辈',acceptAnswers:['前辈','学长、学姐'],explanation:'意为"前辈"。'},
+                {id:"v20",type:"fill",question:'「学生」的读音是____。',answer:'がくせい',acceptAnswers:['がくせい','がくせい⓪'],explanation:'读音为「がくせい⓪」。'},
+                {id:"v21",type:"fill",question:'「休み」的意思是____。',answer:'休息',acceptAnswers:['休息','休假'],explanation:'意为"休息；休假"。'},
+                {id:"v22",type:"fill",question:'「日本人」的读音是____。',answer:'にほんじん',acceptAnswers:['にほんじん','にほんじん④'],explanation:'读音为「にほんじん④」。'},
+                {id:"v23",type:"fill",question:'「トマト」中文意思是____。',answer:'番茄',acceptAnswers:['番茄','西红柿'],explanation:'意为"番茄、西红柿"。'},
+                {id:"v24",type:"fill",question:'「時間」的读音是____。',answer:'じかん',acceptAnswers:['じかん','じかん⓪'],explanation:'读音为「じかん⓪」。'},
+                {id:"v25",type:"fill",question:'「こちらこそ」的意思是____。',answer:'我才是',acceptAnswers:['我才是'],explanation:'意为"我才是"。'}
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「は」作助词时的发音是？',options:['ha','wa','ba','pa'],answer:1,explanation:'助词「は」发音为「wa」。'},
+                {id:"g2",type:"choice",question:'「N1はN2です」的否定形式是？',options:['N1はN2です','N1はN2ではありません','N1はN2ですか','N1はN2でした'],answer:1,explanation:'否定形式为「～ではありません」。'},
+                {id:"g3",type:"choice",question:'「王さんは韓国人ですか」否定回答是？',options:['はい、韓国人です','いいえ、韓国人ではありません','はい、そうです','いいえ、韓国人です'],answer:1,explanation:'否定回答用「いいえ」+「ではありません」。'},
+                {id:"g4",type:"choice",question:'「神立大学の新入生」中「の」的用法是？',options:['表示疑问','表示领属','表示地点','表示原因'],answer:1,explanation:'「の」表达领属关系，相当于"的"。'},
+                {id:"g5",type:"choice",question:'「よ」在句末的作用是？',options:['表示疑问','提醒、叮嘱','表示确认','表示否定'],answer:1,explanation:'语气终助词「よ」表示提醒、叮嘱。'},
+                {id:"g6",type:"choice",question:'「私は中国出身で、…」中「で」的作用是？',options:['表示原因','表示中顿','表示工具','表示地点'],answer:1,explanation:'「で」是「です」的中顿形式。'},
+                {id:"g7",type:"choice",question:'关于「はい」的用法，哪项正确？',options:['只能肯定回答','还可口头回应对方','不能单独使用','是敬语'],answer:1,explanation:'「はい」还可用于口头回应，类似"诶"。'},
+                {id:"g8",type:"choice",question:'「ではありません」口语中常简化为？',options:['ではない','じゃありません','でわありません','ないです'],answer:1,explanation:'口语中「では」可换成「じゃ」。'},
+                {id:"g9",type:"choice",question:'「そうですか」中「か」读降调表示？',options:['疑问','确认语气','否定','感叹'],answer:1,explanation:'降调时表达确认语气。'},
+                {id:"g10",type:"choice",question:'中顿形式中两个主语不同时，能否省略第二个主语？',options:['可以省略','不能省略','都可以','看情况'],answer:1,explanation:'主语不一致时不能省略。'},
+                {id:"g11",type:"fill",question:'否定形式「N1はN2____」。',answer:'ではありません',acceptAnswers:['ではありません','じゃありません'],explanation:'否定形式为「ではありません」。'},
+                {id:"g12",type:"fill",question:'中顿形式中「です」变为____。',answer:'で',acceptAnswers:['で'],explanation:'「です」变为「で」。'},
+                {id:"g13",type:"fill",question:'一般疑问句句末用助词____。',answer:'か',acceptAnswers:['か'],explanation:'「か」表示疑问。'},
+                {id:"g14",type:"fill",question:'「はい」对应的否定回答是____。',answer:'いいえ',acceptAnswers:['いいえ','いえ','いや'],explanation:'「いいえ」是否定回答。'},
+                {id:"g15",type:"fill",question:'「の」表达____关系。',answer:'领属',acceptAnswers:['领属','所属','所有'],explanation:'「の」表达领属关系。'},
+                {id:"g16",type:"translate",question:'请翻译："我是中国人。"',reference:'私は中国人です。',hint:'使用「N1はN2です」句型',explanation:'「私」是"我"。'},
+                {id:"g17",type:"translate",question:'请翻译："小王是大学生吗？"',reference:'王さんは大学生ですか。',hint:'使用一般疑问句「～か」',explanation:'句末加「か」表示疑问。'},
+                {id:"g18",type:"translate",question:'请翻译："我是王小明，是神立大学的新生。"',reference:'私は王小明で、神立大学の新入生です。',hint:'使用中顿形式「～で」',explanation:'第一个「です」变为「で」。'},
+                {id:"g19",type:"translate",question:'请翻译："木村不是大学生。"',reference:'木村さんは大学生ではありません。',hint:'使用否定形式',explanation:'「です」的否定为「ではありません」。'},
+                {id:"g20",type:"translate",question:'请翻译："苹果是水果哦。"（提醒语气）',reference:'りんごは果物ですよ。',hint:'句末加「よ」',explanation:'「よ」表示提醒。'}
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明是哪里人？',options:['韩国人','中国人','日本人','美国人'],answer:1,explanation:'王小明说「私は中国出身で」。'},
+                {id:"r2",type:"choice",question:'木村浅一郎的职业是？',options:['大学生','老师','公司职员','医生'],answer:2,explanation:'木村说「僕は会社員です」。'},
+                {id:"r3",type:"choice",question:'王小明是哪个大学的学生？',options:['东京大学','神立大学','京都大学','早稻田大学'],answer:1,explanation:'「神立大学の新入生です」。'},
+                {id:"r4",type:"choice",question:'王小明到达公寓时的心情是？',options:['非常开心','紧张','生气','无所谓'],answer:1,explanation:'背景说"紧张的小明站在门口"。'},
+                {id:"r5",type:"choice",question:'木村最初以为王小明是哪国人？',options:['中国人','日本人','韩国人','泰国人'],answer:2,explanation:'木村问「王くんは韓国人ですか」。'},
+                {id:"r6",type:"choice",question:'王小明进门说的第一句话是？',options:['こんにちは','ごめんください','おはよう','さようなら'],answer:1,explanation:'敲门时说「ごめんください」。'},
+                {id:"r7",type:"choice",question:'王小明进屋时说了什么？',options:['ありがとう','お邪魔します','さようなら','いただきます'],answer:1,explanation:'「お邪魔します」表示"打扰了"。'},
+                {id:"r8",type:"choice",question:'王小明自我介绍时说的话是？',options:['僕は会社員です','私は中国出身で、神立大学の新入生です','王くんは韓国人ですか','そうですか'],answer:1,explanation:'王小明做了完整的自我介绍。'}
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「さん」用于什么场合？',options:['用于自己','对长辈或关系不亲密的人表示尊敬','只用于男性','只用于女性'],answer:1,explanation:'「さん」表示尊敬。'},
+                {id:"c2",type:"choice",question:'「ちゃん」通常用于？',options:['男性长辈','女性','上级','陌生人'],answer:1,explanation:'「ちゃん」只用于女性。'},
+                {id:"c3",type:"choice",question:'「様」的用法是？',options:['最普通','比「さん」更尊敬','只用于小孩','口语常用'],answer:1,explanation:'「様」更尊敬，用于正式场合。'},
+                {id:"c4",type:"choice",question:'「くん」通常用于？',options:['女性','长辈','对男性使用','陌生人'],answer:2,explanation:'「くん」通常对男性使用。'},
+                {id:"c5",type:"choice",question:'以下哪项是错误的？',options:['王さん','木村くん','私は王さんです','王先生'],answer:2,explanation:'尊称不能用于自己。'},
+                {id:"c6",type:"choice",question:'以下哪个敬称正确？',options:['王さん先生','木村教授','私様','小明くんさん'],answer:1,explanation:'可在姓氏后加职业称呼。'},
+                {id:"c7",type:"choice",question:'「ええ」「うん」比「はい」语气？',options:['更正式','更随意','更尊敬','意思不同'],answer:1,explanation:'比「はい」更加随意。'},
+                {id:"c8",type:"choice",question:'正式场合敲门时通常说？',options:['こんにちは','ごめんください','すみません','おはようございます'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'}
+              ]}
+            ],
+          },
+lesson2: {
+            name: "第2课『部活の写真』",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「写真」的正确读音是？',options:['しゃしん⓪','さしん①','しゃしん①','しゃじん⓪'],answer:0,explanation:'「写真」读音为「しゃしん⓪」。'},
+                {id:"v2",type:"choice",question:'「いつ」的意思是？',options:['哪里','何时','为什么','谁'],answer:1,explanation:'「いつ」意为"何时；什么时候"。'},
+                {id:"v3",type:"choice",question:'「野球部」的正确读音是？',options:['やきゅうぶ②','やきゅうぶ①','やきゅうべ','やきゅうふ'],answer:0,explanation:'「野球部」读音为「やきゅうぶ②」。'},
+                {id:"v4",type:"choice",question:'「メンバー」的意思是？',options:['成员','号码','记忆','会议'],answer:0,explanation:'「メンバー」意为"成员"。'},
+                {id:"v5",type:"choice",question:'「方」的正确读音是？',options:['ほう①','かた②','かた①','ほう②'],answer:1,explanation:'「方」读音为「かた②」，是「人」的尊敬表达。'},
+                {id:"v6",type:"choice",question:'「どなた」的意思是？',options:['哪里','哪位（尊敬）','什么','多少'],answer:1,explanation:'「どなた」是「誰」的尊敬说法，意为"哪位"。'},
+                {id:"v7",type:"choice",question:'「部長」的读音是？',options:['ぶちょう⓪','ぶちょう①','ぶちょう②','ぶちょう③'],answer:0,explanation:'「部長」读音为「ぶちょう⓪」。'},
+                {id:"v8",type:"choice",question:'「そして」的意思是？',options:['但是','然后；还有','所以','因为'],answer:1,explanation:'「そして」意为"然后；还有；另外"。'},
+                {id:"v9",type:"choice",question:'「それから」的意思是？',options:['然后；接下来','从那里','那个','因为'],answer:0,explanation:'「それから」意为"还有；然后；接下来"。'},
+                {id:"v10",type:"choice",question:'「何」的读音是？',options:['なに⓪','なに①','なん⓪','以上都是'],answer:3,explanation:'「何」可读「なん①」或「なに⓪」，根据后接音不同变化。'},
+                {id:"v11",type:"choice",question:'「バナナ」的意思是？',options:['香蕉','面包','米饭','苹果'],answer:0,explanation:'「バナナ」意为"香蕉"。'},
+                {id:"v12",type:"choice",question:'「昔」的正确读音是？',options:['むかし⓪','むかし①','むかし②','むかし③'],answer:0,explanation:'「昔」读音为「むかし⓪」，意为"从前"。'},
+                {id:"v13",type:"choice",question:'「高校生」的读音是？',options:['こうこうせい③④','こうこうせい①','こうがくせい③','こうこうしょう'],answer:0,explanation:'「高校生」读音为「こうこうせい③④」。'},
+                {id:"v14",type:"choice",question:'「アイドル」的意思是？',options:['偶像','空闲','眼睛','理想'],answer:0,explanation:'「アイドル」来自英文idol，意为"偶像"。'},
+                {id:"v15",type:"fill",question:'「辞書」的读音是____。',answer:'じしょ',acceptAnswers:['じしょ','じしょ①'],explanation:'「辞書」读音为「じしょ①」。'},
+                {id:"v16",type:"fill",question:'「日本語」的意思是____。',answer:'日语',acceptAnswers:['日语','日本语'],explanation:'「日本語」意为"日语"。'},
+                {id:"v17",type:"fill",question:'「選手」的读音是____。',answer:'せんしゅ',acceptAnswers:['せんしゅ','せんしゅ①'],explanation:'「選手」读音为「せんしゅ①」。'},
+                {id:"v18",type:"fill",question:'「工場」的读音是____。',answer:'こうじょう',acceptAnswers:['こうじょう','こうじょう③'],explanation:'「工場」读音为「こうじょう③」。'},
+                {id:"v19",type:"fill",question:'「ペン」的意思是____。',answer:'笔',acceptAnswers:['笔','钢笔'],explanation:'「ペン」意为"笔"。'},
+                {id:"v20",type:"fill",question:'「お母さん」的读音是____。',answer:'おかあさん',acceptAnswers:['おかあさん','おかあさん②'],explanation:'「お母さん」读音为「おかあさん②」。'}
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「これ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:0,explanation:'「これ」是近称，指离说话人近的事物。'},
+                {id:"g2",type:"choice",question:'「それ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:1,explanation:'「それ」是中称，指离听话人近、离说话人远的事物。'},
+                {id:"g3",type:"choice",question:'「あれ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:2,explanation:'「あれ」是远称，指离说话人和听话人都远的事物。'},
+                {id:"g4",type:"choice",question:'「どれ」是____。',options:['近称','中称','远称','疑问词'],answer:3,explanation:'「どれ」是疑问词，意为"哪个"。'},
+                {id:"g5",type:"choice",question:'地点的远称是？',options:['あこ','あそこ','そこ','あそこ'],answer:1,explanation:'地点的远称是「あそこ」，切忌记成「あこ」。'},
+                {id:"g6",type:"choice",question:'「この本」中「この」的用法是？',options:['指代事物','后接名词','指代地点','指代方向'],answer:1,explanation:'「このN」表示"这个N"，后接名词使用。'},
+                {id:"g7",type:"choice",question:'「王さんは高校生でした。」中的「でした」表示？',options:['现在时','过去时','将来时','否定'],answer:1,explanation:'「でした」是「です」的过去时，表示过去的状态。'},
+                {id:"g8",type:"choice",question:'「です」的过去时否定形式是？',options:['ではありません','ではありませんでした','じゃない','なかった'],answer:1,explanation:'过去时否定形式为「ではありませんでした」。'},
+                {id:"g9",type:"choice",question:'「すごいですね」中「ね」的作用是？',options:['疑问','感叹、叮嘱','否定','过去'],answer:1,explanation:'「ね」接在句末，用于表达轻微的感叹或叮嘱。'},
+                {id:"g10",type:"choice",question:'「あの人も野球部のメンバーですか」中「も」的意思是？',options:['也','的','是','吗'],answer:0,explanation:'「も」表示"也"，表达同类事物。'},
+                {id:"g11",type:"choice",question:'「メンバーの桜井」中「の」的用法是？',options:['领属','同位','疑问','否定'],answer:1,explanation:'这是「の」的同位用法，前后名词指同一人。'},
+                {id:"g12",type:"choice",question:'疑问词作谓语的疑问句叫做？',options:['一般疑问句','特殊疑问句','选择疑问句','反问句'],answer:1,explanation:'疑问词作谓语的疑问句叫特殊疑问句。'},
+                {id:"g13",type:"fill",question:'「これ/それ/あれ/どれ」统称为____系列。',answer:'こそあど',acceptAnswers:['こそあど','こそあど系列'],explanation:'它们统称为「こそあど」系列指示代词。'},
+                {id:"g14",type:"fill",question:'「です」的过去时是____。',answer:'でした',acceptAnswers:['でした'],explanation:'「です」→「でした」。'},
+                {id:"g15",type:"fill",question:'「こちら」对应的疑问词是____。',answer:'どちら',acceptAnswers:['どちら'],explanation:'「こちら/そちら/あちら/どちら」是方向、尊称系列。'},
+                {id:"g16",type:"translate",question:'请翻译："那是什么？"',reference:'それは何ですか。',hint:'使用「それは」+疑问词',explanation:'「それ」是中称，"那"；「何」是"什么"。'},
+                {id:"g17",type:"translate",question:'请翻译："小王以前是高中生。"',reference:'王さんは高校生でした。',hint:'使用过去时「でした」',explanation:'「です」的过去时是「でした」。'},
+                {id:"g18",type:"translate",question:'请翻译："那个人也是棒球部的成员。"',reference:'あの人も野球部のメンバーです。',hint:'使用「も」表示"也"',explanation:'「も」接在名词后，表示"也"。'},
+                {id:"g19",type:"translate",question:'请翻译："这是谁的照片？"',reference:'これは誰の写真ですか。',hint:'使用「これ」+疑问词「誰」',explanation:'「誰」是"谁"，「の」表示领属。'},
+                {id:"g20",type:"translate",question:'请翻译："这里以前不是工厂。"',reference:'ここは昔、工場ではありませんでした。',hint:'使用过去时否定',explanation:'过去时否定为「ではありませんでした」。'}
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'木村大学时参加了什么社团？',options:['足球部','棒球部','网球部','游泳部'],answer:1,explanation:'木村说「野球部のメンバーでした」。'},
+                {id:"r2",type:"choice",question:'木村大学时是棒球部的什么？',options:['选手','部长','成员','教练'],answer:2,explanation:'木村说「野球部のメンバーでした」。'},
+                {id:"r3",type:"choice",question:'木村指着照片上的人说「この人は私の先輩で、野球部の____です」。',options:['選手','部長','メンバー','コーチ'],answer:1,explanation:'木村说「この人は私の先輩で、野球部の部長です」。'},
+                {id:"r4",type:"choice",question:'小明说「わあ、すごいですね！」表达的是什么心情？',options:['悲伤','惊讶、赞叹','害怕','生气'],answer:1,explanation:'「すごいですね」是感叹、赞叹的表达。'},
+                {id:"r5",type:"choice",question:'「あれはアイドルの真奈子ちゃんの写真です」中的「アイドル」是？',options:['运动员','偶像','歌手','演员'],answer:1,explanation:'「アイドル」意为"偶像"。'},
+                {id:"r6",type:"choice",question:'木村问小明「それはいつの写真ですか」中「いつ」询问的是什么？',options:['地点','时间','人物','原因'],answer:1,explanation:'「いつ」询问时间，意为"何时"。'},
+                {id:"r7",type:"choice",question:'小明指着墙上的相框问「あの人も野球部のメンバーですか」，木村怎么回答？',options:['はい、そうです','いや…あれはアイドルの写真です','いいえ、違います','はい、メンバーです'],answer:1,explanation:'木村说「いや…あれはアイドルの真奈子ちゃんの写真です」。'},
+                {id:"r8",type:"choice",question:'「この方はどなたですか」中「方」比「人」的语气更？',options:['更随意','更尊敬','更强烈','更冷淡'],answer:1,explanation:'「方」是「人」的尊敬表达。'}
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'日语中称呼自己父亲时用？',options:['父','お父さん','ちち','お父様'],answer:1,explanation:'直接称呼自己父亲时用「お父さん」。'},
+                {id:"c2",type:"choice",question:'对外人称呼自己父亲时用？',options:['お父さん','父','お父様','パパ'],answer:1,explanation:'对外人称呼自己父亲时用「父（ちち）」。'},
+                {id:"c3",type:"choice",question:'「お母さん」的读音是？',options:['おかあさん②','おとうさん②','おねえさん②','おじいさん②'],answer:0,explanation:'「お母さん」读音为「おかあさん②」。'},
+                {id:"c4",type:"choice",question:'「兄」的读音是？',options:['あね','あに','おとうと','いもうと'],answer:1,explanation:'「兄」读音为「あに①」，对外称呼自己哥哥。'},
+                {id:"c5",type:"choice",question:'直接称呼姐姐时用？',options:['姉','お姉さん','あね','いもうと'],answer:1,explanation:'直接称呼姐姐时用「お姉さん」。'},
+                {id:"c6",type:"choice",question:'「弟」的读音是？',options:['おとうと⓪','いもうと⓪','おにいさん②','おねえさん②'],answer:0,explanation:'「弟」读音为「おとうと⓪」。'},
+                {id:"c7",type:"choice",question:'「主人」的意思是？',options:['主人','客人','丈夫','老师'],answer:2,explanation:'「主人（しゅじん）」意为"丈夫"。'},
+                {id:"c8",type:"choice",question:'对外称呼自己妹妹时用？',options:['お姉さん','妹','いもうと','お妹さん'],answer:1,explanation:'对外称呼自己妹妹时用「妹（いもうと）」。'}
+              ]}
+            ]
+          },
+lesson3: {
+            name: "第3课『出会い』",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「出会い」的正确读音是？',options:['であい⓪','でわい①','しゅつかい②','であい①'],answer:0,explanation:'「出会い」读音为「であい⓪」。'},
+                {id:"v2",type:"choice",question:'「確かに」的意思是？',options:['的确，确实','确定','确认','确认信'],answer:0,explanation:'「確かに（たしかに①）」意为"的确，确实"。'},
+                {id:"v3",type:"choice",question:'「図書館」的读音是？',options:['としょかん②','としょかん⓪','ずしょかん①','としょかん④'],answer:0,explanation:'「図書館」读音为「としょかん②」。'},
+                {id:"v4",type:"choice",question:'「体育館」的读音是？',options:['たいいくかん④','たいいくかん⓪','たいいくかん②','たいいくかん③'],answer:0,explanation:'「体育館」读音为「たいいくかん④」。'},
+                {id:"v5",type:"choice",question:'「後ろ」的意思是？',options:['前面','后面','上面','下面'],answer:1,explanation:'「後ろ（うしろ⓪）」意为"后面；背后"。'},
+                {id:"v6",type:"choice",question:'「昨日」的读音是？',options:['きのう⓪','きのう②','きのう①','きのう④'],answer:0,explanation:'「昨日」读音为「きのう⓪②」。'},
+                {id:"v7",type:"choice",question:'「授業」的意思是？',options:['休息','课，上课','作业','学校'],answer:1,explanation:'「授業（じゅぎょう①）」意为"课，上课"。'},
+                {id:"v8",type:"choice",question:'「何時」的读音是？',options:['なんじ①','なにじ⓪','なんとき①','いつじ①'],answer:0,explanation:'「何時」读音为「なんじ①」，意为"几点钟"。'},
+                {id:"v9",type:"choice",question:'「そろそろ」的意思是？',options:['慢慢','快要；即将','马上（快）','稍微'],answer:1,explanation:'「そろそろ①」意为"快要；即将；不久"。'},
+                {id:"v10",type:"choice",question:'「会議」的读音是？',options:['かいぎ①③','かいぎ⓪','かいし①','かいぎ①'],answer:0,explanation:'「会議」读音为「かいぎ①③」。'},
+                {id:"v11",type:"choice",question:'「アパート」的意思是？',options:['公寓','商店','房间','公园'],answer:0,explanation:'「アパート」是apartment的缩写，意为"公寓"。'},
+                {id:"v12",type:"choice",question:'数字「3」的日语读音是？',options:['さん⓪','さん①','さん②','みつ⓪'],answer:0,explanation:'数字3读「さん⓪」。'},
+                {id:"v13",type:"choice",question:'数字「4」的日语读音是？',options:['し①','よん①','よん②','し⓪'],answer:1,explanation:'数字4常读「よん①」（因「し」与「死」同音而避讳）。'},
+                {id:"v14",type:"choice",question:'数字「7」的日语读音是？',options:['しち②','なな①','しち⓪','なな⓪'],answer:1,explanation:'数字7常读「なな①」（因「しち」与「死」相近而避讳）。'},
+                {id:"v15",type:"fill",question:'「あなた」的意思是____。',answer:'你',acceptAnswers:['你','您'],explanation:'「あなた」意为"你、您"。'},
+                {id:"v16",type:"fill",question:'「名前」的读音是____。',answer:'なまえ',acceptAnswers:['なまえ','なまえ⓪'],explanation:'「名前」读音为「なまえ⓪」。'},
+                {id:"v17",type:"fill",question:'「朝」的读音是____。',answer:'あさ',acceptAnswers:['あさ','あさ①'],explanation:'「朝」读音为「あさ①」。'},
+                {id:"v18",type:"fill",question:'「午後」的意思是____。',answer:'下午',acceptAnswers:['下午','午后'],explanation:'「午後（ごご①）」意为"下午，午后"。'},
+                {id:"v19",type:"fill",question:'「学校」的读音是____。',answer:'がっこう',acceptAnswers:['がっこう','がっこう⓪'],explanation:'「学校」读音为「がっこう⓪」。'},
+                {id:"v20",type:"fill",question:'数字「100」的日语读音是____。',answer:'ひゃく',acceptAnswers:['ひゃく','ひゃく②'],explanation:'数字100读「ひゃく②」。'}
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「一時」的读音是？',options:['いちじ②','いちじ①','いちじ③','いちじ⓪'],answer:0,explanation:'「一時」读音为「いちじ②」，指"一点"。'},
+                {id:"g2",type:"choice",question:'「四時」的读音是？',options:['よじ①','よじ②','しじ①','よじ⓪'],answer:0,explanation:'「四時」读音为「よじ①」。'},
+                {id:"g3",type:"choice",question:'「九時」的读音是？',options:['くじ①','くじ⓪','きゅうじ②','くじ②'],answer:0,explanation:'「九時」读音为「くじ①」。'},
+                {id:"g4",type:"choice",question:'表达"几点半"时用？',options:['~時ごろ','~時半','~時分','~時間'],answer:1,explanation:'"几点半"读作「~時半（じはん）」。'},
+                {id:"g5",type:"choice",question:'表达"大约几点"时用？',options:['~時半','~時ごろ','~時分','~時間'],answer:1,explanation:'"大约几点"用「~時ごろ」。'},
+                {id:"g6",type:"choice",question:'「一分」的读音是？',options:['いっぷん①','いちふん①','いちぷん①','いっぷん⓪'],answer:0,explanation:'「一分」读音为「いっぷん①」。'},
+                {id:"g7",type:"choice",question:'「三十分」的读音是？',options:['さんじゅっぷん③','さんじっぷん①','さんじゅうぶん①','さんじゅっぷん②'],answer:0,explanation:'「三十分」读音为「さんじゅっぷん③」。'},
+                {id:"g8",type:"choice",question:'「図書館は朝九時から夜十時までです」中「から」表示？',options:['结束','开始','经过','到达'],answer:1,explanation:'「から」表示"从…开始"。'},
+                {id:"g9",type:"choice",question:'「アパートから学校までは800メートルです」中「まで」表示？',options:['开始','结束','到…为止','经过'],answer:2,explanation:'「まで」表示"到…（结束、为止）"。'},
+                {id:"g10",type:"choice",question:'名词「学校」的简体非过去时肯定形式是？',options:['学校です','学校だ','学校ではない','学校だった'],answer:1,explanation:'「です」的简体为「だ」，所以是「学校だ」。'},
+                {id:"g11",type:"choice",question:'名词「学校」的简体过去时肯定形式是？',options:['学校だ','学校だった','学校です','学校でした'],answer:1,explanation:'「でした」的简体为「だった」，所以是「学校だった」。'},
+                {id:"g12",type:"choice",question:'「会議は三時半までです」的意思是？',options:['会议三点半开始','会议三点半结束','会议有三点半','会议到三点半'],answer:1,explanation:'「まで」表示"到…为止"，所以会议三点半结束。'},
+                {id:"g13",type:"fill",question:'数字「10」读作____。',answer:'じゅう',acceptAnswers:['じゅう','じゅう①'],explanation:'数字10读「じゅう①」。'},
+                {id:"g14",type:"fill",question:'数字「300」读作____。',answer:'さんびゃく',acceptAnswers:['さんびゃく','さんびゃく①'],explanation:'数字300读「さんびゃく①」。'},
+                {id:"g15",type:"fill",question:'表达"大约一个小时"在「一時間」后加____。',answer:'ぐらい',acceptAnswers:['ぐらい'],explanation:'时间段约数加「ぐらい」。'},
+                {id:"g16",type:"translate",question:'请翻译："现在8点45分，快上课了。"',reference:'今は8時45分で、そろそろ授業の時間です。',hint:'使用「で」中顿+「そろそろ」',explanation:'「そろそろ」表示"快要"。'},
+                {id:"g17",type:"translate",question:'请翻译："从早上9点到下午4点。"',reference:'朝9時から午後4時までです。',hint:'使用「から…まで」',explanation:'「から」开始，「まで」结束。'},
+                {id:"g18",type:"translate",question:'请翻译："会议到3点半结束。"',reference:'会議は三時半までです。',hint:'使用「まで」',explanation:'「まで」表示"到…为止"。'},
+                {id:"g19",type:"translate",question:'请翻译："从公寓到学校大概800米。"',reference:'アパートから学校までは800メートルぐらいです。',hint:'使用「から…まで」+「ぐらい」',explanation:'「ぐらい」表示"大概"。'},
+                {id:"g20",type:"translate",question:'请翻译："（这个）是学校。"（简体）',reference:'学校だ。',hint:'使用「だ」',explanation:'「です」的简体是「だ」。'}
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'桥本说「今は8時45分」时提到的现在时间是？',options:['8点15分','8点45分','9点45分','8点30分'],answer:1,explanation:'桥本说「今は8時45分」。'},
+                {id:"r2",type:"choice",question:'「そろそろ授業の時間です」的意思是？',options:['已经下课了','快上课了','正在上课','没有课'],answer:1,explanation:'「そろそろ」表示"快要"。'},
+                {id:"r3",type:"choice",question:'「じゃ、またね」的意思是？',options:['再见','早上好','谢谢','对不起'],answer:0,explanation:'「じゃ、またね」是道别用语，意为"再见"。'},
+                {id:"r4",type:"choice",question:'「あのう」用于？',options:['道谢','道歉','引起注意','道别'],answer:2,explanation:'「あのう」用于引起对方注意，相当于"那个/请问"。'},
+                {id:"r5",type:"choice",question:'「ありがとうございます」是什么意思？',options:['再见','谢谢','对不起','不用谢'],answer:1,explanation:'「ありがとうございます」意为"谢谢"。'},
+                {id:"r6",type:"choice",question:'当对方说「ありがとう」时，回应"不用谢"的客气话是？',options:['すみません','どういたしまして','じゃ、またね','ほら'],answer:1,explanation:'「どういたしまして」意为"不用谢"。'},
+                {id:"r7",type:"choice",question:'「すみません」除了"对不起"还表示？',options:['谢谢','不好意思；打扰一下','再见','加油'],answer:1,explanation:'「すみません」还有"不好意思；打扰一下"的含义。'},
+                {id:"r8",type:"choice",question:'「ほら」用于？',options:['道谢','提醒对方注意','道歉','问候'],answer:1,explanation:'「ほら」用于提醒对方注意，相当于"你看"。'}
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'日语数字「4」忌讳读作「し」，因为与哪个字同音？',options:['死','苦','湿','使'],answer:0,explanation:'「し」与「死」同音，所以避讳改读「よん」。'},
+                {id:"c2",type:"choice",question:'日语数字「9」忌讳读作「く」，因为与哪个字同音？',options:['死','苦','库','哭'],answer:1,explanation:'「く」与「苦」同音，所以避讳改读「きゅう」。'},
+                {id:"c3",type:"choice",question:'「一月」的读音是？',options:['いちがつ④','いちがつ①','いちがつ③','いちがつ⓪'],answer:0,explanation:'「一月」读音为「いちがつ④」。'},
+                {id:"c4",type:"choice",question:'「四月」的读音是？',options:['よんがつ','しがつ③','よがつ','しがつ①'],answer:1,explanation:'「四月」读音为「しがつ③」（月份沿用旧读音「し」）。'},
+                {id:"c5",type:"choice",question:'「一日」（一号）的读音是？',options:['いちにち','ついたち④','いちがつ','ふつか'],answer:1,explanation:'「一日」读音为「ついたち④」。'},
+                {id:"c6",type:"choice",question:'「十日」的读音是？',options:['とおか⓪','じゅうにち①','とおか①','じゅうか⓪'],answer:0,explanation:'「十日」读音为「とおか⓪」。'},
+                {id:"c7",type:"choice",question:'「二十日」的读音是？',options:['にじゅうにち','はつか⓪','はつか①','にじゅうか'],answer:1,explanation:'「二十日」读音为「はつか⓪」。'},
+                {id:"c8",type:"choice",question:'「二日」的读音是？',options:['ふつか⓪','ににち','ふつか①','にじつ'],answer:0,explanation:'「二日」读音为「ふつか⓪」。'}
+              ]}
+            ]
+          }
+        }
+      },
+      unit2: {
+        name: "第二单元",
+        lessons: {
+lesson1: {
+            name: "第1课「案内」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「案内」的正确读音是？',options:['あんない③','あんない⓪','あんない①','あんない②'],answer:0,explanation:'读音为「あんない③」。'},
+                {id:"v2",type:"choice",question:'「みなさん」的意思是？',options:['大家','你','我','老师'],answer:0,explanation:'「みなさん」意为"大家"。'},
+                {id:"v3",type:"choice",question:'「ガイド」的意思是？',options:['指南','引导；导游','道路','方向'],answer:1,explanation:'意为"引导、导游"。'},
+                {id:"v4",type:"choice",question:'「シンボル」的意思是？',options:['符号','象征','标志','记号'],answer:1,explanation:'意为"象征"。'},
+                {id:"v5",type:"fill",question:'「鐘楼」的读音是____。',answer:'しょうろう',acceptAnswers:['しょうろう','しょうろう⓪'],explanation:'读音为「しょうろう⓪」。'},
+                {id:"v6",type:"fill",question:'「建物」的读音是____。',answer:'たてもの',acceptAnswers:['たてもの','たてもの②③'],explanation:'读音为「たてもの②③」。'},
+                {id:"v7",type:"fill",question:'「部活」的读音是____。',answer:'ぶかつ',acceptAnswers:['ぶかつ','ぶかつ⓪'],explanation:'读音为「ぶかつ⓪」。'},
+                {id:"v8",type:"fill",question:'「元気」的读音是____。',answer:'げんき',acceptAnswers:['げんき','げんき①'],explanation:'读音为「げんき①」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'一类形容词词尾特征是？',options:['以「い」结尾','以「だ」结尾','以「る」结尾','以「く」结尾'],answer:0,explanation:'一类形容词以「い」结尾。'},
+                {id:"g2",type:"choice",question:'二类形容词词尾是？',options:['い','だ','る','う'],answer:1,explanation:'二类形容词词尾为「だ」。'},
+                {id:"g3",type:"choice",question:'疑问词做主语用什么助词？',options:['は','が','を','に'],answer:1,explanation:'疑问词做主语用「が」。'},
+                {id:"g4",type:"fill",question:'「月曜日」的读音是____。',answer:'げつようび',acceptAnswers:['げつようび'],explanation:'读音为「げつようび」。'},
+                {id:"g5",type:"translate",question:'请翻译："今天是星期五。"',reference:'今日は金曜日です。',hint:'使用「～曜日」',explanation:'「金曜日」意为"星期五"。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'黑川学姐是几年级？',options:['一年级','二年级','三年级','老师'],answer:1,explanation:'黑川说「芸術学部の二年生」。'},
+                {id:"r2",type:"choice",question:'钟楼是什么的象征？',options:['神立町','神立大学','艺术学部','体育馆'],answer:1,explanation:'黑川说「この鐘楼は神立大学のシンボル」。'},
+                {id:"r3",type:"choice",question:'王小明看到体育馆后说什么？',options:['わあ、広いですね','わあ、高いですね','わあ、大きいですね','わあ、綺麗ですね'],answer:0,explanation:'王小明说「わあ、広い体育館ですね」。'},
+                {id:"r4",type:"choice",question:'「どうぞ」在课文中的完整表达是？',options:['どうぞお入りください','どうぞ食べてください','どうぞ見てください','どうぞ座ってください'],answer:0,explanation:'完整表达为「どうぞお入りください」。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「嫌い」属于几类形容词？',options:['AⅠ','AⅡ','名词','动词'],answer:1,explanation:'「嫌い」是AⅡ，需特殊记忆。'},
+                {id:"c2",type:"choice",question:'用言包括哪两类词？',options:['名词和代词','形容词和动词','名词和形容词','副词和连词'],answer:1,explanation:'用言包括形容词和动词。'},
+                {id:"c3",type:"choice",question:'体言包括哪些词？',options:['名词、代词、数词','动词、形容词','副词、连词','助词、助动词'],answer:0,explanation:'体言包含名词、指示代词、数词等。'},
+                {id:"c4",type:"choice",question:'正式场合敲门时说什么？',options:['こんにちは','ごめんください','すみません','おはよう'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'},
+              ]}
+            ]
+          },
+lesson2: {
+            name: "第2课「大学の授業」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「顔色」的读音是？',options:['かおいろ⓪','かおいろ①','かおいろ②','かおいろ③'],answer:0,explanation:'读音为「かおいろ⓪」。'},
+                {id:"v2",type:"choice",question:'「大丈夫」的读音是？',options:['だいじょうぶ③','だいじょうぶ①','だいじょうぶ②','だいじょうぶ⓪'],answer:0,explanation:'读音为「だいじょうぶ③」。'},
+                {id:"v3",type:"choice",question:'「難しい」的意思是？',options:['容易的','难的','有趣的','无聊的'],answer:1,explanation:'意为"难的、难以理解的"。'},
+                {id:"v4",type:"choice",question:'「ペラペラ」的意思是？',options:['结巴','流利','安静','大声'],answer:1,explanation:'意为"（外语）流利"。'},
+                {id:"v5",type:"fill",question:'「生活」的读音是____。',answer:'せいかつ',acceptAnswers:['せいかつ','せいかつ⓪'],explanation:'读音为「せいかつ⓪」。'},
+                {id:"v6",type:"fill",question:'「言葉」的意思是____。',answer:'语言',acceptAnswers:['语言','话'],explanation:'意为"语言、话"。'},
+                {id:"v7",type:"fill",question:'「準備」的读音是____。',answer:'じゅんび',acceptAnswers:['じゅんび','じゅんび①'],explanation:'读音为「じゅんび①」。'},
+                {id:"v8",type:"fill",question:'「簡単」的意思是____。',answer:'简单',acceptAnswers:['简单'],explanation:'意为"简单的"。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'AⅠ「寒い」的敬体否定是？',options:['寒くないです','寒いないです','寒いではありません','寒くあります'],answer:0,explanation:'AⅠ否定「い」→「く」+「ないです」。'},
+                {id:"g2",type:"choice",question:'「S＋から」表示什么？',options:['原因','转折','并列','目的'],answer:0,explanation:'「から」表示主观原因。'},
+                {id:"g3",type:"choice",question:'「そんなに～ない」表示？',options:['非常','不怎么','完全不','总是'],answer:1,explanation:'意为"不怎么……"。'},
+                {id:"g4",type:"fill",question:'「あまり」后接____形式。',answer:'否定',acceptAnswers:['否定','ない'],explanation:'「あまり～ない」表示"不怎么"。'},
+                {id:"g5",type:"translate",question:'请翻译："日本料理很好吃。"',reference:'日本料理はおいしいです。',hint:'使用AⅠ形容词谓语句',explanation:'AⅠ直接加「です」。'},
+                {id:"g6",type:"translate",question:'请翻译："因为现在很忙。"',reference:'今は忙しいですから。',hint:'使用「から」',explanation:'「から」表示原因。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'木村回家时说的第一句话是？',options:['こんにちは','ただいま','お帰り','お疲れ様'],answer:1,explanation:'木村说「ただいま」。'},
+                {id:"r2",type:"choice",question:'王小明觉得哪门课难？',options:['会话课','语法课','阅读课','听力课'],answer:1,explanation:'王说「文法の授業が難しい」。'},
+                {id:"r3",type:"choice",question:'木村说日语学习靠什么？',options:['天赋','每天的努力','老师','教材'],answer:1,explanation:'木村说「言葉の勉強は日々の努力です」。'},
+                {id:"r4",type:"choice",question:'「お帰りなさい」是什么意思？',options:['我回来了','欢迎回家','辛苦了','再见'],answer:1,explanation:'意为"欢迎回家"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'日本人回家时说什么？',options:['こんにちは','ただいま','さようなら','おはよう'],answer:1,explanation:'「ただいま」是回家时的惯用句。'},
+                {id:"c2",type:"choice",question:'「お疲れ様です」用于？',options:['早上见面','道别','慰问辛劳','道歉'],answer:2,explanation:'用于表达"您辛苦了"。'},
+                {id:"c3",type:"choice",question:'日语「お～」属于什么语？',options:['尊敬语','谦让语','美化语','丁宁语'],answer:2,explanation:'「お～」属于美化语。'},
+                {id:"c4",type:"choice",question:'音读词前通常加什么表礼貌？',options:['お','ご','を','は'],answer:1,explanation:'音读词前通常加「ご」。'},
+              ]}
+            ]
+          },
+lesson3: {
             name: "第3课「日本の漫画、大好き！」",
             sections: [
               {id:"vocab",name:"单词",questions:[
@@ -324,7 +616,7 @@ function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();show
               ]}
             ]
           },
-          lesson4: {
+lesson4: {
             name: "第4课「賑やかな大都市」",
             sections: [
               {id:"vocab",name:"单词",questions:[
@@ -360,7 +652,7 @@ function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();show
             ]
           }
         }
-  
+      },
       unit3: {
         name: "第三单元",
         lessons: {
@@ -574,303 +866,10 @@ function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();show
             ]
           }
         }
-      }    }
-const bookData = {
-  book2: {
-    name: "第二册 初级基础篇N5",
-    units: {
-      unit1: {
-        name: "第一单元",
-        lessons: {
-          lesson1: {
-            name: "第1课『私は王小明です』",
-            sections: [
-              {id:"vocab",name:"单词",questions:[
-                {id:"v1",type:"choice",question:'「会話」的正确读音是？',options:['かいわ⓪','かいわ②','かいは①','こいわ⓪'],answer:0,explanation:'读音为「かいわ⓪」。'},
-                {id:"v2",type:"choice",question:'「私」的意思是？',options:['你','他','我','我们'],answer:2,explanation:'意为"我"。'},
-                {id:"v3",type:"choice",question:'「ルームメート」的意思是？',options:['房间','室友','同学','朋友'],answer:1,explanation:'意为"室友"。'},
-                {id:"v4",type:"choice",question:'「会社員」的读音是？',options:['かいしゃいん③','かいしゃいん①','がいしゃいん⓪','かいしゃえん⓪'],answer:0,explanation:'读音为「かいしゃいん③」。'},
-                {id:"v5",type:"choice",question:'「りんご」的意思是？',options:['梨子','橙子','苹果','草莓'],answer:2,explanation:'意为"苹果"。'},
-                {id:"v6",type:"choice",question:'「出身」的意思是？',options:['出身；来自','出身高','出去','身体'],answer:0,explanation:'意为"来自……"。'},
-                {id:"v7",type:"choice",question:'「神立」的读音是？',options:['かんだち⓪','かみたち①','じんりつ⓪','しんたつ①'],answer:0,explanation:'读音为「かんだち⓪」。'},
-                {id:"v8",type:"choice",question:'「友達」的读音是？',options:['ともだち⓪','とまだち⓪','ゆうだち①','ともたち①'],answer:0,explanation:'读音为「ともだち⓪」。'},
-                {id:"v9",type:"choice",question:'「料理」的意思是？',options:['材料','料理、饭菜','理解','聊天'],answer:1,explanation:'意为"料理、饭菜"。'},
-                {id:"v10",type:"choice",question:'「先生」的读音是？',options:['せんせい③','せんせ⓪','せんしょう①','ぜんせい⓪'],answer:0,explanation:'读音为「せんせい③」。'},
-                {id:"v11",type:"choice",question:'「韓国人」的读音是？',options:['かんこくじん④','かんこくじん⓪','かんこくにん④','かんごくじん⓪'],answer:0,explanation:'读音为「かんこくじん④」。'},
-                {id:"v12",type:"choice",question:'「サラリーマン」的意思是？',options:['销售员','公司职员','运动员','教师'],answer:1,explanation:'意为"公司职员"。'},
-                {id:"v13",type:"choice",question:'「邪魔」的读音是？',options:['じゃま⓪','しゃま①','ざま⓪','じゃま①'],answer:0,explanation:'读音为「じゃま⓪」。'},
-                {id:"v14",type:"choice",question:'「子供」的读音是？',options:['こども⓪','こども②','こども①','こども⓪'],answer:0,explanation:'读音为「こども⓪」。'},
-                {id:"v15",type:"choice",question:'「一年生」的意思是？',options:['一年级学生','一年时间','一学年','一年级教室'],answer:0,explanation:'意为"一年级学生"。'},
-                {id:"v16",type:"fill",question:'「おはよう」中文意思是____。',answer:'早上好',acceptAnswers:['早上好','早安'],explanation:'是"早上好"的日常用语。'},
-                {id:"v17",type:"fill",question:'「財布」的读音是____。',answer:'さいふ',acceptAnswers:['さいふ','さいふ⓪'],explanation:'读音为「さいふ⓪」。'},
-                {id:"v18",type:"fill",question:'「果物」的读音是____。',answer:'くだもの',acceptAnswers:['くだもの','くだもの②'],explanation:'读音为「くだもの②」。'},
-                {id:"v19",type:"fill",question:'「先輩」的意思是____。',answer:'前辈',acceptAnswers:['前辈','学长、学姐'],explanation:'意为"前辈"。'},
-                {id:"v20",type:"fill",question:'「学生」的读音是____。',answer:'がくせい',acceptAnswers:['がくせい','がくせい⓪'],explanation:'读音为「がくせい⓪」。'},
-                {id:"v21",type:"fill",question:'「休み」的意思是____。',answer:'休息',acceptAnswers:['休息','休假'],explanation:'意为"休息；休假"。'},
-                {id:"v22",type:"fill",question:'「日本人」的读音是____。',answer:'にほんじん',acceptAnswers:['にほんじん','にほんじん④'],explanation:'读音为「にほんじん④」。'},
-                {id:"v23",type:"fill",question:'「トマト」中文意思是____。',answer:'番茄',acceptAnswers:['番茄','西红柿'],explanation:'意为"番茄、西红柿"。'},
-                {id:"v24",type:"fill",question:'「時間」的读音是____。',answer:'じかん',acceptAnswers:['じかん','じかん⓪'],explanation:'读音为「じかん⓪」。'},
-                {id:"v25",type:"fill",question:'「こちらこそ」的意思是____。',answer:'我才是',acceptAnswers:['我才是'],explanation:'意为"我才是"。'}
-              ]},
-              {id:"grammar",name:"语法",questions:[
-                {id:"g1",type:"choice",question:'「は」作助词时的发音是？',options:['ha','wa','ba','pa'],answer:1,explanation:'助词「は」发音为「wa」。'},
-                {id:"g2",type:"choice",question:'「N1はN2です」的否定形式是？',options:['N1はN2です','N1はN2ではありません','N1はN2ですか','N1はN2でした'],answer:1,explanation:'否定形式为「～ではありません」。'},
-                {id:"g3",type:"choice",question:'「王さんは韓国人ですか」否定回答是？',options:['はい、韓国人です','いいえ、韓国人ではありません','はい、そうです','いいえ、韓国人です'],answer:1,explanation:'否定回答用「いいえ」+「ではありません」。'},
-                {id:"g4",type:"choice",question:'「神立大学の新入生」中「の」的用法是？',options:['表示疑问','表示领属','表示地点','表示原因'],answer:1,explanation:'「の」表达领属关系，相当于"的"。'},
-                {id:"g5",type:"choice",question:'「よ」在句末的作用是？',options:['表示疑问','提醒、叮嘱','表示确认','表示否定'],answer:1,explanation:'语气终助词「よ」表示提醒、叮嘱。'},
-                {id:"g6",type:"choice",question:'「私は中国出身で、…」中「で」的作用是？',options:['表示原因','表示中顿','表示工具','表示地点'],answer:1,explanation:'「で」是「です」的中顿形式。'},
-                {id:"g7",type:"choice",question:'关于「はい」的用法，哪项正确？',options:['只能肯定回答','还可口头回应对方','不能单独使用','是敬语'],answer:1,explanation:'「はい」还可用于口头回应，类似"诶"。'},
-                {id:"g8",type:"choice",question:'「ではありません」口语中常简化为？',options:['ではない','じゃありません','でわありません','ないです'],answer:1,explanation:'口语中「では」可换成「じゃ」。'},
-                {id:"g9",type:"choice",question:'「そうですか」中「か」读降调表示？',options:['疑问','确认语气','否定','感叹'],answer:1,explanation:'降调时表达确认语气。'},
-                {id:"g10",type:"choice",question:'中顿形式中两个主语不同时，能否省略第二个主语？',options:['可以省略','不能省略','都可以','看情况'],answer:1,explanation:'主语不一致时不能省略。'},
-                {id:"g11",type:"fill",question:'否定形式「N1はN2____」。',answer:'ではありません',acceptAnswers:['ではありません','じゃありません'],explanation:'否定形式为「ではありません」。'},
-                {id:"g12",type:"fill",question:'中顿形式中「です」变为____。',answer:'で',acceptAnswers:['で'],explanation:'「です」变为「で」。'},
-                {id:"g13",type:"fill",question:'一般疑问句句末用助词____。',answer:'か',acceptAnswers:['か'],explanation:'「か」表示疑问。'},
-                {id:"g14",type:"fill",question:'「はい」对应的否定回答是____。',answer:'いいえ',acceptAnswers:['いいえ','いえ','いや'],explanation:'「いいえ」是否定回答。'},
-                {id:"g15",type:"fill",question:'「の」表达____关系。',answer:'领属',acceptAnswers:['领属','所属','所有'],explanation:'「の」表达领属关系。'},
-                {id:"g16",type:"translate",question:'请翻译："我是中国人。"',reference:'私は中国人です。',hint:'使用「N1はN2です」句型',explanation:'「私」是"我"。'},
-                {id:"g17",type:"translate",question:'请翻译："小王是大学生吗？"',reference:'王さんは大学生ですか。',hint:'使用一般疑问句「～か」',explanation:'句末加「か」表示疑问。'},
-                {id:"g18",type:"translate",question:'请翻译："我是王小明，是神立大学的新生。"',reference:'私は王小明で、神立大学の新入生です。',hint:'使用中顿形式「～で」',explanation:'第一个「です」变为「で」。'},
-                {id:"g19",type:"translate",question:'请翻译："木村不是大学生。"',reference:'木村さんは大学生ではありません。',hint:'使用否定形式',explanation:'「です」的否定为「ではありません」。'},
-                {id:"g20",type:"translate",question:'请翻译："苹果是水果哦。"（提醒语气）',reference:'りんごは果物ですよ。',hint:'句末加「よ」',explanation:'「よ」表示提醒。'}
-              ]},
-              {id:"reading",name:"课文",questions:[
-                {id:"r1",type:"choice",question:'王小明是哪里人？',options:['韩国人','中国人','日本人','美国人'],answer:1,explanation:'王小明说「私は中国出身で」。'},
-                {id:"r2",type:"choice",question:'木村浅一郎的职业是？',options:['大学生','老师','公司职员','医生'],answer:2,explanation:'木村说「僕は会社員です」。'},
-                {id:"r3",type:"choice",question:'王小明是哪个大学的学生？',options:['东京大学','神立大学','京都大学','早稻田大学'],answer:1,explanation:'「神立大学の新入生です」。'},
-                {id:"r4",type:"choice",question:'王小明到达公寓时的心情是？',options:['非常开心','紧张','生气','无所谓'],answer:1,explanation:'背景说"紧张的小明站在门口"。'},
-                {id:"r5",type:"choice",question:'木村最初以为王小明是哪国人？',options:['中国人','日本人','韩国人','泰国人'],answer:2,explanation:'木村问「王くんは韓国人ですか」。'},
-                {id:"r6",type:"choice",question:'王小明进门说的第一句话是？',options:['こんにちは','ごめんください','おはよう','さようなら'],answer:1,explanation:'敲门时说「ごめんください」。'},
-                {id:"r7",type:"choice",question:'王小明进屋时说了什么？',options:['ありがとう','お邪魔します','さようなら','いただきます'],answer:1,explanation:'「お邪魔します」表示"打扰了"。'},
-                {id:"r8",type:"choice",question:'王小明自我介绍时说的话是？',options:['僕は会社員です','私は中国出身で、神立大学の新入生です','王くんは韓国人ですか','そうですか'],answer:1,explanation:'王小明做了完整的自我介绍。'}
-              ]},
-              {id:"culture",name:"趣味拓展",questions:[
-                {id:"c1",type:"choice",question:'「さん」用于什么场合？',options:['用于自己','对长辈或关系不亲密的人表示尊敬','只用于男性','只用于女性'],answer:1,explanation:'「さん」表示尊敬。'},
-                {id:"c2",type:"choice",question:'「ちゃん」通常用于？',options:['男性长辈','女性','上级','陌生人'],answer:1,explanation:'「ちゃん」只用于女性。'},
-                {id:"c3",type:"choice",question:'「様」的用法是？',options:['最普通','比「さん」更尊敬','只用于小孩','口语常用'],answer:1,explanation:'「様」更尊敬，用于正式场合。'},
-                {id:"c4",type:"choice",question:'「くん」通常用于？',options:['女性','长辈','对男性使用','陌生人'],answer:2,explanation:'「くん」通常对男性使用。'},
-                {id:"c5",type:"choice",question:'以下哪项是错误的？',options:['王さん','木村くん','私は王さんです','王先生'],answer:2,explanation:'尊称不能用于自己。'},
-                {id:"c6",type:"choice",question:'以下哪个敬称正确？',options:['王さん先生','木村教授','私様','小明くんさん'],answer:1,explanation:'可在姓氏后加职业称呼。'},
-                {id:"c7",type:"choice",question:'「ええ」「うん」比「はい」语气？',options:['更正式','更随意','更尊敬','意思不同'],answer:1,explanation:'比「はい」更加随意。'},
-                {id:"c8",type:"choice",question:'正式场合敲门时通常说？',options:['こんにちは','ごめんください','すみません','おはようございます'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'}
-              ]}
-            ],
-          lesson2: {
-            name: "第2课『部活の写真』",
-            sections: [
-              {id:"vocab",name:"单词",questions:[
-                {id:"v1",type:"choice",question:'「写真」的正确读音是？',options:['しゃしん⓪','さしん①','しゃしん①','しゃじん⓪'],answer:0,explanation:'「写真」读音为「しゃしん⓪」。'},
-                {id:"v2",type:"choice",question:'「いつ」的意思是？',options:['哪里','何时','为什么','谁'],answer:1,explanation:'「いつ」意为"何时；什么时候"。'},
-                {id:"v3",type:"choice",question:'「野球部」的正确读音是？',options:['やきゅうぶ②','やきゅうぶ①','やきゅうべ','やきゅうふ'],answer:0,explanation:'「野球部」读音为「やきゅうぶ②」。'},
-                {id:"v4",type:"choice",question:'「メンバー」的意思是？',options:['成员','号码','记忆','会议'],answer:0,explanation:'「メンバー」意为"成员"。'},
-                {id:"v5",type:"choice",question:'「方」的正确读音是？',options:['ほう①','かた②','かた①','ほう②'],answer:1,explanation:'「方」读音为「かた②」，是「人」的尊敬表达。'},
-                {id:"v6",type:"choice",question:'「どなた」的意思是？',options:['哪里','哪位（尊敬）','什么','多少'],answer:1,explanation:'「どなた」是「誰」的尊敬说法，意为"哪位"。'},
-                {id:"v7",type:"choice",question:'「部長」的读音是？',options:['ぶちょう⓪','ぶちょう①','ぶちょう②','ぶちょう③'],answer:0,explanation:'「部長」读音为「ぶちょう⓪」。'},
-                {id:"v8",type:"choice",question:'「そして」的意思是？',options:['但是','然后；还有','所以','因为'],answer:1,explanation:'「そして」意为"然后；还有；另外"。'},
-                {id:"v9",type:"choice",question:'「それから」的意思是？',options:['然后；接下来','从那里','那个','因为'],answer:0,explanation:'「それから」意为"还有；然后；接下来"。'},
-                {id:"v10",type:"choice",question:'「何」的读音是？',options:['なに⓪','なに①','なん⓪','以上都是'],answer:3,explanation:'「何」可读「なん①」或「なに⓪」，根据后接音不同变化。'},
-                {id:"v11",type:"choice",question:'「バナナ」的意思是？',options:['香蕉','面包','米饭','苹果'],answer:0,explanation:'「バナナ」意为"香蕉"。'},
-                {id:"v12",type:"choice",question:'「昔」的正确读音是？',options:['むかし⓪','むかし①','むかし②','むかし③'],answer:0,explanation:'「昔」读音为「むかし⓪」，意为"从前"。'},
-                {id:"v13",type:"choice",question:'「高校生」的读音是？',options:['こうこうせい③④','こうこうせい①','こうがくせい③','こうこうしょう'],answer:0,explanation:'「高校生」读音为「こうこうせい③④」。'},
-                {id:"v14",type:"choice",question:'「アイドル」的意思是？',options:['偶像','空闲','眼睛','理想'],answer:0,explanation:'「アイドル」来自英文idol，意为"偶像"。'},
-                {id:"v15",type:"fill",question:'「辞書」的读音是____。',answer:'じしょ',acceptAnswers:['じしょ','じしょ①'],explanation:'「辞書」读音为「じしょ①」。'},
-                {id:"v16",type:"fill",question:'「日本語」的意思是____。',answer:'日语',acceptAnswers:['日语','日本语'],explanation:'「日本語」意为"日语"。'},
-                {id:"v17",type:"fill",question:'「選手」的读音是____。',answer:'せんしゅ',acceptAnswers:['せんしゅ','せんしゅ①'],explanation:'「選手」读音为「せんしゅ①」。'},
-                {id:"v18",type:"fill",question:'「工場」的读音是____。',answer:'こうじょう',acceptAnswers:['こうじょう','こうじょう③'],explanation:'「工場」读音为「こうじょう③」。'},
-                {id:"v19",type:"fill",question:'「ペン」的意思是____。',answer:'笔',acceptAnswers:['笔','钢笔'],explanation:'「ペン」意为"笔"。'},
-                {id:"v20",type:"fill",question:'「お母さん」的读音是____。',answer:'おかあさん',acceptAnswers:['おかあさん','おかあさん②'],explanation:'「お母さん」读音为「おかあさん②」。'}
-              ]},
-              {id:"grammar",name:"语法",questions:[
-                {id:"g1",type:"choice",question:'「これ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:0,explanation:'「これ」是近称，指离说话人近的事物。'},
-                {id:"g2",type:"choice",question:'「それ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:1,explanation:'「それ」是中称，指离听话人近、离说话人远的事物。'},
-                {id:"g3",type:"choice",question:'「あれ」是指代事物的____。',options:['近称','中称','远称','疑问词'],answer:2,explanation:'「あれ」是远称，指离说话人和听话人都远的事物。'},
-                {id:"g4",type:"choice",question:'「どれ」是____。',options:['近称','中称','远称','疑问词'],answer:3,explanation:'「どれ」是疑问词，意为"哪个"。'},
-                {id:"g5",type:"choice",question:'地点的远称是？',options:['あこ','あそこ','そこ','あそこ'],answer:1,explanation:'地点的远称是「あそこ」，切忌记成「あこ」。'},
-                {id:"g6",type:"choice",question:'「この本」中「この」的用法是？',options:['指代事物','后接名词','指代地点','指代方向'],answer:1,explanation:'「このN」表示"这个N"，后接名词使用。'},
-                {id:"g7",type:"choice",question:'「王さんは高校生でした。」中的「でした」表示？',options:['现在时','过去时','将来时','否定'],answer:1,explanation:'「でした」是「です」的过去时，表示过去的状态。'},
-                {id:"g8",type:"choice",question:'「です」的过去时否定形式是？',options:['ではありません','ではありませんでした','じゃない','なかった'],answer:1,explanation:'过去时否定形式为「ではありませんでした」。'},
-                {id:"g9",type:"choice",question:'「すごいですね」中「ね」的作用是？',options:['疑问','感叹、叮嘱','否定','过去'],answer:1,explanation:'「ね」接在句末，用于表达轻微的感叹或叮嘱。'},
-                {id:"g10",type:"choice",question:'「あの人も野球部のメンバーですか」中「も」的意思是？',options:['也','的','是','吗'],answer:0,explanation:'「も」表示"也"，表达同类事物。'},
-                {id:"g11",type:"choice",question:'「メンバーの桜井」中「の」的用法是？',options:['领属','同位','疑问','否定'],answer:1,explanation:'这是「の」的同位用法，前后名词指同一人。'},
-                {id:"g12",type:"choice",question:'疑问词作谓语的疑问句叫做？',options:['一般疑问句','特殊疑问句','选择疑问句','反问句'],answer:1,explanation:'疑问词作谓语的疑问句叫特殊疑问句。'},
-                {id:"g13",type:"fill",question:'「これ/それ/あれ/どれ」统称为____系列。',answer:'こそあど',acceptAnswers:['こそあど','こそあど系列'],explanation:'它们统称为「こそあど」系列指示代词。'},
-                {id:"g14",type:"fill",question:'「です」的过去时是____。',answer:'でした',acceptAnswers:['でした'],explanation:'「です」→「でした」。'},
-                {id:"g15",type:"fill",question:'「こちら」对应的疑问词是____。',answer:'どちら',acceptAnswers:['どちら'],explanation:'「こちら/そちら/あちら/どちら」是方向、尊称系列。'},
-                {id:"g16",type:"translate",question:'请翻译："那是什么？"',reference:'それは何ですか。',hint:'使用「それは」+疑问词',explanation:'「それ」是中称，"那"；「何」是"什么"。'},
-                {id:"g17",type:"translate",question:'请翻译："小王以前是高中生。"',reference:'王さんは高校生でした。',hint:'使用过去时「でした」',explanation:'「です」的过去时是「でした」。'},
-                {id:"g18",type:"translate",question:'请翻译："那个人也是棒球部的成员。"',reference:'あの人も野球部のメンバーです。',hint:'使用「も」表示"也"',explanation:'「も」接在名词后，表示"也"。'},
-                {id:"g19",type:"translate",question:'请翻译："这是谁的照片？"',reference:'これは誰の写真ですか。',hint:'使用「これ」+疑问词「誰」',explanation:'「誰」是"谁"，「の」表示领属。'},
-                {id:"g20",type:"translate",question:'请翻译："这里以前不是工厂。"',reference:'ここは昔、工場ではありませんでした。',hint:'使用过去时否定',explanation:'过去时否定为「ではありませんでした」。'}
-              ]},
-              {id:"reading",name:"课文",questions:[
-                {id:"r1",type:"choice",question:'木村大学时参加了什么社团？',options:['足球部','棒球部','网球部','游泳部'],answer:1,explanation:'木村说「野球部のメンバーでした」。'},
-                {id:"r2",type:"choice",question:'木村大学时是棒球部的什么？',options:['选手','部长','成员','教练'],answer:2,explanation:'木村说「野球部のメンバーでした」。'},
-                {id:"r3",type:"choice",question:'木村指着照片上的人说「この人は私の先輩で、野球部の____です」。',options:['選手','部長','メンバー','コーチ'],answer:1,explanation:'木村说「この人は私の先輩で、野球部の部長です」。'},
-                {id:"r4",type:"choice",question:'小明说「わあ、すごいですね！」表达的是什么心情？',options:['悲伤','惊讶、赞叹','害怕','生气'],answer:1,explanation:'「すごいですね」是感叹、赞叹的表达。'},
-                {id:"r5",type:"choice",question:'「あれはアイドルの真奈子ちゃんの写真です」中的「アイドル」是？',options:['运动员','偶像','歌手','演员'],answer:1,explanation:'「アイドル」意为"偶像"。'},
-                {id:"r6",type:"choice",question:'木村问小明「それはいつの写真ですか」中「いつ」询问的是什么？',options:['地点','时间','人物','原因'],answer:1,explanation:'「いつ」询问时间，意为"何时"。'},
-                {id:"r7",type:"choice",question:'小明指着墙上的相框问「あの人も野球部のメンバーですか」，木村怎么回答？',options:['はい、そうです','いや…あれはアイドルの写真です','いいえ、違います','はい、メンバーです'],answer:1,explanation:'木村说「いや…あれはアイドルの真奈子ちゃんの写真です」。'},
-                {id:"r8",type:"choice",question:'「この方はどなたですか」中「方」比「人」的语气更？',options:['更随意','更尊敬','更强烈','更冷淡'],answer:1,explanation:'「方」是「人」的尊敬表达。'}
-              ]},
-              {id:"culture",name:"趣味拓展",questions:[
-                {id:"c1",type:"choice",question:'日语中称呼自己父亲时用？',options:['父','お父さん','ちち','お父様'],answer:1,explanation:'直接称呼自己父亲时用「お父さん」。'},
-                {id:"c2",type:"choice",question:'对外人称呼自己父亲时用？',options:['お父さん','父','お父様','パパ'],answer:1,explanation:'对外人称呼自己父亲时用「父（ちち）」。'},
-                {id:"c3",type:"choice",question:'「お母さん」的读音是？',options:['おかあさん②','おとうさん②','おねえさん②','おじいさん②'],answer:0,explanation:'「お母さん」读音为「おかあさん②」。'},
-                {id:"c4",type:"choice",question:'「兄」的读音是？',options:['あね','あに','おとうと','いもうと'],answer:1,explanation:'「兄」读音为「あに①」，对外称呼自己哥哥。'},
-                {id:"c5",type:"choice",question:'直接称呼姐姐时用？',options:['姉','お姉さん','あね','いもうと'],answer:1,explanation:'直接称呼姐姐时用「お姉さん」。'},
-                {id:"c6",type:"choice",question:'「弟」的读音是？',options:['おとうと⓪','いもうと⓪','おにいさん②','おねえさん②'],answer:0,explanation:'「弟」读音为「おとうと⓪」。'},
-                {id:"c7",type:"choice",question:'「主人」的意思是？',options:['主人','客人','丈夫','老师'],answer:2,explanation:'「主人（しゅじん）」意为"丈夫"。'},
-                {id:"c8",type:"choice",question:'对外称呼自己妹妹时用？',options:['お姉さん','妹','いもうと','お妹さん'],answer:1,explanation:'对外称呼自己妹妹时用「妹（いもうと）」。'}
-              ]}
-            ]
-          },
-
-          lesson3: {
-            name: "第3课『出会い』",
-            sections: [
-              {id:"vocab",name:"单词",questions:[
-                {id:"v1",type:"choice",question:'「出会い」的正确读音是？',options:['であい⓪','でわい①','しゅつかい②','であい①'],answer:0,explanation:'「出会い」读音为「であい⓪」。'},
-                {id:"v2",type:"choice",question:'「確かに」的意思是？',options:['的确，确实','确定','确认','确认信'],answer:0,explanation:'「確かに（たしかに①）」意为"的确，确实"。'},
-                {id:"v3",type:"choice",question:'「図書館」的读音是？',options:['としょかん②','としょかん⓪','ずしょかん①','としょかん④'],answer:0,explanation:'「図書館」读音为「としょかん②」。'},
-                {id:"v4",type:"choice",question:'「体育館」的读音是？',options:['たいいくかん④','たいいくかん⓪','たいいくかん②','たいいくかん③'],answer:0,explanation:'「体育館」读音为「たいいくかん④」。'},
-                {id:"v5",type:"choice",question:'「後ろ」的意思是？',options:['前面','后面','上面','下面'],answer:1,explanation:'「後ろ（うしろ⓪）」意为"后面；背后"。'},
-                {id:"v6",type:"choice",question:'「昨日」的读音是？',options:['きのう⓪','きのう②','きのう①','きのう④'],answer:0,explanation:'「昨日」读音为「きのう⓪②」。'},
-                {id:"v7",type:"choice",question:'「授業」的意思是？',options:['休息','课，上课','作业','学校'],answer:1,explanation:'「授業（じゅぎょう①）」意为"课，上课"。'},
-                {id:"v8",type:"choice",question:'「何時」的读音是？',options:['なんじ①','なにじ⓪','なんとき①','いつじ①'],answer:0,explanation:'「何時」读音为「なんじ①」，意为"几点钟"。'},
-                {id:"v9",type:"choice",question:'「そろそろ」的意思是？',options:['慢慢','快要；即将','马上（快）','稍微'],answer:1,explanation:'「そろそろ①」意为"快要；即将；不久"。'},
-                {id:"v10",type:"choice",question:'「会議」的读音是？',options:['かいぎ①③','かいぎ⓪','かいし①','かいぎ①'],answer:0,explanation:'「会議」读音为「かいぎ①③」。'},
-                {id:"v11",type:"choice",question:'「アパート」的意思是？',options:['公寓','商店','房间','公园'],answer:0,explanation:'「アパート」是apartment的缩写，意为"公寓"。'},
-                {id:"v12",type:"choice",question:'数字「3」的日语读音是？',options:['さん⓪','さん①','さん②','みつ⓪'],answer:0,explanation:'数字3读「さん⓪」。'},
-                {id:"v13",type:"choice",question:'数字「4」的日语读音是？',options:['し①','よん①','よん②','し⓪'],answer:1,explanation:'数字4常读「よん①」（因「し」与「死」同音而避讳）。'},
-                {id:"v14",type:"choice",question:'数字「7」的日语读音是？',options:['しち②','なな①','しち⓪','なな⓪'],answer:1,explanation:'数字7常读「なな①」（因「しち」与「死」相近而避讳）。'},
-                {id:"v15",type:"fill",question:'「あなた」的意思是____。',answer:'你',acceptAnswers:['你','您'],explanation:'「あなた」意为"你、您"。'},
-                {id:"v16",type:"fill",question:'「名前」的读音是____。',answer:'なまえ',acceptAnswers:['なまえ','なまえ⓪'],explanation:'「名前」读音为「なまえ⓪」。'},
-                {id:"v17",type:"fill",question:'「朝」的读音是____。',answer:'あさ',acceptAnswers:['あさ','あさ①'],explanation:'「朝」读音为「あさ①」。'},
-                {id:"v18",type:"fill",question:'「午後」的意思是____。',answer:'下午',acceptAnswers:['下午','午后'],explanation:'「午後（ごご①）」意为"下午，午后"。'},
-                {id:"v19",type:"fill",question:'「学校」的读音是____。',answer:'がっこう',acceptAnswers:['がっこう','がっこう⓪'],explanation:'「学校」读音为「がっこう⓪」。'},
-                {id:"v20",type:"fill",question:'数字「100」的日语读音是____。',answer:'ひゃく',acceptAnswers:['ひゃく','ひゃく②'],explanation:'数字100读「ひゃく②」。'}
-              ]},
-              {id:"grammar",name:"语法",questions:[
-                {id:"g1",type:"choice",question:'「一時」的读音是？',options:['いちじ②','いちじ①','いちじ③','いちじ⓪'],answer:0,explanation:'「一時」读音为「いちじ②」，指"一点"。'},
-                {id:"g2",type:"choice",question:'「四時」的读音是？',options:['よじ①','よじ②','しじ①','よじ⓪'],answer:0,explanation:'「四時」读音为「よじ①」。'},
-                {id:"g3",type:"choice",question:'「九時」的读音是？',options:['くじ①','くじ⓪','きゅうじ②','くじ②'],answer:0,explanation:'「九時」读音为「くじ①」。'},
-                {id:"g4",type:"choice",question:'表达"几点半"时用？',options:['~時ごろ','~時半','~時分','~時間'],answer:1,explanation:'"几点半"读作「~時半（じはん）」。'},
-                {id:"g5",type:"choice",question:'表达"大约几点"时用？',options:['~時半','~時ごろ','~時分','~時間'],answer:1,explanation:'"大约几点"用「~時ごろ」。'},
-                {id:"g6",type:"choice",question:'「一分」的读音是？',options:['いっぷん①','いちふん①','いちぷん①','いっぷん⓪'],answer:0,explanation:'「一分」读音为「いっぷん①」。'},
-                {id:"g7",type:"choice",question:'「三十分」的读音是？',options:['さんじゅっぷん③','さんじっぷん①','さんじゅうぶん①','さんじゅっぷん②'],answer:0,explanation:'「三十分」读音为「さんじゅっぷん③」。'},
-                {id:"g8",type:"choice",question:'「図書館は朝九時から夜十時までです」中「から」表示？',options:['结束','开始','经过','到达'],answer:1,explanation:'「から」表示"从…开始"。'},
-                {id:"g9",type:"choice",question:'「アパートから学校までは800メートルです」中「まで」表示？',options:['开始','结束','到…为止','经过'],answer:2,explanation:'「まで」表示"到…（结束、为止）"。'},
-                {id:"g10",type:"choice",question:'名词「学校」的简体非过去时肯定形式是？',options:['学校です','学校だ','学校ではない','学校だった'],answer:1,explanation:'「です」的简体为「だ」，所以是「学校だ」。'},
-                {id:"g11",type:"choice",question:'名词「学校」的简体过去时肯定形式是？',options:['学校だ','学校だった','学校です','学校でした'],answer:1,explanation:'「でした」的简体为「だった」，所以是「学校だった」。'},
-                {id:"g12",type:"choice",question:'「会議は三時半までです」的意思是？',options:['会议三点半开始','会议三点半结束','会议有三点半','会议到三点半'],answer:1,explanation:'「まで」表示"到…为止"，所以会议三点半结束。'},
-                {id:"g13",type:"fill",question:'数字「10」读作____。',answer:'じゅう',acceptAnswers:['じゅう','じゅう①'],explanation:'数字10读「じゅう①」。'},
-                {id:"g14",type:"fill",question:'数字「300」读作____。',answer:'さんびゃく',acceptAnswers:['さんびゃく','さんびゃく①'],explanation:'数字300读「さんびゃく①」。'},
-                {id:"g15",type:"fill",question:'表达"大约一个小时"在「一時間」后加____。',answer:'ぐらい',acceptAnswers:['ぐらい'],explanation:'时间段约数加「ぐらい」。'},
-                {id:"g16",type:"translate",question:'请翻译："现在8点45分，快上课了。"',reference:'今は8時45分で、そろそろ授業の時間です。',hint:'使用「で」中顿+「そろそろ」',explanation:'「そろそろ」表示"快要"。'},
-                {id:"g17",type:"translate",question:'请翻译："从早上9点到下午4点。"',reference:'朝9時から午後4時までです。',hint:'使用「から…まで」',explanation:'「から」开始，「まで」结束。'},
-                {id:"g18",type:"translate",question:'请翻译："会议到3点半结束。"',reference:'会議は三時半までです。',hint:'使用「まで」',explanation:'「まで」表示"到…为止"。'},
-                {id:"g19",type:"translate",question:'请翻译："从公寓到学校大概800米。"',reference:'アパートから学校までは800メートルぐらいです。',hint:'使用「から…まで」+「ぐらい」',explanation:'「ぐらい」表示"大概"。'},
-                {id:"g20",type:"translate",question:'请翻译："（这个）是学校。"（简体）',reference:'学校だ。',hint:'使用「だ」',explanation:'「です」的简体是「だ」。'}
-              ]},
-              {id:"reading",name:"课文",questions:[
-                {id:"r1",type:"choice",question:'桥本说「今は8時45分」时提到的现在时间是？',options:['8点15分','8点45分','9点45分','8点30分'],answer:1,explanation:'桥本说「今は8時45分」。'},
-                {id:"r2",type:"choice",question:'「そろそろ授業の時間です」的意思是？',options:['已经下课了','快上课了','正在上课','没有课'],answer:1,explanation:'「そろそろ」表示"快要"。'},
-                {id:"r3",type:"choice",question:'「じゃ、またね」的意思是？',options:['再见','早上好','谢谢','对不起'],answer:0,explanation:'「じゃ、またね」是道别用语，意为"再见"。'},
-                {id:"r4",type:"choice",question:'「あのう」用于？',options:['道谢','道歉','引起注意','道别'],answer:2,explanation:'「あのう」用于引起对方注意，相当于"那个/请问"。'},
-                {id:"r5",type:"choice",question:'「ありがとうございます」是什么意思？',options:['再见','谢谢','对不起','不用谢'],answer:1,explanation:'「ありがとうございます」意为"谢谢"。'},
-                {id:"r6",type:"choice",question:'当对方说「ありがとう」时，回应"不用谢"的客气话是？',options:['すみません','どういたしまして','じゃ、またね','ほら'],answer:1,explanation:'「どういたしまして」意为"不用谢"。'},
-                {id:"r7",type:"choice",question:'「すみません」除了"对不起"还表示？',options:['谢谢','不好意思；打扰一下','再见','加油'],answer:1,explanation:'「すみません」还有"不好意思；打扰一下"的含义。'},
-                {id:"r8",type:"choice",question:'「ほら」用于？',options:['道谢','提醒对方注意','道歉','问候'],answer:1,explanation:'「ほら」用于提醒对方注意，相当于"你看"。'}
-              ]},
-              {id:"culture",name:"趣味拓展",questions:[
-                {id:"c1",type:"choice",question:'日语数字「4」忌讳读作「し」，因为与哪个字同音？',options:['死','苦','湿','使'],answer:0,explanation:'「し」与「死」同音，所以避讳改读「よん」。'},
-                {id:"c2",type:"choice",question:'日语数字「9」忌讳读作「く」，因为与哪个字同音？',options:['死','苦','库','哭'],answer:1,explanation:'「く」与「苦」同音，所以避讳改读「きゅう」。'},
-                {id:"c3",type:"choice",question:'「一月」的读音是？',options:['いちがつ④','いちがつ①','いちがつ③','いちがつ⓪'],answer:0,explanation:'「一月」读音为「いちがつ④」。'},
-                {id:"c4",type:"choice",question:'「四月」的读音是？',options:['よんがつ','しがつ③','よがつ','しがつ①'],answer:1,explanation:'「四月」读音为「しがつ③」（月份沿用旧读音「し」）。'},
-                {id:"c5",type:"choice",question:'「一日」（一号）的读音是？',options:['いちにち','ついたち④','いちがつ','ふつか'],answer:1,explanation:'「一日」读音为「ついたち④」。'},
-                {id:"c6",type:"choice",question:'「十日」的读音是？',options:['とおか⓪','じゅうにち①','とおか①','じゅうか⓪'],answer:0,explanation:'「十日」读音为「とおか⓪」。'},
-                {id:"c7",type:"choice",question:'「二十日」的读音是？',options:['にじゅうにち','はつか⓪','はつか①','にじゅうか'],answer:1,explanation:'「二十日」读音为「はつか⓪」。'},
-                {id:"c8",type:"choice",question:'「二日」的读音是？',options:['ふつか⓪','ににち','ふつか①','にじつ'],answer:0,explanation:'「二日」读音为「ふつか⓪」。'}
-              ]}
-            ]
-          }
-
-
-          }
-      unit2: {
-        name: "第二单元",
-        lessons: {
-          lesson1: {
-            name: "第1课「案内」",
-            sections: [
-              {id:"vocab",name:"单词",questions:[
-                {id:"v1",type:"choice",question:'「案内」的正确读音是？',options:['あんない③','あんない⓪','あんない①','あんない②'],answer:0,explanation:'读音为「あんない③」。'},
-                {id:"v2",type:"choice",question:'「みなさん」的意思是？',options:['大家','你','我','老师'],answer:0,explanation:'「みなさん」意为"大家"。'},
-                {id:"v3",type:"choice",question:'「ガイド」的意思是？',options:['指南','引导；导游','道路','方向'],answer:1,explanation:'意为"引导、导游"。'},
-                {id:"v4",type:"choice",question:'「シンボル」的意思是？',options:['符号','象征','标志','记号'],answer:1,explanation:'意为"象征"。'},
-                {id:"v5",type:"fill",question:'「鐘楼」的读音是____。',answer:'しょうろう',acceptAnswers:['しょうろう','しょうろう⓪'],explanation:'读音为「しょうろう⓪」。'},
-                {id:"v6",type:"fill",question:'「建物」的读音是____。',answer:'たてもの',acceptAnswers:['たてもの','たてもの②③'],explanation:'读音为「たてもの②③」。'},
-                {id:"v7",type:"fill",question:'「部活」的读音是____。',answer:'ぶかつ',acceptAnswers:['ぶかつ','ぶかつ⓪'],explanation:'读音为「ぶかつ⓪」。'},
-                {id:"v8",type:"fill",question:'「元気」的读音是____。',answer:'げんき',acceptAnswers:['げんき','げんき①'],explanation:'读音为「げんき①」。'},
-              ]},
-              {id:"grammar",name:"语法",questions:[
-                {id:"g1",type:"choice",question:'一类形容词词尾特征是？',options:['以「い」结尾','以「だ」结尾','以「る」结尾','以「く」结尾'],answer:0,explanation:'一类形容词以「い」结尾。'},
-                {id:"g2",type:"choice",question:'二类形容词词尾是？',options:['い','だ','る','う'],answer:1,explanation:'二类形容词词尾为「だ」。'},
-                {id:"g3",type:"choice",question:'疑问词做主语用什么助词？',options:['は','が','を','に'],answer:1,explanation:'疑问词做主语用「が」。'},
-                {id:"g4",type:"fill",question:'「月曜日」的读音是____。',answer:'げつようび',acceptAnswers:['げつようび'],explanation:'读音为「げつようび」。'},
-                {id:"g5",type:"translate",question:'请翻译："今天是星期五。"',reference:'今日は金曜日です。',hint:'使用「～曜日」',explanation:'「金曜日」意为"星期五"。'},
-              ]},
-              {id:"reading",name:"课文",questions:[
-                {id:"r1",type:"choice",question:'黑川学姐是几年级？',options:['一年级','二年级','三年级','老师'],answer:1,explanation:'黑川说「芸術学部の二年生」。'},
-                {id:"r2",type:"choice",question:'钟楼是什么的象征？',options:['神立町','神立大学','艺术学部','体育馆'],answer:1,explanation:'黑川说「この鐘楼は神立大学のシンボル」。'},
-                {id:"r3",type:"choice",question:'王小明看到体育馆后说什么？',options:['わあ、広いですね','わあ、高いですね','わあ、大きいですね','わあ、綺麗ですね'],answer:0,explanation:'王小明说「わあ、広い体育館ですね」。'},
-                {id:"r4",type:"choice",question:'「どうぞ」在课文中的完整表达是？',options:['どうぞお入りください','どうぞ食べてください','どうぞ見てください','どうぞ座ってください'],answer:0,explanation:'完整表达为「どうぞお入りください」。'},
-              ]},
-              {id:"culture",name:"趣味拓展",questions:[
-                {id:"c1",type:"choice",question:'「嫌い」属于几类形容词？',options:['AⅠ','AⅡ','名词','动词'],answer:1,explanation:'「嫌い」是AⅡ，需特殊记忆。'},
-                {id:"c2",type:"choice",question:'用言包括哪两类词？',options:['名词和代词','形容词和动词','名词和形容词','副词和连词'],answer:1,explanation:'用言包括形容词和动词。'},
-                {id:"c3",type:"choice",question:'体言包括哪些词？',options:['名词、代词、数词','动词、形容词','副词、连词','助词、助动词'],answer:0,explanation:'体言包含名词、指示代词、数词等。'},
-                {id:"c4",type:"choice",question:'正式场合敲门时说什么？',options:['こんにちは','ごめんください','すみません','おはよう'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'},
-              ]}
-            ]
-          },
-          lesson2: {
-            name: "第2课「大学の授業」",
-            sections: [
-              {id:"vocab",name:"单词",questions:[
-                {id:"v1",type:"choice",question:'「顔色」的读音是？',options:['かおいろ⓪','かおいろ①','かおいろ②','かおいろ③'],answer:0,explanation:'读音为「かおいろ⓪」。'},
-                {id:"v2",type:"choice",question:'「大丈夫」的读音是？',options:['だいじょうぶ③','だいじょうぶ①','だいじょうぶ②','だいじょうぶ⓪'],answer:0,explanation:'读音为「だいじょうぶ③」。'},
-                {id:"v3",type:"choice",question:'「難しい」的意思是？',options:['容易的','难的','有趣的','无聊的'],answer:1,explanation:'意为"难的、难以理解的"。'},
-                {id:"v4",type:"choice",question:'「ペラペラ」的意思是？',options:['结巴','流利','安静','大声'],answer:1,explanation:'意为"（外语）流利"。'},
-                {id:"v5",type:"fill",question:'「生活」的读音是____。',answer:'せいかつ',acceptAnswers:['せいかつ','せいかつ⓪'],explanation:'读音为「せいかつ⓪」。'},
-                {id:"v6",type:"fill",question:'「言葉」的意思是____。',answer:'语言',acceptAnswers:['语言','话'],explanation:'意为"语言、话"。'},
-                {id:"v7",type:"fill",question:'「準備」的读音是____。',answer:'じゅんび',acceptAnswers:['じゅんび','じゅんび①'],explanation:'读音为「じゅんび①」。'},
-                {id:"v8",type:"fill",question:'「簡単」的意思是____。',answer:'简单',acceptAnswers:['简单'],explanation:'意为"简单的"。'},
-              ]},
-              {id:"grammar",name:"语法",questions:[
-                {id:"g1",type:"choice",question:'AⅠ「寒い」的敬体否定是？',options:['寒くないです','寒いないです','寒いではありません','寒くあります'],answer:0,explanation:'AⅠ否定「い」→「く」+「ないです」。'},
-                {id:"g2",type:"choice",question:'「S＋から」表示什么？',options:['原因','转折','并列','目的'],answer:0,explanation:'「から」表示主观原因。'},
-                {id:"g3",type:"choice",question:'「そんなに～ない」表示？',options:['非常','不怎么','完全不','总是'],answer:1,explanation:'意为"不怎么……"。'},
-                {id:"g4",type:"fill",question:'「あまり」后接____形式。',answer:'否定',acceptAnswers:['否定','ない'],explanation:'「あまり～ない」表示"不怎么"。'},
-                {id:"g5",type:"translate",question:'请翻译："日本料理很好吃。"',reference:'日本料理はおいしいです。',hint:'使用AⅠ形容词谓语句',explanation:'AⅠ直接加「です」。'},
-                {id:"g6",type:"translate",question:'请翻译："因为现在很忙。"',reference:'今は忙しいですから。',hint:'使用「から」',explanation:'「から」表示原因。'},
-              ]},
-              {id:"reading",name:"课文",questions:[
-                {id:"r1",type:"choice",question:'木村回家时说的第一句话是？',options:['こんにちは','ただいま','お帰り','お疲れ様'],answer:1,explanation:'木村说「ただいま」。'},
-                {id:"r2",type:"choice",question:'王小明觉得哪门课难？',options:['会话课','语法课','阅读课','听力课'],answer:1,explanation:'王说「文法の授業が難しい」。'},
-                {id:"r3",type:"choice",question:'木村说日语学习靠什么？',options:['天赋','每天的努力','老师','教材'],answer:1,explanation:'木村说「言葉の勉強は日々の努力です」。'},
-                {id:"r4",type:"choice",question:'「お帰りなさい」是什么意思？',options:['我回来了','欢迎回家','辛苦了','再见'],answer:1,explanation:'意为"欢迎回家"。'},
-              ]},
-              {id:"culture",name:"趣味拓展",questions:[
-                {id:"c1",type:"choice",question:'日本人回家时说什么？',options:['こんにちは','ただいま','さようなら','おはよう'],answer:1,explanation:'「ただいま」是回家时的惯用句。'},
-                {id:"c2",type:"choice",question:'「お疲れ様です」用于？',options:['早上见面','道别','慰问辛劳','道歉'],answer:2,explanation:'用于表达"您辛苦了"。'},
-                {id:"c3",type:"choice",question:'日语「お～」属于什么语？',options:['尊敬语','谦让语','美化语','丁宁语'],answer:2,explanation:'「お～」属于美化语。'},
-                {id:"c4",type:"choice",question:'音读词前通常加什么表礼貌？',options:['お','ご','を','は'],answer:1,explanation:'音读词前通常加「ご」。'},
-              ]}
-            ]
-          }
-        }
-      };
+      }
+    }
+  }
+};
 
 // ===== 状态管理 =====
 const state = {};
