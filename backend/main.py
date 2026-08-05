@@ -77,6 +77,19 @@ def init_db():
             results     TEXT NOT NULL DEFAULT '{}',
             FOREIGN KEY (user_id) REFERENCES users(id)
         );
+        CREATE TABLE IF NOT EXISTS progress (
+            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id     INTEGER NOT NULL,
+            book        TEXT NOT NULL,
+            unit        TEXT NOT NULL,
+            lesson      TEXT NOT NULL,
+            section     TEXT NOT NULL,
+            correct     INTEGER NOT NULL,
+            total       INTEGER NOT NULL,
+            updated_at  TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            UNIQUE(user_id, book, unit, lesson, section)
+        );
         CREATE INDEX IF NOT EXISTS idx_records_user ON records(user_id);
     """)
     conn.commit()
@@ -119,6 +132,14 @@ class RegisterReq(BaseModel):
 class LoginReq(BaseModel):
     username: str
     password: str
+
+class ProgressReq(BaseModel):
+    book: str
+    unit: str
+    lesson: str
+    section: str
+    correct: int
+    total: int
 
 class RecordReq(BaseModel):
     time: str
@@ -211,6 +232,47 @@ def save_record(req: RecordReq, user=Depends(get_current_user)):
 def clear_records(user=Depends(get_current_user)):
     conn = get_db()
     conn.execute("DELETE FROM records WHERE user_id=?", (user["user_id"],))
+    conn.commit()
+    conn.close()
+    return {"status": "ok"}
+
+@app.post("/api/progress")
+def save_progress(req: ProgressReq, user=Depends(get_current_user)):
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    conn = get_db()
+    existing = conn.execute(
+        "SELECT id, correct FROM progress WHERE user_id=? AND book=? AND unit=? AND lesson=? AND section=?",
+        (user["user_id"], req.book, req.unit, req.lesson, req.section)
+    ).fetchone()
+    if existing:
+        if req.correct > existing["correct"]:
+            conn.execute(
+                "UPDATE progress SET correct=?, total=?, updated_at=? WHERE id=?",
+                (req.correct, req.total, now, existing["id"])
+            )
+    else:
+        conn.execute(
+            "INSERT INTO progress (user_id, book, unit, lesson, section, correct, total, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (user["user_id"], req.book, req.unit, req.lesson, req.section, req.correct, req.total, now)
+        )
+    conn.commit()
+    conn.close()
+    return {"status": "ok"}
+
+@app.get("/api/progress")
+def get_progress(user=Depends(get_current_user)):
+    conn = get_db()
+    rows = conn.execute(
+        "SELECT book, unit, lesson, section, correct, total, updated_at FROM progress WHERE user_id=? ORDER BY book, unit, lesson, section",
+        (user["user_id"],)
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+@app.delete("/api/progress")
+def clear_progress(user=Depends(get_current_user)):
+    conn = get_db()
+    conn.execute("DELETE FROM progress WHERE user_id=?", (user["user_id"],))
     conn.commit()
     conn.close()
     return {"status": "ok"}
