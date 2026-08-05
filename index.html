@@ -288,6 +288,293 @@ async function doRegister(){
 function doLogout(){if(confirm('确定要退出登录吗？')){clearToken();showLogin();document.getElementById('loginUser').value='';document.getElementById('loginPass').value=''}}
 
 // ===== 题目数据（多册支持） =====
+,
+          lesson3: {
+            name: "第3课「日本の漫画、大好き！」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「漫画」的读音是？',options:['まんが⓪','まんが①','まんが②','まんが③'],answer:0,explanation:'读音为「まんが⓪」。'},
+                {id:"v2",type:"choice",question:'「アニメ」的意思是？',options:['漫画','动画','游戏','电影'],answer:1,explanation:'意为"动漫（动画）"。'},
+                {id:"v3",type:"choice",question:'「ゲーム」的读音是？',options:['ゲーム①','ゲーム②','ゲーム③','ゲーム⓪'],answer:0,explanation:'读音为「ゲーム①」。'},
+                {id:"v4",type:"choice",question:'「意味」的意思是？',options:['意义','意味','味道','意见'],answer:0,explanation:'意为"意思、意义"。'},
+                {id:"v5",type:"fill",question:'「親切」的读音是____。',answer:'しんせつ',acceptAnswers:['しんせつ','しんせつ①'],explanation:'读音为「しんせつ①」。'},
+                {id:"v6",type:"fill",question:'「最高」的意思是____。',answer:'最棒',acceptAnswers:['最棒','最高','最好的'],explanation:'意为"最棒的、最高的"。'},
+                {id:"v7",type:"fill",question:'「今週」的读音是____。',answer:'こんしゅう',acceptAnswers:['こんしゅう','こんしゅう⓪'],explanation:'读音为「こんしゅう⓪」。'},
+                {id:"v8",type:"fill",question:'「馬が合います」的意思是____。',answer:'合得来',acceptAnswers:['合得来','情投意合'],explanation:'惯用句，意为"合得来"。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'AⅠ过去时肯定「い」→？',options:['かった','く','た','だ'],answer:0,explanation:'AⅠ过去时肯定「い」→「かった」+「です」。'},
+                {id:"g2",type:"choice",question:'AⅡ「好きだ」的过去时肯定是？',options:['好きでした','好きだった','好きかった','好きでした'],answer:0,explanation:'AⅡ过去时肯定「だ」→「でした」。'},
+                {id:"g3",type:"choice",question:'「Nはどうでしたか」用于询问？',options:['现在的事','过去的事','未来的事','习惯'],answer:1,explanation:'用于询问过去事物的性质。'},
+                {id:"g4",type:"choice",question:'对象格助词「が」用于表达？',options:['好恶','时间','地点','工具'],answer:0,explanation:'表达好恶、希望、能力等。'},
+                {id:"g5",type:"fill",question:'「N1はN2と同じです」的意思是____。',answer:'N1和N2一样',acceptAnswers:['N1和N2一样','N1与N2相同'],explanation:'意为"N1和N2一样"。'},
+                {id:"g6",type:"translate",question:'请翻译："昨天的拉面很好吃。"',reference:'昨日のラーメンはおいしかったです。',hint:'使用形容词过去时',explanation:'AⅠ过去时「い」→「かった」。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明在书店遇到了谁？',options:['木村','桥本','黑川','山本'],answer:1,explanation:'遇到了桥本。'},
+                {id:"r2",type:"choice",question:'「ACG」代表什么？',options:['动画、漫画、游戏','动画、漫画、电影','动画、游戏、音乐','漫画、游戏、小说'],answer:0,explanation:'ACG是Anime、Comics、Games的缩写。'},
+                {id:"r3",type:"choice",question:'王小明喜欢什么漫画？',options:['火影忍者','海贼王','死神','龙珠'],answer:1,explanation:'王说「ONEPIECEが好きです」。'},
+                {id:"r4",type:"choice",question:'「私たちは馬が合いますね」是什么意思？',options:['我们是马','我们合得来','我们喜欢马','我们骑马'],answer:1,explanation:'意为"我们很合得来"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「猫の手も借りたい」的意思是？',options:['想借猫的手','忙得不可开交','想养猫','喜欢猫'],answer:1,explanation:'意为"忙得不可开交"。'},
+                {id:"c2",type:"choice",question:'「鶴の一声」的意思是？',options:['鹤的叫声','一言九鼎','鹤立鸡群','一声鹤鸣'],answer:1,explanation:'意为"一言九鼎"。'},
+                {id:"c3",type:"choice",question:'「同じ」是几类形容词？',options:['AⅠ','AⅡ','名词','动词'],answer:1,explanation:'「同じ」是AⅡ。'},
+                {id:"c4",type:"choice",question:'「けど」的口语形式还有哪些？',options:['けれど','けれども','以上都是','以上都不是'],answer:2,explanation:'「けど」「けれど」「けれども」都是口语形式。'},
+              ]}
+            ]
+          },
+          lesson4: {
+            name: "第4课「賑やかな大都市」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「ショッピング」的意思是？',options:['购物','逛街','商店','商品'],answer:0,explanation:'意为"购物"。'},
+                {id:"v2",type:"choice",question:'「多い」的读音是？',options:['おおい①②','おおい①','おおい②','おおい③'],answer:0,explanation:'读音为「おおい①②」。'},
+                {id:"v3",type:"choice",question:'「地下鉄」的读音是？',options:['ちかてつ⓪','ちかてつ①','ちかてつ②','ちかてつ③'],answer:0,explanation:'读音为「ちかてつ⓪」。'},
+                {id:"v4",type:"choice",question:'「いちばん」的意思是？',options:['最','第一','一番','一次'],answer:0,explanation:'意为"最"。'},
+                {id:"v5",type:"fill",question:'「まさに」的意思是____。',answer:'真正',acceptAnswers:['真正','的确','实在'],explanation:'意为"真正；的确；实在"。'},
+                {id:"v6",type:"fill",question:'「交通」的读音是____。',answer:'こうつう',acceptAnswers:['こうつう','こうつう⓪'],explanation:'读音为「こうつう⓪」。'},
+                {id:"v7",type:"fill",question:'「便利」的意思是____。',answer:'方便',acceptAnswers:['方便','便利'],explanation:'意为"便利、方便"。'},
+                {id:"v8",type:"fill",question:'「安い」的读音是____。',answer:'やすい',acceptAnswers:['やすい','やすい②'],explanation:'读音为「やすい②」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'主谓谓语句「N1はN2がA」中N1和N2是什么关系？',options:['整体和部分','并列','选择','递进'],answer:0,explanation:'N1和N2是整体和部分的关系。'},
+                {id:"g2",type:"choice",question:'「なぜ」「どうして」「なんで」哪个最口语？',options:['なぜ','どうして','なんで','都一样'],answer:2,explanation:'「なんで」较为口语。'},
+                {id:"g3",type:"choice",question:'「N1でN2がいちばん～」中「で」提示什么？',options:['范围','工具','地点','原因'],answer:0,explanation:'「で」提示范围。'},
+                {id:"g4",type:"choice",question:'AⅠ形容词て形「おいしい」→？',options:['おいしくて','おいしいて','おいしくて','おいしくて'],answer:0,explanation:'AⅠて形「い」→「く」+「て」。'},
+                {id:"g5",type:"fill",question:'AⅡ「便利だ」的て形是____。',answer:'便利で',acceptAnswers:['便利で'],explanation:'AⅡて形「だ」→「で」。'},
+                {id:"g6",type:"translate",question:'请翻译："这家店的东西又好吃又便宜。"',reference:'この店の料理はおいしくて安いです。',hint:'使用形容词て形并列',explanation:'用て形连接两个形容词。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明和谁去购物中心？',options:['木村','桥本','黑川','山本'],answer:2,explanation:'黑川学姐带路。'},
+                {id:"r2",type:"choice",question:'王小明说广州的什么和这里一样？',options:['地铁人多','料理好吃','建筑漂亮','天气好'],answer:0,explanation:'王说「広州の地下鉄も人が多い」。'},
+                {id:"r3",type:"choice",question:'为什么这里这么热闹？',options:['因为是市中心','因为是最大家购物中心','因为是周末','因为是节日'],answer:1,explanation:'黑川说「ここがいちばん大きなショッピングセンターですから」。'},
+                {id:"r4",type:"choice",question:'这个购物中心在神立町的什么位置？',options:['东边','西边','正中间','北边'],answer:2,explanation:'黑川说「神立町の真ん中」。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'AⅠ形容词简体非过去时肯定形式是？',options:['词典形','词典形+だ','词典形+です','词典形+ます'],answer:0,explanation:'AⅠ简体非过去时肯定与词典形相同。'},
+                {id:"c2",type:"choice",question:'AⅡ形容词简体非过去时肯定形式是？',options:['词典形','词典形（词尾だ）','词典形+です','词典形+ます'],answer:1,explanation:'AⅡ简体非过去时肯定为词典形（词尾だ）。'},
+                {id:"c3",type:"choice",question:'「へえ」表示什么语气？',options:['肯定','惊讶','否定','疑问'],answer:1,explanation:'用于表示惊讶、佩服等。'},
+                {id:"c4",type:"choice",question:'「そうだ」是什么的简体？',options:['そうです','そうします','そうでした','そうなります'],answer:0,explanation:'「そうです」的简体形式。'},
+              ]}
+            ]
+          }
+        }
+  
+      unit3: {
+        name: "第三单元",
+        lessons: {
+          lesson1: {
+            name: "第1课「タピオカ」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「タピオカ」的意思是？',options:['珍珠奶茶','咖啡','果汁','汽水'],answer:0,explanation:'意为"珍珠奶茶"。'},
+                {id:"v2",type:"choice",question:'「帰る」的读音是？',options:['かえる①','かえる②','かえる③','かえる⓪'],answer:0,explanation:'读音为「かえる①」。'},
+                {id:"v3",type:"choice",question:'「結構です」在多数情况下表示？',options:['同意','拒绝','感谢','疑问'],answer:1,explanation:'多数情况下用于委婉拒绝。'},
+                {id:"v4",type:"fill",question:'「毎日」的读音是____。',answer:'まいにち',acceptAnswers:['まいにち','まいにち①'],explanation:'读音为「まいにち①」。'},
+                {id:"v5",type:"fill",question:'「一緒に」的意思是____。',answer:'一起',acceptAnswers:['一起','一同'],explanation:'意为"一起"。'},
+                {id:"v6",type:"fill",question:'「買う」的读音是____。',answer:'かう',acceptAnswers:['かう','かう①'],explanation:'读音为「かう①」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'动词分为几类？',options:['两类','三类','四类','五类'],answer:1,explanation:'分为一类VⅠ、二类VⅡ、三类VⅢ。'},
+                {id:"g2",type:"choice",question:'「する」属于几类动词？',options:['VⅠ','VⅡ','VⅢ','VⅣ'],answer:2,explanation:'「する」是VⅢ（サ変）。'},
+                {id:"g3",type:"choice",question:'「来る」属于几类动词？',options:['VⅠ','VⅡ','VⅢ','VⅣ'],answer:2,explanation:'「来る」是VⅢ（カ変）。'},
+                {id:"g4",type:"choice",question:'自动词不需要什么？',options:['动作主体','动作客体','动词','助词'],answer:1,explanation:'自动词不需要动作客体（宾语）。'},
+                {id:"g5",type:"choice",question:'他动词用哪个助词提示客体？',options:['は','が','を','に'],answer:2,explanation:'他动词用「を」提示动作客体。'},
+                {id:"g6",type:"fill",question:'VⅠ「書く」的ます形是____。',answer:'書きます',acceptAnswers:['書きます'],explanation:'VⅠ「*う」→「*い」+「ます」。'},
+                {id:"g7",type:"fill",question:'「ほとんど～ない」的意思是____。',answer:'几乎不',acceptAnswers:['几乎不','基本不'],explanation:'表示某个动作发生频率非常低。'},
+                {id:"g8",type:"fill",question:'「全然～ない」的意思是____。',answer:'完全不',acceptAnswers:['完全不','根本不'],explanation:'表达"完全不"。'},
+                {id:"g9",type:"translate",question:'请翻译："我每天写日记。"',reference:'私は毎日日記を書きます。',hint:'使用VⅠます形',explanation:'「書く」→「書きます」。'},
+                {id:"g10",type:"translate",question:'请翻译："在路上的店买奶茶。"',reference:'途中のお店でタピオカを買います。',hint:'使用「で」提示地点',explanation:'「で」提示动作发生地点。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'山本浩史放学后做什么？',options:['回家','跑步','打篮球','买东西'],answer:1,explanation:'山本说「いつもジョギングします」。'},
+                {id:"r2",type:"choice",question:'藤原飞鸟放学后做什么？',options:['直接回宿舍','去运动','去打工','去图书馆'],answer:0,explanation:'藤原说「僕も寮に帰ります」。'},
+                {id:"r3",type:"choice",question:'山本不喝奶茶的原因是什么？',options:['不喜欢甜食','完全不喝奶茶','太贵了','减肥'],answer:1,explanation:'山本说「タピオカはぜんぜん飲みません」。'},
+                {id:"r4",type:"choice",question:'「よかった！」的意思是？',options:['太好了','好吧','好的','可以'],answer:0,explanation:'「いい」的简体过去时，意为"太好了"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「サボる」的意思是？',options:['偷懒','努力','工作','学习'],answer:0,explanation:'由法语sabotage演变而来，意为"偷懒"。'},
+                {id:"c2",type:"choice",question:'「タピる」的意思是？',options:['喝奶茶','逛街','聊天','休息'],answer:0,explanation:'由「タピオカ」演变而来的动词，意为"喝奶茶"。'},
+                {id:"c3",type:"choice",question:'日语中「結構です」常用于？',options:['同意','婉拒','感谢','道歉'],answer:1,explanation:'常用于婉拒对方。'},
+                {id:"c4",type:"choice",question:'「また」用于道别时表示？',options:['永别','再见（短期内会再见）','你好','晚安'],answer:1,explanation:'用于与短时间内会再见的人道别。'},
+              ]}
+            ]
+          },
+          lesson2: {
+            name: "第2课「食事」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「食事」的读音是？',options:['しょくじ⓪','しょくじ①','しょくじ②','しょくじ③'],answer:0,explanation:'读音为「しょくじ⓪」。'},
+                {id:"v2",type:"choice",question:'「おすすめ」的意思是？',options:['推荐','建议','强制','选择'],answer:0,explanation:'意为"推荐"。'},
+                {id:"v3",type:"choice",question:'「辛い」的读音是？',options:['からい②','からい①','からい③','からい⓪'],answer:0,explanation:'读音为「からい②」。'},
+                {id:"v4",type:"fill",question:'「刺身」的意思是____。',answer:'生鱼片',acceptAnswers:['生鱼片'],explanation:'意为"生鱼片"。'},
+                {id:"v5",type:"fill",question:'「欲しい」的意思是____。',answer:'想要',acceptAnswers:['想要'],explanation:'意为"想要"。'},
+                {id:"v6",type:"fill",question:'「飲み物」的读音是____。',answer:'のみもの',acceptAnswers:['のみもの','のみもの②'],explanation:'读音为「のみもの②」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'VⅠ「飲む」的过去时肯定形式是？',options:['飲みました','飲みました','飲みました','飲みました'],answer:0,explanation:'VⅠます→ました。'},
+                {id:"g2",type:"choice",question:'「Nにする」表示什么？',options:['选择、决定','变成','做','制作'],answer:0,explanation:'表示选择或决定，意为"要N"。'},
+                {id:"g3",type:"choice",question:'「だけ」表示什么？',options:['限定','并列','原因','转折'],answer:0,explanation:'表示限定，意为"只、仅仅"。'},
+                {id:"g4",type:"choice",question:'「Nが欲しい」表示什么？',options:['想要N','有N','是N','去N'],answer:0,explanation:'意为"想要N"。'},
+                {id:"g5",type:"fill",question:'动词过去时否定形式是「Vません____」。',answer:'でした',acceptAnswers:['でした'],explanation:'「Vません」+「でした」。'},
+                {id:"g6",type:"translate",question:'请翻译："我选咖喱饭。"',reference:'私はカレーライスにします。',hint:'使用「Nにする」',explanation:'「にする」表示选择。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'大家在哪里吃饭？',options:['学校食堂','料理屋','家里','便利店'],answer:1,explanation:'山本说「みんなよくこの料理屋で食事をします」。'},
+                {id:"r2",type:"choice",question:'藤原为什么不吃咖喱饭？',options:['不喜欢','不吃辣','减肥','过敏'],answer:1,explanation:'藤原说「ほとんど辛いものは食べません」。'},
+                {id:"r3",type:"choice",question:'最后大家点了什么？',options:['拉面','咖喱饭','鸡肉饭','寿司'],answer:2,explanation:'藤原说「僕はチキンライスにします」。'},
+                {id:"r4",type:"choice",question:'王小明最后点了什么饮料？',options:['可乐','水','奶茶','果汁'],answer:1,explanation:'王说「水、お願いします」。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「うーん」表示什么？',options:['肯定','嗯…（犹豫）','否定','惊讶'],answer:1,explanation:'表示犹豫，相当于"嗯……"。'},
+                {id:"c2",type:"choice",question:'「N好き」中的「好き」发音变成？',options:['ずき','すき','づき','さき'],answer:0,explanation:'第一个假名浊化变成「ずき」。'},
+                {id:"c3",type:"choice",question:'日语中男性常用什么自称？',options:['わたし','僕・俺','あたし','うち'],answer:1,explanation:'日本男性常用「僕」或「俺」。'},
+                {id:"c4",type:"choice",question:'关西地区女生常用什么自称？',options:['わたし','あたし','うち','僕'],answer:2,explanation:'关西地区女生常用「うち」。'},
+              ]}
+            ]
+          },
+          lesson3: {
+            name: "第3课「趣味」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「趣味」的读音是？',options:['しゅみ①','しゅみ②','しゅみ③','しゅみ⓪'],answer:0,explanation:'读音为「しゅみ①」。'},
+                {id:"v2",type:"choice",question:'「できる」的意思是？',options:['可以做','可以、会','出来','完成'],answer:1,explanation:'意为"可以、会"。'},
+                {id:"v3",type:"fill",question:'「週末」的读音是____。',answer:'しゅうまつ',acceptAnswers:['しゅうまつ','しゅうまつ⓪'],explanation:'读音为「しゅうまつ⓪」。'},
+                {id:"v4",type:"fill",question:'「弾く」的意思是____。',answer:'弹奏',acceptAnswers:['弹奏','弹'],explanation:'意为"弹奏（乐器）"。'},
+                {id:"v5",type:"fill",question:'「楽しみ」的意思是____。',answer:'期待',acceptAnswers:['期待','乐趣','令人期待的'],explanation:'意为"乐趣；令人期待的"。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'VⅠ否定形式「*う」→？',options:['*あ+ない','*い+ない','*え+ない','*お+ない'],answer:0,explanation:'VⅠ否定「*う」→「*あ」+「ない」。注意词尾「う」→「わ」。'},
+                {id:"g2",type:"choice",question:'「Vることができる」表示什么？',options:['能够做某事','想做某事','正在做某事','做过某事'],answer:0,explanation:'意为"能够做某事"。'},
+                {id:"g3",type:"choice",question:'「しか～ない」表示什么？',options:['只有','很多','全部','总是'],answer:0,explanation:'表示限定，意为"只有"，带有负面情绪。'},
+                {id:"g4",type:"choice",question:'「Vないか」用于什么？',options:['邀请','命令','禁止','请求'],answer:0,explanation:'用于邀请对方一起做某事。'},
+                {id:"g5",type:"fill",question:'格助词「と」提示____对象。',answer:'互动',acceptAnswers:['互动','相互动作','同一动作参与者'],explanation:'提示相互动作的对象或参与者。'},
+                {id:"g6",type:"translate",question:'请翻译："我会弹吉他。"',reference:'ギターを弾くことができる。',hint:'使用「Vることができる」',explanation:'「弾く」+「ことができる」。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'山本的爱好是什么？',options:['音乐','运动','漫画','游戏'],answer:1,explanation:'山本说「よく体育館のプールで泳ぐ」。'},
+                {id:"r2",type:"choice",question:'山本可以游多少米？',options:['300米','600米','900米','1000米'],answer:1,explanation:'山本说「600メートルしかできない」。'},
+                {id:"r3",type:"choice",question:'王小明的爱好是什么？',options:['运动','音乐','漫画','游戏'],answer:1,explanation:'王说「音楽だ。ギターを弾くことができる」。'},
+                {id:"r4",type:"choice",question:'「楽しみだな」表示什么心情？',options:['悲伤','期待','害怕','生气'],answer:1,explanation:'意为"真期待啊"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「よければ」是什么意思？',options:['如果可以的话','好的','如果好','如果不错'],answer:0,explanation:'「いい」的一种假设表达。'},
+                {id:"c2",type:"choice",question:'日语外来语最早可追溯到什么时候？',options:['明治维新时期','江户时代','平安时代','二战时期'],answer:0,explanation:'最早可追溯到明治维新时期。'},
+                {id:"c3",type:"choice",question:'「パン」来自什么语言？',options:['英语','葡萄牙语','法语','西班牙语'],answer:1,explanation:'「パン」来自葡萄牙语。'},
+                {id:"c4",type:"choice",question:'外来语用什么假名标注？',options:['平假名','片假名','汉字','罗马字'],answer:1,explanation:'用片假名标注外来语。'},
+              ]}
+            ]
+          },
+          lesson4: {
+            name: "第4课「私の一日」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「約束」的意思是？',options:['约定','约束','束缚','限制'],answer:0,explanation:'意为"约定；约好"。'},
+                {id:"v2",type:"choice",question:'「遠い」的读音是？',options:['とおい⓪','とおい①','とおい②','とおい③'],answer:0,explanation:'读音为「とおい⓪」。'},
+                {id:"v3",type:"choice",question:'「苦手」的意思是？',options:['苦手','不擅长','辛苦','困难'],answer:1,explanation:'意为"不擅长、对~感到棘手"。'},
+                {id:"v4",type:"fill",question:'「出る」的读音是____。',answer:'でる',acceptAnswers:['でる','でる①'],explanation:'读音为「でる①」。'},
+                {id:"v5",type:"fill",question:'「着く」的意思是____。',answer:'到达',acceptAnswers:['到达'],explanation:'意为"到达"。'},
+                {id:"v6",type:"fill",question:'「相談」的读音是____。',answer:'そうだん',acceptAnswers:['そうだん','そうだん⓪'],explanation:'读音为「そうだん⓪」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'VⅠ「買う」的た形是？',options:['買った','買いた','買うた','買った'],answer:0,explanation:'促音变：「う、つ、る」→「っ」+「た」。'},
+                {id:"g2",type:"choice",question:'VⅠ「書く」的た形是？',options:['書いた','書くた','書きた','書った'],answer:0,explanation:'い音变：「く」→「い」+「た」。'},
+                {id:"g3",type:"choice",question:'VⅠ「飲む」的た形是？',options:['飲んだ','飲みた','飲むた','飲んだ'],answer:0,explanation:'ん音变：「む、ぶ、ぬ」→「ん」+「だ」。'},
+                {id:"g4",type:"choice",question:'格助词「に」提示动作发生时间，后接什么时间名词？',options:['具体时间','模糊时间','所有时间','时间段'],answer:0,explanation:'「に」接在具体时间名词后面。'},
+                {id:"g5",type:"choice",question:'「を」提示出发点时，谓语需是什么动词？',options:['带有"离开"含义的动词','带有"到达"含义的动词','带有"吃"含义的动词','带有"看"含义的动词'],answer:0,explanation:'谓语必须是带有"离开""出发"含义的动词。'},
+                {id:"g6",type:"fill",question:'「バスに乗る」中「に」提示____。',answer:'附着点',acceptAnswers:['附着点','着落点'],explanation:'「に」提示附着点。'},
+                {id:"g7",type:"translate",question:'请翻译："5点18分到达了料理店。"',reference:'5時18分に料理屋に着いた。',hint:'使用「に」提示时间',explanation:'具体时间后用「に」提示。'},
+                {id:"g8",type:"translate",question:'请翻译："我从公寓出发。"',reference:'アパートを出る。',hint:'使用「を」提示出发点',explanation:'「を」与「出る」搭配表示"从~出发"。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明几点从公寓出发？',options:['4点','4点40分','5点','5点18分'],answer:1,explanation:'「4時40分にアパートを出た」。'},
+                {id:"r2",type:"choice",question:'王小明怎么去料理店？',options:['走路','骑自行车','坐公交','坐地铁'],answer:2,explanation:'「バスに乗った」。'},
+                {id:"r3",type:"choice",question:'为什么小明没点拉面？',options:['不喜欢','昨晚吃了','太贵了','卖完了'],answer:1,explanation:'「昨日の夜ラーメンを食べたから」。'},
+                {id:"r4",type:"choice",question:'小明觉得遗憾的是什么？',options:['料理不好吃','没有珍珠奶茶','太贵了','人太多'],answer:1,explanation:'「その店にタピオカがなかった。少し残念だった」。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「お客でいっぱい」的意思是？',options:['客人很多','只有一个客人','客人很少','客人满意'],answer:0,explanation:'「いっぱい」意为"满满的"。'},
+                {id:"c2",type:"choice",question:'「とっても」是什么的口语表达？',options:['とても','ちょっと','やっぱり','すごく'],answer:0,explanation:'「とても」的口语表达，有增强语气的作用。'},
+                {id:"c3",type:"choice",question:'日语词汇三大构成不包括？',options:['和语词','汉字词','外来语','英语词'],answer:3,explanation:'三大构成：和语词、汉字词、外来语。'},
+                {id:"c4",type:"choice",question:'「和語詞」是什么？',options:['日本最原始的词语','中国传入的词语','西方传入的词语','现代创造的词语'],answer:0,explanation:'是日本人最原始、最地道的词语。'},
+              ]}
+            ]
+          }
+        }
+      },
+      unit4: {
+        name: "第四单元",
+        lessons: {
+          lesson1: {
+            name: "第1课「将来」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「偶然」的读音是？',options:['ぐうぜん⓪','ぐうぜん①','ぐうぜん②','ぐうぜん③'],answer:0,explanation:'读音为「ぐうぜん⓪」。'},
+                {id:"v2",type:"choice",question:'「将来」的意思是？',options:['将来','将来','未来','以后'],answer:0,explanation:'意为"将来、未来"。'},
+                {id:"v3",type:"choice",question:'「素敵」的意思是？',options:['极好的','素敌','朴素','敌人'],answer:0,explanation:'意为"极好的、绝妙的"。'},
+                {id:"v4",type:"fill",question:'「初めて」的意思是____。',answer:'第一次',acceptAnswers:['第一次','初次'],explanation:'意为"第一次"。'},
+                {id:"v5",type:"fill",question:'「通る」的读音是____。',answer:'とおる',acceptAnswers:['とおる','とおる①'],explanation:'读音为「とおる①」。'},
+                {id:"v6",type:"fill",question:'「夢」的意思是____。',answer:'梦想',acceptAnswers:['梦想','梦'],explanation:'意为"梦；梦想"。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「Nの前に/Vる前に」表示什么？',options:['在~之前','在~之后','在~期间','在~时候'],answer:0,explanation:'表示"在做~之前"。'},
+                {id:"g2",type:"choice",question:'「を」提示经过场所时，谓语需是什么动词？',options:['移动含义动词','瞬间动词','状态动词','存在动词'],answer:0,explanation:'谓语需是具有移动含义的动词。'},
+                {id:"g3",type:"choice",question:'「Nをください」用于什么场景？',options:['请求','命令','禁止','疑问'],answer:0,explanation:'用于向对方提出请求，意为"请给我~"。'},
+                {id:"g4",type:"choice",question:'「Vたい」表示什么？',options:['想要做某事','能够做某事','正在做某事','做过某事'],answer:0,explanation:'表达动作行为的希望，意为"想做~"。'},
+                {id:"g5",type:"choice",question:'「なる」表示什么？',options:['变化的结果','存在','动作','判断'],answer:0,explanation:'表示变化的结果，意为"变成、成为"。'},
+                {id:"g6",type:"fill",question:'「Nをください」中「ください」是____语。',answer:'请求',acceptAnswers:['请求','敬语'],explanation:'用于请求对方给自己某物。'},
+                {id:"g7",type:"fill",question:'AⅠ「高い」+「なる」→____。',answer:'高くなる',acceptAnswers:['高くなる'],explanation:'AⅠ「い」→「く」+「なる」。'},
+                {id:"g8",type:"translate",question:'请翻译："请给我水。"',reference:'水をください。',hint:'使用「Nをください」',explanation:'在餐厅点餐时常用。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明在书店遇到了谁？',options:['木村','桥本','黑川','山本'],answer:1,explanation:'遇到了桥本。'},
+                {id:"r2",type:"choice",question:'桥本回家前常做什么？',options:['在书店看书','在奶茶店看漫画','在公园散步','在咖啡厅学习'],answer:1,explanation:'桥本说「家へ帰る前にたまにここで漫画を読みます」。'},
+                {id:"r3",type:"choice",question:'王小明将来想做什么？',options:['漫画家','漫画编辑','翻译','老师'],answer:1,explanation:'王说「漫画の編集者になりたい」。'},
+                {id:"r4",type:"choice",question:'「かしこまりました」是什么意思？',options:['知道了（恭敬）','明白了','谢谢','对不起'],answer:0,explanation:'对客人的需求表示"知道了"的恭敬说法。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「少々お待ちください」是什么意思？',options:['请稍等','请进','请坐','请说'],answer:0,explanation:'意为"请您稍微等一下"。'},
+                {id:"c2",type:"choice",question:'「Vたがる」用于表达第几人称的希望？',options:['第一人称','第二人称','第三人称','所有人称'],answer:2,explanation:'用于表达第三人称进行某一动作的愿望。'},
+                {id:"c3",type:"choice",question:'「お願いします」在点餐时相当于？',options:['ください','ありがとう','すみません','いただきます'],answer:0,explanation:'在索取商品或点餐时可用「お願いします」代替「ください」。'},
+                {id:"c4",type:"choice",question:'「海賊王に俺はなる」是哪部作品的名台词？',options:['火影忍者','海贼王','死神','龙珠'],answer:1,explanation:'《ONE PIECE》中主角路飞的经典台词。'},
+              ]}
+            ]
+          },
+          lesson2: {
+            name: "第2课「私の夢」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「見つける」的读音是？',options:['みつける⓪','みつける①','みつける②','みつける③'],answer:0,explanation:'读音为「みつける⓪」。'},
+                {id:"v2",type:"choice",question:'「出会う」的意思是？',options:['相遇','离开','出发','见面'],answer:0,explanation:'意为"相识；遇到"。'},
+                {id:"v3",type:"fill",question:'「翻訳」的读音是____。',answer:'ほんやく',acceptAnswers:['ほんやく','ほんやく⓪'],explanation:'读音为「ほんやく⓪」。'},
+                {id:"v4",type:"fill",question:'「絶対」的意思是____。',answer:'绝对',acceptAnswers:['绝对','一定'],explanation:'意为"绝对，一定"。'},
+                {id:"v5",type:"fill",question:'「発展」的读音是____。',answer:'はってん',acceptAnswers:['はってん','はってん⓪'],explanation:'读音为「はってん⓪」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'「Nの後で」表示什么？',options:['在~之前','在~之后','在~期间','在~时候'],answer:1,explanation:'表示"在做~之后"。'},
+                {id:"g2",type:"choice",question:'存在句「N1にN2がある」中「ある」用于什么？',options:['人或动物','事物','所有','状态'],answer:1,explanation:'「ある」用于表示事物的存在。'},
+                {id:"g3",type:"choice",question:'存在句「N1にN2がいる」中「いる」用于什么？',options:['人或动物','事物','所有','状态'],answer:0,explanation:'「いる」用于表示人或动物的存在。'},
+                {id:"g4",type:"fill",question:'所在句「N1はN2に____」。',answer:'ある/いる',acceptAnswers:['ある','いる','ある/いる'],explanation:'表示"某物在某处"。'},
+                {id:"g5",type:"translate",question:'请翻译："桌子上有电视。"',reference:'机の上にテレビがある。',hint:'使用存在句',explanation:'「ある」表示事物的存在。'},
+                {id:"g6",type:"translate",question:'请翻译："我的房间里有猫。"',reference:'私の部屋に猫がいる。',hint:'使用存在句',explanation:'「いる」表示动物的存在。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'王小明在哪里第一次看到日本漫画？',options:['日本书店','中国书店','网上','朋友家'],answer:1,explanation:'「昔、中国の本屋に、日本の漫画があった」。'},
+                {id:"r2",type:"choice",question:'王小明为什么来日本留学？',options:['喜欢日本文化','想读原文漫画','家人要求','学校交换'],answer:1,explanation:'「日本へ留学に来た。それに、私は漫画の仕事がしたい」。'},
+                {id:"r3",type:"choice",question:'王小明为什么不当漫画家？',options:['不喜欢画画','不会画画','太辛苦','赚钱少'],answer:1,explanation:'王说「私は絵を書くことができない」。'},
+                {id:"r4",type:"choice",question:'「ファイト！！」是什么意思？',options:['加油','战斗','努力','胜利'],answer:0,explanation:'意为"加油！"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「後で」前接动词的什么形式？',options:['词典形','た形','ない形','ます形'],answer:1,explanation:'「後で」前只接「Vた」。'},
+                {id:"c2",type:"choice",question:'否定形式中「が」可换成「は」的作用是？',options:['强调否定','强调肯定','疑问','转折'],answer:0,explanation:'「が」换成「は」用于强调否定。'},
+                {id:"c3",type:"choice",question:'「ファイト」来自什么语言？',options:['英语','法语','德语','西班牙语'],answer:0,explanation:'来自英语fight，意为"加油"。'},
+                {id:"c4",type:"choice",question:'「原文」的意思是？',options:['原文','翻译','版本','原版'],answer:0,explanation:'意为"（未经翻译的）原文"。'},
+              ]}
+            ]
+          }
+        }
+      }    }
 const bookData = {
   book2: {
     name: "第二册 初级基础篇N5",
@@ -510,11 +797,80 @@ const bookData = {
 
 
           }
+      unit2: {
+        name: "第二单元",
+        lessons: {
+          lesson1: {
+            name: "第1课「案内」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「案内」的正确读音是？',options:['あんない③','あんない⓪','あんない①','あんない②'],answer:0,explanation:'读音为「あんない③」。'},
+                {id:"v2",type:"choice",question:'「みなさん」的意思是？',options:['大家','你','我','老师'],answer:0,explanation:'「みなさん」意为"大家"。'},
+                {id:"v3",type:"choice",question:'「ガイド」的意思是？',options:['指南','引导；导游','道路','方向'],answer:1,explanation:'意为"引导、导游"。'},
+                {id:"v4",type:"choice",question:'「シンボル」的意思是？',options:['符号','象征','标志','记号'],answer:1,explanation:'意为"象征"。'},
+                {id:"v5",type:"fill",question:'「鐘楼」的读音是____。',answer:'しょうろう',acceptAnswers:['しょうろう','しょうろう⓪'],explanation:'读音为「しょうろう⓪」。'},
+                {id:"v6",type:"fill",question:'「建物」的读音是____。',answer:'たてもの',acceptAnswers:['たてもの','たてもの②③'],explanation:'读音为「たてもの②③」。'},
+                {id:"v7",type:"fill",question:'「部活」的读音是____。',answer:'ぶかつ',acceptAnswers:['ぶかつ','ぶかつ⓪'],explanation:'读音为「ぶかつ⓪」。'},
+                {id:"v8",type:"fill",question:'「元気」的读音是____。',answer:'げんき',acceptAnswers:['げんき','げんき①'],explanation:'读音为「げんき①」。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'一类形容词词尾特征是？',options:['以「い」结尾','以「だ」结尾','以「る」结尾','以「く」结尾'],answer:0,explanation:'一类形容词以「い」结尾。'},
+                {id:"g2",type:"choice",question:'二类形容词词尾是？',options:['い','だ','る','う'],answer:1,explanation:'二类形容词词尾为「だ」。'},
+                {id:"g3",type:"choice",question:'疑问词做主语用什么助词？',options:['は','が','を','に'],answer:1,explanation:'疑问词做主语用「が」。'},
+                {id:"g4",type:"fill",question:'「月曜日」的读音是____。',answer:'げつようび',acceptAnswers:['げつようび'],explanation:'读音为「げつようび」。'},
+                {id:"g5",type:"translate",question:'请翻译："今天是星期五。"',reference:'今日は金曜日です。',hint:'使用「～曜日」',explanation:'「金曜日」意为"星期五"。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'黑川学姐是几年级？',options:['一年级','二年级','三年级','老师'],answer:1,explanation:'黑川说「芸術学部の二年生」。'},
+                {id:"r2",type:"choice",question:'钟楼是什么的象征？',options:['神立町','神立大学','艺术学部','体育馆'],answer:1,explanation:'黑川说「この鐘楼は神立大学のシンボル」。'},
+                {id:"r3",type:"choice",question:'王小明看到体育馆后说什么？',options:['わあ、広いですね','わあ、高いですね','わあ、大きいですね','わあ、綺麗ですね'],answer:0,explanation:'王小明说「わあ、広い体育館ですね」。'},
+                {id:"r4",type:"choice",question:'「どうぞ」在课文中的完整表达是？',options:['どうぞお入りください','どうぞ食べてください','どうぞ見てください','どうぞ座ってください'],answer:0,explanation:'完整表达为「どうぞお入りください」。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'「嫌い」属于几类形容词？',options:['AⅠ','AⅡ','名词','动词'],answer:1,explanation:'「嫌い」是AⅡ，需特殊记忆。'},
+                {id:"c2",type:"choice",question:'用言包括哪两类词？',options:['名词和代词','形容词和动词','名词和形容词','副词和连词'],answer:1,explanation:'用言包括形容词和动词。'},
+                {id:"c3",type:"choice",question:'体言包括哪些词？',options:['名词、代词、数词','动词、形容词','副词、连词','助词、助动词'],answer:0,explanation:'体言包含名词、指示代词、数词等。'},
+                {id:"c4",type:"choice",question:'正式场合敲门时说什么？',options:['こんにちは','ごめんください','すみません','おはよう'],answer:1,explanation:'「ごめんください」告知对方自己的到来。'},
+              ]}
+            ]
+          },
+          lesson2: {
+            name: "第2课「大学の授業」",
+            sections: [
+              {id:"vocab",name:"单词",questions:[
+                {id:"v1",type:"choice",question:'「顔色」的读音是？',options:['かおいろ⓪','かおいろ①','かおいろ②','かおいろ③'],answer:0,explanation:'读音为「かおいろ⓪」。'},
+                {id:"v2",type:"choice",question:'「大丈夫」的读音是？',options:['だいじょうぶ③','だいじょうぶ①','だいじょうぶ②','だいじょうぶ⓪'],answer:0,explanation:'读音为「だいじょうぶ③」。'},
+                {id:"v3",type:"choice",question:'「難しい」的意思是？',options:['容易的','难的','有趣的','无聊的'],answer:1,explanation:'意为"难的、难以理解的"。'},
+                {id:"v4",type:"choice",question:'「ペラペラ」的意思是？',options:['结巴','流利','安静','大声'],answer:1,explanation:'意为"（外语）流利"。'},
+                {id:"v5",type:"fill",question:'「生活」的读音是____。',answer:'せいかつ',acceptAnswers:['せいかつ','せいかつ⓪'],explanation:'读音为「せいかつ⓪」。'},
+                {id:"v6",type:"fill",question:'「言葉」的意思是____。',answer:'语言',acceptAnswers:['语言','话'],explanation:'意为"语言、话"。'},
+                {id:"v7",type:"fill",question:'「準備」的读音是____。',answer:'じゅんび',acceptAnswers:['じゅんび','じゅんび①'],explanation:'读音为「じゅんび①」。'},
+                {id:"v8",type:"fill",question:'「簡単」的意思是____。',answer:'简单',acceptAnswers:['简单'],explanation:'意为"简单的"。'},
+              ]},
+              {id:"grammar",name:"语法",questions:[
+                {id:"g1",type:"choice",question:'AⅠ「寒い」的敬体否定是？',options:['寒くないです','寒いないです','寒いではありません','寒くあります'],answer:0,explanation:'AⅠ否定「い」→「く」+「ないです」。'},
+                {id:"g2",type:"choice",question:'「S＋から」表示什么？',options:['原因','转折','并列','目的'],answer:0,explanation:'「から」表示主观原因。'},
+                {id:"g3",type:"choice",question:'「そんなに～ない」表示？',options:['非常','不怎么','完全不','总是'],answer:1,explanation:'意为"不怎么……"。'},
+                {id:"g4",type:"fill",question:'「あまり」后接____形式。',answer:'否定',acceptAnswers:['否定','ない'],explanation:'「あまり～ない」表示"不怎么"。'},
+                {id:"g5",type:"translate",question:'请翻译："日本料理很好吃。"',reference:'日本料理はおいしいです。',hint:'使用AⅠ形容词谓语句',explanation:'AⅠ直接加「です」。'},
+                {id:"g6",type:"translate",question:'请翻译："因为现在很忙。"',reference:'今は忙しいですから。',hint:'使用「から」',explanation:'「から」表示原因。'},
+              ]},
+              {id:"reading",name:"课文",questions:[
+                {id:"r1",type:"choice",question:'木村回家时说的第一句话是？',options:['こんにちは','ただいま','お帰り','お疲れ様'],answer:1,explanation:'木村说「ただいま」。'},
+                {id:"r2",type:"choice",question:'王小明觉得哪门课难？',options:['会话课','语法课','阅读课','听力课'],answer:1,explanation:'王说「文法の授業が難しい」。'},
+                {id:"r3",type:"choice",question:'木村说日语学习靠什么？',options:['天赋','每天的努力','老师','教材'],answer:1,explanation:'木村说「言葉の勉強は日々の努力です」。'},
+                {id:"r4",type:"choice",question:'「お帰りなさい」是什么意思？',options:['我回来了','欢迎回家','辛苦了','再见'],answer:1,explanation:'意为"欢迎回家"。'},
+              ]},
+              {id:"culture",name:"趣味拓展",questions:[
+                {id:"c1",type:"choice",question:'日本人回家时说什么？',options:['こんにちは','ただいま','さようなら','おはよう'],answer:1,explanation:'「ただいま」是回家时的惯用句。'},
+                {id:"c2",type:"choice",question:'「お疲れ様です」用于？',options:['早上见面','道别','慰问辛劳','道歉'],answer:2,explanation:'用于表达"您辛苦了"。'},
+                {id:"c3",type:"choice",question:'日语「お～」属于什么语？',options:['尊敬语','谦让语','美化语','丁宁语'],answer:2,explanation:'「お～」属于美化语。'},
+                {id:"c4",type:"choice",question:'音读词前通常加什么表礼貌？',options:['お','ご','を','は'],answer:1,explanation:'音读词前通常加「ご」。'},
+              ]}
+            ]
+          }
         }
-      }
-    }
-  }
-};
+      };
 
 // ===== 状态管理 =====
 const state = {};
