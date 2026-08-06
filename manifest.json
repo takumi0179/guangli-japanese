@@ -1,0 +1,45 @@
+{
+  "name": "光里日语 课后作业系统",
+  "short_name": "光里日语",
+  "description": "光里日语 N5-N1 课后作业系统，支持账号登录同步学习进度",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#4A90D9",
+  "theme_color": "#4A90D9",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "开始学习",
+      "url": "/",
+      "description": "进入课后作业"
+    }
+  ]
+}
