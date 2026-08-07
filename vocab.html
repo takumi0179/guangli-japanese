@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>光里日语 词汇表</title>
+<style>
+:root{--primary:#4A90D9;--primary-dark:#357ABD;--primary-light:#E8F0FE;--success:#28A745;--gray-50:#F8F9FA;--gray-100:#F0F2F5;--gray-200:#E1E4E8;--gray-600:#6C757D;--gray-800:#343A40;--radius:12px;--shadow:0 2px 8px rgba(0,0,0,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--gray-50);color:var(--gray-800);min-height:100vh}
+.header{background:var(--primary);color:#fff;padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.header h1{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}
+.header .sub{font-size:13px;opacity:0.85;margin-top:2px}
+.back-link{color:#fff;text-decoration:none;font-size:14px;opacity:0.85;display:inline-block;margin-bottom:6px}
+.back-link:hover{opacity:1}
+.filters{background:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--gray-200);position:sticky;top:56px;z-index:99}
+.filter-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--gray-200);background:#fff;font-size:13px;cursor:pointer;transition:all .2s;user-select:none}
+.filter-btn:hover{background:var(--gray-50)}
+.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.search-bar{flex:1;min-width:140px;padding:8px 14px;border-radius:20px;border:1px solid var(--gray-200);font-size:14px;outline:none}
+.search-bar:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+.stats{padding:10px 16px;font-size:13px;color:var(--gray-600);background:#fff;border-bottom:1px solid var(--gray-200)}
+.stats span{font-weight:600;color:var(--gray-800)}
+.view-toggle{display:flex;gap:4px;margin-left:auto}
+.view-btn{padding:6px 12px;border-radius:6px;border:1px solid var(--gray-200);background:#fff;font-size:13px;cursor:pointer}
+.view-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+#wordList{max-width:800px;margin:0 auto;padding:12px}
+.word-card{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;transition:transform .15s}
+.word-card:active{transform:scale(0.98)}
+.word-card .word{font-size:18px;font-weight:700;color:var(--gray-800);min-width:80px}
+.word-card .kana{font-size:15px;color:var(--gray-600)}
+.word-card .accent{font-size:13px;color:#E67E22;font-weight:600}
+.word-card .pos{font-size:12px;color:#fff;background:#8E44AD;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.word-card .meaning{font-size:14px;color:var(--gray-800);flex:1;min-width:120px}
+.word-card .cat{font-size:11px;color:var(--gray-600);background:var(--gray-100);padding:2px 8px;border-radius:4px}
+.word-card .type-badge{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
+.type-badge.book{background:#D4EDDA;color:#155724}
+.type-badge.ext{background:#FFF3CD;color:#856404}
+.empty{padding:40px;text-align:center;color:var(--gray-600);font-size:15px}
+.flashcard-container{max-width:500px;margin:20px auto;padding:0 16px}
+.flashcard{background:#fff;border-radius:16px;padding:40px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);cursor:pointer;min-height:260px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:transform .3s;user-select:none}
+.flashcard:active{transform:scale(0.97)}
+.flashcard .front-word{font-size:32px;font-weight:700;color:var(--gray-800)}
+.flashcard .front-kana{font-size:18px;color:var(--gray-600);margin-top:8px}
+.flashcard .front-accent{font-size:16px;color:#E67E22;margin-top:4px}
+.flashcard .back-meaning{font-size:22px;font-weight:600;color:var(--gray-800)}
+.flashcard .back-detail{font-size:14px;color:var(--gray-600);margin-top:8px}
+.flashcard .back-pos{display:inline-block;font-size:12px;color:#fff;background:#8E44AD;padding:2px 10px;border-radius:4px;margin-top:4px}
+.flashcard .hint{font-size:13px;color:var(--gray-400);margin-top:16px}
+.flashcard-nav{display:flex;justify-content:center;gap:16px;margin-top:16px;align-items:center}
+.flashcard-nav button{padding:10px 24px;border-radius:10px;border:none;background:var(--primary);color:#fff;font-size:15px;cursor:pointer}
+.flashcard-nav button:disabled{opacity:0.4;cursor:default}
+.flashcard-nav .count{font-size:14px;color:var(--gray-600)}
+.pagination{display:flex;justify-content:center;gap:6px;padding:16px;flex-wrap:wrap}
+.page-btn{padding:6px 12px;border-radius:6px;border:1px solid var(--gray-200);background:#fff;font-size:13px;cursor:pointer}
+.page-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+@media(max-width:480px){
+  .header h1{font-size:17px}
+  .word-card .word{font-size:16px;min-width:60px}
+  .flashcard .front-word{font-size:26px}
+  .flashcard{padding:30px 16px;min-height:220px}
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <a class="back-link" href="./" target="_self">&larr; 返回作业系统</a>
+  <h1>光里日语 词汇表</h1>
+  <div class="sub">共 <span id="totalCount">0</span> 词</div>
+</div>
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-filter="level" data-value="all">全部</button>
+  <button class="filter-btn" data-filter="level" data-value="N5">N5</button>
+  <button class="filter-btn" data-filter="level" data-value="N4">N4</button>
+  <button class="filter-btn" data-filter="level" data-value="N3">N3</button>
+  <button class="filter-btn" data-filter="level" data-value="N2">N2</button>
+  <button class="filter-btn" data-filter="level" data-value="N1">N1</button>
+  <button class="filter-btn active" data-filter="type" data-value="all">全部类型</button>
+  <button class="filter-btn" data-filter="type" data-value="book">课本词</button>
+  <button class="filter-btn" data-filter="type" data-value="ext">扩展词</button>
+  <input class="search-bar" id="searchInput" placeholder="搜索单词/假名/中文..." autocomplete="off">
+  <div class="view-toggle">
+    <button class="view-btn active" id="viewList" onclick="setView('list')">列表</button>
+    <button class="view-btn" id="viewCard" onclick="setView('card')">卡片</button>
+  </div>
+</div>
+<div class="stats" id="stats">显示 <span id="shownCount">0</span> / <span id="totalDisplay">0</span> 词</div>
+<div id="listView"><div id="wordList"></div><div class="pagination" id="listPagination"></div></div>
+<div id="cardView" style="display:none">
+  <div class="flashcard-container">
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div id="cardFront">
+        <div class="front-word" id="fcWord"></div>
+        <div class="front-kana" id="fcKana"></div>
+        <div class="front-accent" id="fcAccent"></div>
+      </div>
+      <div id="cardBack" style="display:none">
+        <div class="back-meaning" id="fcMeaning"></div>
+        <div class="back-detail" id="fcDetail"></div>
+        <div class="back-pos" id="fcPos"></div>
+      </div>
+      <div class="hint" id="cardHint">点击翻转</div>
+    </div>
+    <div class="flashcard-nav">
+      <button onclick="prevCard()" id="prevBtn">上一张</button>
+      <span class="count" id="cardCount">0 / 0</span>
+      <button onclick="nextCard()" id="nextBtn">下一张</button>
+    </div>
+  </div>
+  <div class="pagination" id="cardPagination"></div>
+</div>
+
+<script>
+const PAGE_SIZE = 50;
+let allWords = [], filtered = [];
+let currentView = 'list', currentPage = 0, cardIndex = 0, cardFlipped = false;
+let filters = {level: 'all', type: 'all'};
+
+async function loadData() {
+  try {
+    const r = await fetch('vocab_data.json');
+    const data = await r.json();
+    for (const level of ['N5','N4','N3','N2','N1']) {
+      if (!data[level]) continue;
+      for (const w of data[level].book || []) allWords.push({...w, level, type: 'book'});
+      for (const w of data[level].ext || []) allWords.push({...w, level, type: 'ext'});
+    }
+    document.getElementById('totalCount').textContent = allWords.length;
+    applyFilters();
+  } catch(e) {
+    document.getElementById('wordList').innerHTML = '<div class="empty">加载失败，请确认 vocab_data.json 已部署</div>';
+  }
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  filtered = allWords.filter(w => {
+    if (filters.level !== 'all' && w.level !== filters.level) return false;
+    if (filters.type !== 'all' && w.type !== filters.type) return false;
+    if (q) return w.word.toLowerCase().includes(q) || w.kana.toLowerCase().includes(q) || w.meaning.toLowerCase().includes(q);
+    return true;
+  });
+  currentPage = 0; cardIndex = 0; cardFlipped = false;
+  render();
+}
+
+function render() {
+  document.getElementById('totalDisplay').textContent = filtered.length;
+  document.getElementById('shownCount').textContent = currentView === 'list' ? Math.min(PAGE_SIZE, filtered.length - currentPage * PAGE_SIZE) : filtered.length;
+  if (currentView === 'list') renderList(); else renderCard();
+}
+
+function renderList() {
+  const container = document.getElementById('wordList');
+  const start = currentPage * PAGE_SIZE;
+  const page = filtered.slice(start, start + PAGE_SIZE);
+  if (!page.length) { container.innerHTML = '<div class="empty">没有匹配的单词</div>'; document.getElementById('listPagination').innerHTML = ''; return; }
+  container.innerHTML = page.map(w => {
+    const tb = w.type === 'book' ? '<span class="type-badge book">课本</span>' : '<span class="type-badge ext">扩展</span>';
+    const cat = w.category ? `<span class="cat">${w.category}</span>` : '';
+    const acc = w.accent ? `<span class="accent">${w.accent}</span>` : '';
+    const pos = w.pos ? `<span class="pos">${w.pos}</span>` : '';
+    return `<div class="word-card"><span class="word">${w.word}</span><span class="kana">${w.kana}</span>${acc}${pos}<span class="meaning">${w.meaning}</span>${cat}${tb}</div>`;
+  }).join('');
+  const tp = Math.ceil(filtered.length / PAGE_SIZE);
+  if (tp <= 1) { document.getElementById('listPagination').innerHTML = ''; return; }
+  let p = '';
+  for (let i = 0; i < tp; i++) p += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i+1}</button>`;
+  document.getElementById('listPagination').innerHTML = p;
+}
+
+function renderCard() {
+  if (!filtered.length) { document.getElementById('flashcard').style.display = 'none'; document.getElementById('cardCount').textContent = '0 / 0'; return; }
+  document.getElementById('flashcard').style.display = 'flex';
+  const w = filtered[cardIndex];
+  document.getElementById('fcWord').textContent = w.word;
+  document.getElementById('fcKana').textContent = w.kana;
+  document.getElementById('fcAccent').textContent = w.accent || '';
+  document.getElementById('fcMeaning').textContent = w.meaning;
+  const d = [w.level, w.type === 'book' ? '课本词' : '扩展词'];
+  if (w.category) d.push(w.category);
+  document.getElementById('fcDetail').textContent = d.join(' · ');
+  document.getElementById('fcPos').textContent = w.pos || '';
+  document.getElementById('cardCount').textContent = `${cardIndex+1} / ${filtered.length}`;
+  document.getElementById('prevBtn').disabled = cardIndex === 0;
+  document.getElementById('nextBtn').disabled = cardIndex === filtered.length - 1;
+  flipCard(false);
+  const tp = Math.ceil(filtered.length / PAGE_SIZE);
+  let p = '';
+  for (let i = 0; i < tp; i++) p += `<button class="page-btn ${Math.floor(cardIndex/PAGE_SIZE)===i?'active':''}" onclick="goCardPage(${i})">${i+1}</button>`;
+  document.getElementById('cardPagination').innerHTML = p;
+}
+
+function flipCard(show) {
+  if (show === undefined) { cardFlipped = !cardFlipped; }
+  else { cardFlipped = show; }
+  document.getElementById('cardFront').style.display = cardFlipped ? 'none' : 'block';
+  document.getElementById('cardBack').style.display = cardFlipped ? 'block' : 'none';
+  document.getElementById('cardHint').textContent = cardFlipped ? '' : '点击翻转';
+}
+
+function nextCard() { if (cardIndex < filtered.length - 1) { cardIndex++; cardFlipped = false; renderCard(); } }
+function prevCard() { if (cardIndex > 0) { cardIndex--; cardFlipped = false; renderCard(); } }
+function goPage(p) { currentPage = p; render(); }
+function goCardPage(p) { cardIndex = p * PAGE_SIZE; cardFlipped = false; renderCard(); }
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('viewList').className = 'view-btn' + (v==='list'?' active':'');
+  document.getElementById('viewCard').className = 'view-btn' + (v==='card'?' active':'');
+  document.getElementById('listView').style.display = v === 'list' ? 'block' : 'none';
+  document.getElementById('cardView').style.display = v === 'card' ? 'block' : 'none';
+  render();
+}
+
+document.getElementById('filters').addEventListener('click', function(e) {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  const f = btn.dataset.filter, v = btn.dataset.value;
+  if (!f) return;
+  document.querySelectorAll(`.filter-btn[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filters[f] = v;
+  applyFilters();
+});
+
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', function() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilters, 300);
+});
+
+document.addEventListener('keydown', function(e) {
+  if (currentView !== 'card') return;
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextCard(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevCard(); }
+  if (e.key === 'Enter' || e.key === 'f') { flipCard(); }
+});
+
+loadData();
+</script>
+</body>
+</html>
