@@ -19168,6 +19168,699 @@
     "accent": "②",
     "pos": "V他Ⅰ",
     "meaning": "弄坏"
+   },
+   {
+    "word": "教師",
+    "kana": "きょうし",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "教师；老师"
+   },
+   {
+    "word": "理由",
+    "kana": "りゆう",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "理由；缘由；缘故"
+   },
+   {
+    "word": "ユーモア",
+    "kana": "『英humour』",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "幽默；滑稽；诙谐"
+   },
+   {
+    "word": "模範",
+    "kana": "もはん",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "模范，榜样，标准，典型"
+   },
+   {
+    "word": "示す",
+    "kana": "しめす",
+    "accent": "②",
+    "pos": "V他I",
+    "meaning": "出示；展示；表示；指示"
+   },
+   {
+    "word": "応募",
+    "kana": "おうぼ",
+    "accent": "⓪",
+    "pos": "N・V自III",
+    "meaning": "应募；应聘；报名"
+   },
+   {
+    "word": "資質",
+    "kana": "ししつ",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "资质"
+   },
+   {
+    "word": "分かりやすい",
+    "kana": "わかりやすい",
+    "accent": "⑤",
+    "pos": "A I",
+    "meaning": "通俗易懂的；容易理解的"
+   },
+   {
+    "word": "生徒",
+    "kana": "せいと",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "(特指在学校上学的)学生"
+   },
+   {
+    "word": "信頼",
+    "kana": "しんらい",
+    "accent": "⓪",
+    "pos": "N・V他III",
+    "meaning": "信赖；信任"
+   },
+   {
+    "word": "責任感",
+    "kana": "せきにんかん",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "责任感；责任心"
+   },
+   {
+    "word": "情熱",
+    "kana": "じょうねつ",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "热情；激情"
+   },
+   {
+    "word": "心",
+    "kana": "こころ",
+    "accent": "③②",
+    "pos": "N",
+    "meaning": "心；心里；内心；心地"
+   },
+   {
+    "word": "目を向ける",
+    "kana": "めをむける",
+    "accent": "—",
+    "pos": "慣用",
+    "meaning": "关心、注目；朝~看；看待"
+   },
+   {
+    "word": "健やか",
+    "kana": "すこやか",
+    "accent": "②",
+    "pos": "A II",
+    "meaning": "健康；健全；健壮"
+   },
+   {
+    "word": "に応じて",
+    "kana": "におうじて",
+    "accent": "⓪",
+    "pos": "接続",
+    "meaning": "根据；按照；对应"
+   },
+   {
+    "word": "によって",
+    "kana": "によって",
+    "accent": "②⓪",
+    "pos": "接続",
+    "meaning": "因~(而不同)；根据"
+   },
+   {
+    "word": "観察眼",
+    "kana": "かんさつがん",
+    "accent": "④⓪",
+    "pos": "N",
+    "meaning": "观察力；洞察力"
+   },
+   {
+    "word": "鋭い",
+    "kana": "するどい",
+    "accent": "③",
+    "pos": "A I",
+    "meaning": "锐利的；尖锐的；锋利的"
+   },
+   {
+    "word": "辛抱強い",
+    "kana": "しんぼうづよい",
+    "accent": "⑥",
+    "pos": "A I",
+    "meaning": "有耐心的；有耐性的；能忍耐的"
+   },
+   {
+    "word": "個人",
+    "kana": "こじん",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "个人"
+   },
+   {
+    "word": "合わせる",
+    "kana": "あわせる",
+    "accent": "③",
+    "pos": "V他II",
+    "meaning": "合并；结合；配合"
+   },
+   {
+    "word": "長所",
+    "kana": "ちょうしょ",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "长处；优点"
+   },
+   {
+    "word": "発揮",
+    "kana": "はっき",
+    "accent": "⓪①",
+    "pos": "N・V他III",
+    "meaning": "发挥；施展"
+   },
+   {
+    "word": "不足",
+    "kana": "ふそく",
+    "accent": "⓪",
+    "pos": "N・A II・V自III",
+    "meaning": "不足；缺乏；不满足"
+   },
+   {
+    "word": "補う",
+    "kana": "おぎなう",
+    "accent": "③",
+    "pos": "V他I",
+    "meaning": "弥补；补充；填补；补足"
+   },
+   {
+    "word": "において",
+    "kana": "において",
+    "accent": "⓪②",
+    "pos": "接続",
+    "meaning": "在；在某方面"
+   },
+   {
+    "word": "批判",
+    "kana": "ひはん",
+    "accent": "⓪",
+    "pos": "N・V他III",
+    "meaning": "批判；批评；评论"
+   },
+   {
+    "word": "激励",
+    "kana": "げきれい",
+    "accent": "⓪",
+    "pos": "N・V他III",
+    "meaning": "激励；鼓励；鼓舞"
+   },
+   {
+    "word": "褒め言葉",
+    "kana": "ほめことば",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "赞词；褒词；赞美语；夸奖的话"
+   },
+   {
+    "word": "溺れる",
+    "kana": "おぼれる",
+    "accent": "⓪",
+    "pos": "V自II",
+    "meaning": "沉迷；沉浸于；淹没；溺水"
+   },
+   {
+    "word": "鼻にかける",
+    "kana": "はなにかける",
+    "accent": "—",
+    "pos": "慣用",
+    "meaning": "骄傲自满"
+   },
+   {
+    "word": "強い",
+    "kana": "つよい",
+    "accent": "②",
+    "pos": "A I",
+    "meaning": "强的；厉害的；强壮的；强烈的"
+   },
+   {
+    "word": "育てる",
+    "kana": "そだてる",
+    "accent": "③",
+    "pos": "V他II",
+    "meaning": "养育；抚养；教育；培养"
+   },
+   {
+    "word": "綿",
+    "kana": "わた",
+    "accent": "②",
+    "pos": "N",
+    "meaning": "棉；棉花；棉絮"
+   },
+   {
+    "word": "氷",
+    "kana": "こおり",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "冰；冰块"
+   },
+   {
+    "word": "真夏",
+    "kana": "まなつ",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "盛夏；仲夏；大热天时"
+   },
+   {
+    "word": "都合",
+    "kana": "つごう",
+    "accent": "⓪①",
+    "pos": "N",
+    "meaning": "情况；(是否)方便"
+   },
+   {
+    "word": "召し上がる",
+    "kana": "めしあがる",
+    "accent": "④",
+    "pos": "V他I",
+    "meaning": "吃；喝；「食べる」「飲む」的尊敬语"
+   },
+   {
+    "word": "おっしゃる",
+    "kana": "おっしゃる",
+    "accent": "③",
+    "pos": "V他I",
+    "meaning": "说；讲；「言う」的尊敬语"
+   },
+   {
+    "word": "なさる",
+    "kana": "なさる",
+    "accent": "②",
+    "pos": "V他I",
+    "meaning": "做；「する」的尊敬语"
+   },
+   {
+    "word": "おいでになる",
+    "kana": "おいでになる",
+    "accent": "⑤",
+    "pos": "V自I",
+    "meaning": "来；去；在；「来る」「行く」「いる」的尊敬语"
+   },
+   {
+    "word": "お見えになる",
+    "kana": "おみえになる",
+    "accent": "⑤",
+    "pos": "V自I",
+    "meaning": "来；「来る」的尊敬语"
+   },
+   {
+    "word": "お越しになる",
+    "kana": "おこしになる",
+    "accent": "⑤",
+    "pos": "V自I",
+    "meaning": "来；「来る」的尊敬语"
+   },
+   {
+    "word": "存知",
+    "kana": "ぞんじ",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "知道；懂得；晓得"
+   },
+   {
+    "word": "ご覧になる",
+    "kana": "ごらんになる",
+    "accent": "⑤",
+    "pos": "V他I",
+    "meaning": "看；读；「見る」「読む」的尊敬语"
+   },
+   {
+    "word": "申す",
+    "kana": "もうす",
+    "accent": "①",
+    "pos": "V他I",
+    "meaning": "说；讲；「言う」的谦让语"
+   },
+   {
+    "word": "申し上げる",
+    "kana": "もうしあげる",
+    "accent": "⑤⓪",
+    "pos": "V他I",
+    "meaning": "说；讲；「言う」的谦让语"
+   },
+   {
+    "word": "いたす",
+    "kana": "いたす",
+    "accent": "②",
+    "pos": "V他I",
+    "meaning": "做；「する」的谦让语"
+   },
+   {
+    "word": "参る",
+    "kana": "まいる",
+    "accent": "①",
+    "pos": "V自I",
+    "meaning": "来；去；「来る」「行く」的谦让语"
+   },
+   {
+    "word": "存じる",
+    "kana": "ぞんじる",
+    "accent": "③⓪",
+    "pos": "V自II",
+    "meaning": "知道；认为；考虑；「知る」「思う」「考える」的谦让语"
+   },
+   {
+    "word": "存じ上げる",
+    "kana": "ぞんじあげる",
+    "accent": "⑤",
+    "pos": "V自II",
+    "meaning": "知道；认为；考虑；「知る」「思う」「考える」的谦让语"
+   },
+   {
+    "word": "拝見",
+    "kana": "はいけん",
+    "accent": "⓪",
+    "pos": "N・V他III",
+    "meaning": "看；读；拜读；「見る」「読む」的谦让语"
+   },
+   {
+    "word": "お目にかかる",
+    "kana": "おめにかかる",
+    "accent": "⑤",
+    "pos": "V自I",
+    "meaning": "见面；遇见；「会う」的谦让语"
+   },
+   {
+    "word": "伺う",
+    "kana": "うかがう",
+    "accent": "⓪",
+    "pos": "V他I",
+    "meaning": "问；打听；拜访；「聞く」「訪ねる」「問う」的谦让语"
+   },
+   {
+    "word": "かしこまる",
+    "kana": "かしこまる",
+    "accent": "④",
+    "pos": "V自I",
+    "meaning": "知道；理解；「分かる」的谦让语"
+   },
+   {
+    "word": "便所",
+    "kana": "べんじょ",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "厕所；茅房；便所"
+   },
+   {
+    "word": "飯",
+    "kana": "めし",
+    "accent": "②",
+    "pos": "N",
+    "meaning": "饭(通俗表达)"
+   },
+   {
+    "word": "腹",
+    "kana": "はら",
+    "accent": "②",
+    "pos": "N",
+    "meaning": "肚子(通俗表达)；腹部；气度"
+   },
+   {
+    "word": "お腹",
+    "kana": "おなか",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "肚子；腹部；「腹」的美化语"
+   },
+   {
+    "word": "宿泊",
+    "kana": "しゅくはく",
+    "accent": "⓪",
+    "pos": "V自III",
+    "meaning": "投宿；住宿；留宿"
+   },
+   {
+    "word": "洋服",
+    "kana": "ようふく",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "西装；西服；洋装"
+   },
+   {
+    "word": "着る",
+    "kana": "きる",
+    "accent": "⓪",
+    "pos": "V他II",
+    "meaning": "穿（上装等）"
+   },
+   {
+    "word": "明治時代",
+    "kana": "めいじじだい",
+    "accent": "④",
+    "pos": "N",
+    "meaning": "明治时代（日本近代时期之一）"
+   },
+   {
+    "word": "はるか",
+    "kana": "はるか",
+    "accent": "①",
+    "pos": "A II・ADV",
+    "meaning": "遥远；~得多"
+   },
+   {
+    "word": "戦国時代",
+    "kana": "せんごくじだい",
+    "accent": "⑤",
+    "pos": "N",
+    "meaning": "战国时代（日本历史时期之一）"
+   },
+   {
+    "word": "スペイン",
+    "kana": "スペイン",
+    "accent": "②",
+    "pos": "N",
+    "meaning": "西班牙"
+   },
+   {
+    "word": "ポルトガル",
+    "kana": "ポルトガル",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "葡萄牙"
+   },
+   {
+    "word": "契機",
+    "kana": "けいき",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "契机"
+   },
+   {
+    "word": "西洋",
+    "kana": "せいよう",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "西洋"
+   },
+   {
+    "word": "当時",
+    "kana": "とうじ",
+    "accent": "①",
+    "pos": "N・ADV",
+    "meaning": "当时"
+   },
+   {
+    "word": "定着",
+    "kana": "ていちゃく",
+    "accent": "⓪",
+    "pos": "N・V自他III",
+    "meaning": "定居；扎根"
+   },
+   {
+    "word": "江戸幕府",
+    "kana": "えどばくふ",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "江户幕府（日本江户时代的中央政府机构）"
+   },
+   {
+    "word": "開国",
+    "kana": "かいこく",
+    "accent": "⓪",
+    "pos": "N・V自III",
+    "meaning": "开放国家"
+   },
+   {
+    "word": "戎服",
+    "kana": "じゅうふく",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "戎服（一种军服）"
+   },
+   {
+    "word": "軍服",
+    "kana": "ぐんぷく",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "军服，军队制服"
+   },
+   {
+    "word": "洋装",
+    "kana": "ようそう",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "西洋服装"
+   },
+   {
+    "word": "普及",
+    "kana": "ふきゅう",
+    "accent": "⓪",
+    "pos": "N・V自他III",
+    "meaning": "普及"
+   },
+   {
+    "word": "始まり",
+    "kana": "はじまり",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "开始，开端；起源"
+   },
+   {
+    "word": "明治維新",
+    "kana": "めいじいしん",
+    "accent": "④",
+    "pos": "N",
+    "meaning": "明治维新"
+   },
+   {
+    "word": "皇室",
+    "kana": "こうしつ",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "皇室"
+   },
+   {
+    "word": "政府",
+    "kana": "せいふ",
+    "accent": "①",
+    "pos": "N",
+    "meaning": "政府"
+   },
+   {
+    "word": "官僚",
+    "kana": "かんりょう",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "官僚，官吏"
+   },
+   {
+    "word": "正装",
+    "kana": "せいそう",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "正装"
+   },
+   {
+    "word": "駅員",
+    "kana": "えきいん",
+    "accent": "②",
+    "pos": "N",
+    "meaning": "车站工作人员"
+   },
+   {
+    "word": "制服",
+    "kana": "せいふく",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "制服；工作服"
+   },
+   {
+    "word": "徐々に",
+    "kana": "じょじょに",
+    "accent": "①",
+    "pos": "ADV",
+    "meaning": "慢慢"
+   },
+   {
+    "word": "取り入れる",
+    "kana": "とりいれる",
+    "accent": "⓪",
+    "pos": "V他Ⅱ",
+    "meaning": "收进；吸收"
+   },
+   {
+    "word": "伝統的",
+    "kana": "でんとうてき",
+    "accent": "⓪",
+    "pos": "AⅡ",
+    "meaning": "传统"
+   },
+   {
+    "word": "着物",
+    "kana": "きもの",
+    "accent": "⓪",
+    "pos": "N",
+    "meaning": "衣服；衣物；或特指和服"
+   },
+   {
+    "word": "脱ぐ",
+    "kana": "ぬぐ",
+    "accent": "①",
+    "pos": "V他Ⅰ",
+    "meaning": "脱"
+   },
+   {
+    "word": "不便",
+    "kana": "ふべん",
+    "accent": "①",
+    "pos": "N・AⅡ",
+    "meaning": "不便；不方便"
+   },
+   {
+    "word": "急増",
+    "kana": "きゅうぞう",
+    "accent": "⓪",
+    "pos": "N・V自Ⅲ",
+    "meaning": "剧增，猛增，骤增"
+   },
+   {
+    "word": "欠かす",
+    "kana": "かかす",
+    "accent": "⓪",
+    "pos": "V他Ⅰ",
+    "meaning": "欠缺，遗漏"
+   },
+   {
+    "word": "消失",
+    "kana": "しょうしつ",
+    "accent": "⓪",
+    "pos": "N・V自Ⅲ",
+    "meaning": "消失，失效"
+   },
+   {
+    "word": "成人式",
+    "kana": "せいじんしき",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "成人礼；成人典礼"
+   },
+   {
+    "word": "七五三",
+    "kana": "しちごさん",
+    "accent": "③",
+    "pos": "N",
+    "meaning": "七五三节（日本传统节日之一）"
+   },
+   {
+    "word": "行事",
+    "kana": "ぎょうじ",
+    "accent": "①③",
+    "pos": "N",
+    "meaning": "仪式，活动"
+   },
+   {
+    "word": "フォーマル",
+    "kana": "フォーマル",
+    "accent": "①",
+    "pos": "AⅡ",
+    "meaning": "正式的，正规的"
    }
   ],
   "ext": [
